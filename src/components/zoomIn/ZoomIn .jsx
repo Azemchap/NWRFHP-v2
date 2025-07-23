@@ -252,6 +252,25 @@ function App() {
                     </div>
 
 
+
+                    <div className={classNames("zoom", "number-cards")}>
+
+                        <h6>Manager of  Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region </h6>
+
+                        <Image className='img'
+                            alt="slider image" width={500} height={500}
+                            src="/images/ blaise.jpg"
+                        />
+
+                    </div>
+
+
+
+
+
+
+
+
                     <div className={classNames("zoom", "number-cards")}>
 
                         <h6>We Wish You A Happy Stay With Us As You Continue To Discover Who We Are </h6>
