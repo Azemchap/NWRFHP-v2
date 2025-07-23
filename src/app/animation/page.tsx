@@ -1,4 +1,4 @@
-import ZoomIn from '../../components/zoomIn/ZoomIn'
+import ZoomIn from '../../components/zoomIn/ZoomIn '
 
 const page = () => {
     return (
