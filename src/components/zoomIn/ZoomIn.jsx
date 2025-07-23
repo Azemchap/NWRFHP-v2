@@ -1,279 +1,126 @@
 "use client"
-import React, { useEffect } from 'react';
-import "./zoomIn.css"
-import classNames from 'classnames';
-import Image from 'next/image'
 
-function App() {
+import React, { useEffect } from 'react';
+import "./zoomIn.css";
+import classNames from 'classnames';
+import Image from 'next/image';
+
+const Slide = ({ children, image, zoomClass }) => {
+    return (
+        <div className={classNames(zoomClass, "number-cards")}>
+            <h6>{children}</h6>
+            <Image
+                className='img'
+                alt="Slider Image"
+                width={500}
+                height={500}
+                src={image}
+                priority={false}
+            />
+        </div>
+    );
+};
+
+export default function App() {
+    const slides = [
+        {
+            title: "Inside The North West Regional Fund For Health Promotion",
+            image: "/images/head-office.jpg"
+        },
+        {
+            title: "Office Of The Administrator",
+            image: "/images/admin.jpg"
+        },
+        {
+            title: "Head Of Section For Administration And Finance",
+            image: "/images/maggia.jpg"
+        },
+        {
+            title: "Office Of The Internal Auditor",
+            image: "/images/auditor.jpg"
+        },
+        {
+            title: "Office Of The Administrative Assistant",
+            image: "/images/adminasis.jpg"
+        },
+        {
+            title: "Head Of Unit Accounts And Finance",
+            image: "/images/seph.jpg"
+        },
+        {
+            title: "Office OF The Head Of Unit For Supervision And Distribution",
+            image: "/images/joe.jpg"
+        },
+        {
+            title: "Office OF The Computerized Stock Management",
+            image: "/images/stock.jpg"
+        },
+        {
+            title: "Office OF The Logistics Unit",
+            image: "/images/logistics.jpg"
+        },
+        {
+            title: "The Warehouse Of The Regional Fund For Health Promotion",
+            image: "/images/096A0566.jpg"
+        },
+        {
+            title: "Office Of The Laboratory Unit Of The Fund",
+            image: "/images/ndzi1.jpg"
+        },
+        {
+            title: "Sub-Store For Public Health Programmes",
+            image: "/images/hiv-medicines.jpg"
+        },
+        {
+            title: "Kumbo Sub-store In Bui Division Of The N.W. Region",
+            image: "/images/brenda.jpg"
+        },
+        {
+            title: "Wum Sub-store In Menchum Division Of The N.W. Region",
+            image: "/images/nwa.jpg"
+        },
+        {
+            title: "Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region",
+            image: "/images/delivery-beds.jpg"
+        },
+        {
+            title: "We Wish You A Happy Stay With Us As You Continue To Discover Who We Are",
+            image: "/images/social1.jpg"
+        }
+    ];
+
 
     useEffect(() => {
-        zoomAnimation();
+        const intervalId = setInterval(zoomAnimation, 15000);
+        return () => clearInterval(intervalId);
     }, []);
 
-
     const zoomAnimation = () => {
+        const currentSlide = slides[currentIndex % slides.length];
+        currentIndex += 1;
 
-        /**
- * Initialize index to count from
- */
-        var slideIndex = 0;
-
-        /**
-         * Run animation method
-         */
-        showSlides();
-
-        /**
-         * Animation method
-         */
-        function showSlides() {
-            var i;
-            /**
-             * Store all elments in an array
-             */
-            var slidesObj = document.getElementsByClassName("number-cards");
-            var slides = Array.from(slidesObj);
-
-            /**
-             * Make all elements invisible 
-             */
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-
-            /**
-             * increment slideIndex and make sure  
-             * slideIndex is reset to 1 when count goes 
-             * beyond array lenght
-             */
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-
-            /**
-             * Make slide index at index slideIndex - 1 in array visible
-             * by making it visible (display: flex)
-             */
-            slides[slideIndex - 1].style.display = "flex";
-
-            /**
-             * Add class name zoom which makes the object 
-             * undergo the animation described in the zoom class
-             */
-            slides[slideIndex - 1].classList.add("zoom");
-
-            /**
-             * Run this method every 4 seconds
-             */
-            setTimeout(showSlides, 15000);
-
-            return (
-                <div>Animate</div>
-            )
+        // Reset to start from first slide
+        if (currentIndex > slides.length) {
+            currentIndex = 0;
         }
 
+        // Update display and add zoom class
+        currentSlide.element.style.display = "flex";
+        currentSlide.element.classList.add("zoom");
+    };
 
-
-    }
+    let currentIndex = 0;
 
     return (
-
         <div className='app-man'>
-
             <div className='anim'>
-
-                <div className="man">
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Inside The North West Regional Fund For Health Promotion</h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/head-office.jpg"
-                        />
-
-                    </div>
-
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office Of The Administrator</h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/admin.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6> Head Of Section For Administration And Finance</h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/maggia.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office Of The Internal Auditor</h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/auditor.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office Of The Administrative Assistant</h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/adminasis.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Head Of Unit Accounts And Finance </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/seph.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office OF The Head Of Unit For Supervision And Distribution </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/joe.jpg"
-                        />
-
-                    </div>
-
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office OF The Computerized Stock Management </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/stock.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office OF The Logistics Unit </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/logistics.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>The Warehouse Of The Regional Fund For Health Promotion </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/096A0566.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Office Of The Laboratory Unit Of The Fund </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/ndzi1.jpg"
-                        />
-
-                    </div>
-
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Sub-Store For Public Health Programmes </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/hiv-medicines.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Kumbo Sub-store In Bui Division Of The N.W. Region </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/brenda.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Wum Sub-store In Menchum Division Of The N.W. Region </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/nwa.jpg"
-                        />
-
-                    </div>
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/delivery-beds.jpg"
-                        />
-
-                    </div>
-
-
-                    <div className={classNames("zoom", "number-cards")}>
-
-                        <h6>We Wish You A Happy Stay With Us As You Continue To Discover Who We Are </h6>
-
-                        <Image className='img'
-                            alt="slider image" width={500} height={500}
-                            src="/images/social1.jpg"
-                        />
-
-                    </div>
-
-
-
-
-
-                    
-
-                </div>
+                {slides.map((slide, index) => (
+                    <Slide key={index} image={slide.image}>
+                        {slide.title}
+                    </Slide>
+                ))}
             </div>
         </div>
-
-
     );
 }
-export default App
+

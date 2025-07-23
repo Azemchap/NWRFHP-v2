@@ -105,33 +105,7 @@ const PostCard = () => {
 
 
 
-                <div className={styles.post}>
-
-                    <div className={styles.top}>
-                        <div className={styles.alidaContainer}>
-                            <Image
-                                src="/images/njamsi.JPG"
-                                alt="njamsi"
-                                fill
-                                className={styles.alida}
-                            />
-
-                            <h1 className={styles.title}>MILDRED KONGLA NJAMNSI	  </h1>
-                        </div>
-
-                        <span className={styles.date}>30/12/2024</span>
-                    </div>
-
-                    <div className={styles.bottom}>
-
-                        <p className={styles.desc}>RESOURCE MOBILISATION OFFICER</p>
-
-                        <Link className={styles.link} href="./Team/post">
-                            Read More
-                        </Link>
-                    </div>
-                </div>
-
+                
 
                 <div className={styles.post}>
 
@@ -218,31 +192,7 @@ const PostCard = () => {
                 </div>
 
 
-                <div className={styles.post}>
-
-                    <div className={styles.top}>
-                        <div className={styles.alidaContainer}>
-                            <Image
-                                src="/images/drbecky.jpg"
-                                alt="drbecky"
-                                fill
-                                className={styles.alida}
-                            />
-
-                            <h1 className={styles.title}>DR. KOME BECKY LIMYUY </h1>
-                        </div>
-
-                        <span className={styles.date}>30/12/2024</span>
-                    </div>
-
-                    <div className={styles.bottom}>
-
-                        <p className={styles.desc}>Regional Logistics officer-NW Contractor For USAID global Health Supply Chain Program Procurement And Supply Management project.</p>
-                        <Link className={styles.link} href="./Team/post">
-                            Read More
-                        </Link>
-                    </div>
-                </div>
+                
 
 
                 <div className={styles.post}>
@@ -459,88 +409,13 @@ const PostCard = () => {
                 </div>
 
 
-                <div className={styles.post}>
-
-                    <div className={styles.top}>
-                        <div className={styles.alidaContainer}>
-                            <Image
-                                src="/images/ngwenei.JPG"
-                                alt="ngwenei"
-                                fill
-                                className={styles.alida}
-                            />
-
-                            <h1 className={styles.title}>MARTINA NGENWIE AKAMANGWA	 </h1>
-                        </div>
-
-                        <span className={styles.date}>30/12/2024</span>
-                    </div>
-
-                    <div className={styles.bottom}>
-
-                        <p className={styles.desc}>SECRETARY</p>
-                        <Link className={styles.link} href="./Team/post">
-                            Read More
-                        </Link>
-                    </div>
-                </div>
+                
 
 
-
-                <div className={styles.post}>
-
-                    <div className={styles.top}>
-                        <div className={styles.alidaContainer}>
-                            <Image
-                                src="/images/ngwana.JPG"
-                                alt="ngwana"
-                                fill
-                                className={styles.alida}
-                            />
-
-                            <h1 className={styles.title}>NGWANA ALPHONSE	 </h1>
-
-                        </div>
-
-                        <span className={styles.date}>30/12/2024</span>
-                    </div>
-
-                    <div className={styles.bottom}>
-
-                        <p className={styles.desc}>DRIVER & JANITOR</p>
-                        <Link className={styles.link} href="./Team/post">
-                            Read More
-                        </Link>
-                    </div>
-                </div>
+                
 
 
-                <div className={styles.post}>
-
-                    <div className={styles.top}>
-                        <div className={styles.alidaContainer}>
-                            <Image
-                                src="/images/nfor.JPG"
-                                alt="nfor"
-                                fill
-                                className={styles.alida}
-                            />
-
-                            <h1 className={styles.title}>BUDZI JULIUS NFOR	 </h1>
-                        </div>
-
-                        <span className={styles.date}>30/12/2024</span>
-                    </div>
-
-                    <div className={styles.bottom}>
-
-                        <p className={styles.desc}>STOREKEEPER</p>
-                        <Link className={styles.link} href="./Team/post">
-                            Read More
-                        </Link>
-                    </div>
-                </div>
-
+                
 
                 <div className={styles.post}>
 

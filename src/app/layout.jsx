@@ -14,8 +14,6 @@ export default function RootLayout({ children }) {
       <body>
         <Nav />
         <main className=" mt-16 min-h-screen">{children}</main>
-        
-
         <Footer />
       </body>
     </html>

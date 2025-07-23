@@ -1,19 +1,13 @@
-import React from 'react'
 import ZoomIn from '../../components/zoomIn/ZoomIn'
 
 const page = () => {
     return (
-
-
-        <div
-            className="container-fluid container mx-auto pt-16 "
+        <div className="pt-16 "
             data-aos="fade-up"
-            data-aos-duration="1000"
-        >
+            data-aos-duration="1000">
             <div className=" container mx-auto p-4" >
-
                 <div>
-                    < ZoomIn />
+                    <ZoomIn />
                 </div>
             </div>
         </div>
