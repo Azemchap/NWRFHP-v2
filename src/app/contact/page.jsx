@@ -58,6 +58,17 @@ const ContactUs = () => {
                                                     <FaPhoneVolume /> Make a phone call
                                                 </Link>
 
+                                                <Link
+                                                    rel="noopener" target="_blank" href="/"
+                                                    className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-normal rounded-md shadow-sm text-blue-600 bg-white hover:bg-indigo-50 sm:px-8 gap-2"
+                                                >
+                                                    Visit our request form
+                                                </Link>
+
+
+
+                                                <Link href={'/'}>View more</Link>
+
                                             </div>
                                         </div>
                                     </div>
