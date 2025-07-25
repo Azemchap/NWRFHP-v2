@@ -259,7 +259,7 @@ function App() {
 
                         <Image className='img'
                             alt="slider image" width={500} height={500}
-                            src="/images/nfor blaise.jpg"
+                            src="/images/ blaise.jpg"
                         />
 
                     </div>
