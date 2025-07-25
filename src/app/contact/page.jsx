@@ -58,6 +58,9 @@ const ContactUs = () => {
                                                     <FaPhoneVolume /> Make a phone call
                                                 </Link>
 
+
+                                                <Link href={'/'}>View more</Link>
+
                                             </div>
                                         </div>
                                     </div>
