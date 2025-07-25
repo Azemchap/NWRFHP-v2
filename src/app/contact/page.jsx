@@ -65,10 +65,6 @@ const ContactUs = () => {
                                                     Visit our request form
                                                 </Link>
 
-
-
-                                                <Link href={'/'}>View more</Link>
-
                                             </div>
                                         </div>
                                     </div>
