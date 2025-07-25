@@ -66,6 +66,9 @@ const ContactUs = () => {
                                                 </Link>
 
 
+
+                                                <Link href={'/'}>View more</Link>
+
                                             </div>
                                         </div>
                                     </div>
