@@ -94,7 +94,7 @@ const books = [
         id: "899999999-gh34",
         title: "NDEH DONATUS MOKOM",
 
-        cover: "/images/stock.JPG",
+        cover: "/images/ndeh.JPG",
 
         desc: "Head of Unit for Computerized Stock Management ",
         category: "stock",
@@ -164,7 +164,7 @@ const books = [
     },
 
     {
-        id: "899999999-gh34",
+        id: "899999999-gh340",
         title: "NKAIMBI COMFORT",
 
         cover: "/images/nkambi.JPG",
