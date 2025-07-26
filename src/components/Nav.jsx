@@ -119,9 +119,9 @@ export default function Nav() {
                 {/* Top navigation  */}
                 <div className="bg-white border-b ">
                     <div className="container mx-auto flex gap-8 items-center justify-end text-xs font-medium text-[#2858dc] px-4 sm:px-6 lg:px-8 h-10">
-                        <Link rel="noopener" target="_blank" href="tel:+2376111222333"> <span className='flex gap-2 font-semibold text-xs items-center'> <FaPhoneVolume /> Call Us Now!</span>
+                        <Link rel="noopener" target="_blank" href="tel:+237651421052"> <span className='flex gap-2 font-semibold text-xs items-center'> <FaPhoneVolume /> Call Us Now!</span>
                         </Link>
-                        <Link href="https://wa.me/+2376111222333"> <span className=' flex gap-1 font-semibold text-xs items-center '><FaWhatsapp />  Whatsapp </span>
+                        <Link href="https://wa.me/+237651421052"> <span className=' flex gap-1 font-semibold text-xs items-center '><FaWhatsapp />  Whatsapp </span>
                         </Link>
                     </div>
                 </div>
