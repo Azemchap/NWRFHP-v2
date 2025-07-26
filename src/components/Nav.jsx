@@ -32,8 +32,8 @@ export default function Nav() {
 
             {
                 id: '7',
-                href: '/team',
-                name: 'OUR TEAM'
+                href: '/gallery',
+                name: 'STAFF GALLERY'
             },
 
             {
