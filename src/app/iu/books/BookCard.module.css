@@ -1,0 +1,37 @@
+.imag{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+
+.addCards{
+    width: 100px;
+    height: 100px;
+    background-color: aliceblue;
+    border-radius: 30px;
+}
+
+.title {
+    text-align: start;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: rgb(247, 247, 237);
+    /* text-decoration: none; */
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+@media (max-width:600px) {
+
+    
+    .imag{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
