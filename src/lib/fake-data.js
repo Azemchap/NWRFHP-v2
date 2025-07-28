@@ -10,7 +10,7 @@ const books = [
     {
         id: "899999999-gh1000",
         title: "DR. RICHARD MBARIKA FONDOH",
-        cover: "/images/fondoh.jpg",
+        cover: "/images/fondoh4.jpg",
         desc: "Administrator of the North West Regional Fund for Health Promotion (PIG) Bamenda.",
         category: "coverage",
     },
@@ -94,7 +94,7 @@ const books = [
         id: "899999999-gh34",
         title: "NDEH DONATUS MOKOM",
 
-        cover: "/images/ndeh.JPG",
+        cover: "/images/ndeh4.JPG",
 
         desc: "Head of Unit for Computerized Stock Management ",
         category: "stock",
