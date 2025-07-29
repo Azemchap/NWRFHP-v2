@@ -12,7 +12,7 @@ const books = [
     {
         id: "89999996543-th5",
         title: "SODIUM CHLORIDE 0.9% 250ML ",
-        sellPrice: 7.92,
+        sellPrice: 429,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -22,7 +22,7 @@ const books = [
     {
         id: "89999996543-th510",
         title: "NIFEDIPINE 20MG ",
-        sellPrice: 7.92,
+        sellPrice: 13.2,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -31,7 +31,7 @@ const books = [
     {
         id: "89999996543-th58",
         title: "BUTTERFLY NEEDLE 25G ",
-        sellPrice: 7.92,
+        sellPrice: 31.68,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -41,7 +41,7 @@ const books = [
     {
         id: "89999996543-th57",
         title: "BUTTERFLY 23G ",
-        sellPrice: 7.92,
+        sellPrice: 39.6,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -50,7 +50,7 @@ const books = [
     {
         id: "89999996543-th55",
         title: "ASPIRIN 81MG ",
-        sellPrice: 7.92,
+        sellPrice: 18.085,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
