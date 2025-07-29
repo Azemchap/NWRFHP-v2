@@ -17,7 +17,7 @@ const CartPage = () => {
                 </div>
 
                 <h3 className={styles.body}>
-                    Thanks a lot for your purchase. Please click contact and chat with the
+                    Thanks a lot for your purchase. Please click the contact button to chat with the
                     officer in charge of our bills
                 </h3>
 
