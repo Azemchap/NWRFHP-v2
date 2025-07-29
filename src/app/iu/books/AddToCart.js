@@ -1,7 +1,7 @@
 "use client";
 import { ShoppingBagIcon, TruckIcon } from "@heroicons/react/outline";
 import { toast } from "react-toastify";
-import styles from "./books.module.css";
+import styles from "./Books.module.css";
 import { useContext } from "react";
 import { StoreContext } from "../../context";
 

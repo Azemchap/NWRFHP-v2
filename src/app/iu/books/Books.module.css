@@ -86,10 +86,7 @@
 }
 
 @media (max-width: 600px) {
-    .bookCard {
-        /* display: flex; */
-        /* flex-wrap: wrap; */
-    }
+    
 
     .header {
         margin-left: 15px;
