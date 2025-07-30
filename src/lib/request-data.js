@@ -1,6 +1,6 @@
 const books = [
-    
-    
+
+
     {
         id: "899999999-gh501",
         title: "AMOXYCILLIN/CLAVULANIC ACID 1000MG ",
@@ -128,7 +128,7 @@ const books = [
         cover: "/images/formulary.jpg",
         category: "injection",
         desc: "This medication has passed our quality control test and has a good expiry date",
-        unit: "AMP",
+        unit: "Ampoule",
     },
     {
         id: "899999999-gh514",
@@ -193,17 +193,907 @@ const books = [
         desc: "This medication has passed our quality control test and has a good expiry date",
         unit: "Bottle",
     },
-    
-    
-    
-    
-    
-    
-    
-    
+
+    {
+        id: "899999999-gh521",
+        title: "ACICLOVIR 400MG TABLET",
+        sellPrice: 132,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+    {
+        id: "899999999-gh522",
+        title: "ALBENDAZOLE 400MG TABLET",
+        sellPrice: 79.2,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh523",
+        title: "ALLOPORINOL 100MG, TABLET",
+        sellPrice: 52.8,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+    {
+        id: "899999999-gh524",
+        title: "AMINOPHYLLINE 250 MG/10ML, INJECTION",
+        sellPrice: 165,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh525",
+        title: "AMLODIPINE 10MG TABLET",
+        sellPrice: 39.6,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh526",
+        title: "AMPICILLINE PPI 1G INJECTION",
+        sellPrice: 211.2,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh527",
+        title: "ANTITETANUS TOXOID 1500UI/ML 1ML VIAL",
+        sellPrice: 1122,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh528",
+        title: "ATROPINE 1MG/ML INJECTION",
+        sellPrice: 264,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh529",
+        title: "AZITROMYCIN 200MG/5ML SUSPENSION",
+        sellPrice: 1320,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+
+{
+        id: "899999999-gh530",
+        title: "CREPE  BANDAGE 4M*7.5CM",
+        sellPrice: 211.2,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh531",
+        title: "BENZYL BENZOATE 25% SOLUTION 100ML ",
+        sellPrice: 1188,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh532",
+        title: "BETAMETHASONE CREAM 0.1% 15G, TUBE",
+        sellPrice: 594,
+        cover: "/images/formulary.jpg",
+        category: "ointments",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
+
+    {
+        id: "899999999-gh533",
+        title: "BISACODYL 5MG,  TABLET",
+        sellPrice: 7.92,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh534",
+        title: "BLOOD PRESSURE APPARATUS ADULT",
+        sellPrice: 19800,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh535",
+        title: "BUPIVACAINE (Marcaïne), 0.5% 100 MG/20ML, VIAL",
+        sellPrice: 1584,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh536",
+        title: "BUTYLSCOPOLAMINE BROMIDE 10MG TABLET",
+        sellPrice: 15.84,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh537",
+        title: "CALCIUM GLUCONATE 10% 1G/10 ML, INJECTION",
+        sellPrice: 165,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh538",
+        title: "CALCIUM LACTATE 300MG TABLET",
+        sellPrice: 10.56,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "tablet",
+    },
+
+{
+        id: "899999999-gh539",
+        title: "CAPTOPRIL 25MG TABLET",
+        sellPrice: 15.84,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "tablet",
+    },
+
+
+
+{
+        id: "899999999-gh540",
+        title: "CARBAMAZEPINE 200MG, TABLET",
+        sellPrice: 36.96,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "tablet",
+    },
+
+{
+        id: "899999999-gh541",
+        title: "CARBOCYSTEINE 2% SYRUP",
+        sellPrice: 594,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh542",
+        title: "CARBOCYSTEINE 5% SYRUP",
+        sellPrice: 792,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh543",
+        title: "I.V. PLACEMENT No. 18G",
+        sellPrice: 217.8,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh544",
+        title: "I.V.  PLACEMENT TYPE  1.10 MM,  20G",
+        sellPrice: 221.76,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh545",
+        title: "I.V. PLACEMENT  TYPE  0.80 MM , 22G",
+        sellPrice: 217.8,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
+{
+        id: "899999999-gh546",
+        title: "I.V. PLACEMENT 24G",
+        sellPrice: 221.76,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh547",
+        title: "CEFIXIME 200MG, TABLET",
+        sellPrice: 132,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh548",
+        title: "CEFIXIME 100MG/5ML, SUSPENSION",
+        sellPrice: 1320,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh549",
+        title: "CEFOTAXIME 100MG, INJECTION",
+        sellPrice: 858,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+    {
+        id: "899999999-gh550",
+        title: "CEFTRIAZONE  1G , VIAL",
+        sellPrice: 363.2,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh551",
+        title: "CHLOHEXIDINE  DIGLUCONATE 20% SOLUTION",
+        sellPrice: 1782,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+
+{
+        id: "899999999-gh552",
+        title: "CHLORPHENIRAMINE + PHENYLEPHRINE SYRUP",
+        sellPrice: 924,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh553",
+        title: "CHLORAMPHENICOL 250MG, CAPSULE",
+        sellPrice: 46.2,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh554",
+        title: "CHLORPROMAZINE 100MG TABLET",
+        sellPrice: 26.4,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh555",
+        title: "CHLORPROMAZINE 50MG/2ML, INJECTION",
+        sellPrice: 198,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh556",
+        title: "CHLORPHENIRAMINE 4MG, TABLET",
+        sellPrice: 6.6,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh557",
+        title: "CHLORAMPHENICOL SODIUM SUCCINATE, 1G VIAL",
+        sellPrice: 660,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh558",
+        title: "CIMETIDINE 200MG/2ML, INJECTION",
+        sellPrice: 105.6,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh559",
+        title: "CIPROFLOXACINE  2MG/ML INJECTION",
+        sellPrice: 594,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh560",
+        title: "CIPROFLOXACINE 500 mg, TABLET",
+        sellPrice: 39.6,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh561",
+        title: "CLOXACILLIN 500MG/2,5ML, 1000mg/5ml INJECTION",
+        sellPrice: 184.8,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh562",
+        title: "CLOXACILLINE  500MG  CAPS",
+        sellPrice: 48.86,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh563",
+        title: "COTTON ABSORBENT, 500 G",
+        sellPrice: 2112,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh564",
+        title: "COTRIMOXAZOLE (200MG+40MG)/5ML SUSPENSION",
+        sellPrice: 528,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh565",
+        title: "COTRIMOXAZOLE 400MG + 80MG TABLET",
+        sellPrice: 14.52,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh566",
+        title: "DEPO- PROVERA  150MG/ML,INJECTION",
+        sellPrice: 72.6,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh567",
+        title: "DEXAMETHAZONE .5MG ,TABLET",
+        sellPrice: 29.04,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh568",
+        title: "DEXAMETHAZONE SODIUM PHOSPHATE 4MG/ML INJECTION",
+        sellPrice: 52.8,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+
+{
+        id: "899999999-gh569",
+        title: "DIAZEPAM 10MG , TABLET",
+        sellPrice: 52.8,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh570",
+        title: "DIAZEPAM  5MG/ML 2ML INJECTION",
+        sellPrice: 264,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh571",
+        title: "DICLOFENAC 30G, GEL",
+        sellPrice: 528,
+        cover: "/images/formulary.jpg",
+        category: "ointments",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh572",
+        title: "DICLOFENAC  SODIUM 25MG/ML, 75MG/3ML ",
+        sellPrice: 66,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh573",
+        title: "DICLOFENAC  SODIUM 50MG  TABLET ",
+        sellPrice: 5.28,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh574",
+        title: "Digoxin 250 µg, TABLET ",
+        sellPrice: 19.8,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh575",
+        title: "METHYLDOPA 250MG , TABLET",
+        sellPrice: 52.8,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh576",
+        title: "DOPAMINE 40MG/5ML INJECTION",
+        sellPrice: 2640,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh577",
+        title: "DOXYCYCLINE  100MG,  TABLET",
+        sellPrice: 21.12,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh577",
+        title: "EPHEDRINE 50MG/ML INJECTION",
+        sellPrice: 990,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh578",
+        title: "STERILE  WATER  FOR  INJECTION 10ML",
+        sellPrice: 50.16,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "899999999-gh579",
+        title: "ERYTHROMYCINE 125MG/5ML  SYRUP (100ML)",
+        sellPrice: 858,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+
+{
+        id: "899999999-gh580",
+        title: "ERYTHROMYCINE  STEARATE 500MG,TABLET",
+        sellPrice: 59.4,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh581",
+        title: "FENTANYL 50µG/ML 100µG/2ML, INJECTION",
+        sellPrice: 2376,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh582",
+        title: "FERROUS + FOLIC ACID + VIT B12  SYRUP ",
+        sellPrice: 660,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+
+{
+        id: "899999999-gh583",
+        title: "FERROUS + FOLIC ACID (66MG Fe2+ 0.25MG) TABLET",
+        sellPrice: 7.92,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh584",
+        title: "SUTURE VICRYL N°1 ROUNDED BODY",
+        sellPrice: 1584,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
+{
+        id: "899999999-gh585",
+        title: "NYLON N0  1 CUTTING",
+        sellPrice: 274.999,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh586",
+        title: "NYLON  N° 1 ROUND BODY",
+        sellPrice: 275,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh587",
+        title: "SUTURE  VICRYLE  N° 1 CUTTING",
+        sellPrice: 1584,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh588",
+        title: "NYLON  N° 2 ROUND BODY",
+        sellPrice: 275,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
+{
+        id: "899999999-gh589",
+        title: "SUTURE   VICRYLE  N°  2/0  CUTTING",
+        sellPrice: 1700.16,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh590",
+        title: "SUTURE  VICRYL   N°  2   PIECE  ROUND BODY",
+        sellPrice: 1584,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh590",
+        title: "FLUCONAZOLE  200MG,  TABLET",
+        sellPrice: 79.2,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh591",
+        title: "FLUCONAZOLE 50MG/5ML pps, 100ML",
+        sellPrice: 1716,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
+    },
+
+{
+        id: "899999999-gh591",
+        title: "FUROSEMIDE 10MG/ML  20MG/2ML, INJECTION",
+        sellPrice: 79.2,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh592",
+        title: "FUROSEMIDE  40MG,  TABLET",
+        sellPrice: 13.2,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh593",
+        title: "SURGICAL  GLOVE  SIZE  7.5  PAIR",
+        sellPrice: 237.6,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
+{
+        id: "899999999-gh594",
+        title: "SURGICAL  GLOVE  SIZE  8  PAIR",
+        sellPrice: 237.6,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh595",
+        title: "EXAMINATION GLOVES MEDIUM",
+        sellPrice: 26.4,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh595",
+        title: "COMPRESS STERIL 10CM X 10CM",
+        sellPrice: 59.4,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh596",
+        title: "GENTAMYCINE 0.3%  EYE  DROP",
+        sellPrice: 297,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh597",
+        title: "GENTAMYCINE SULPHATE 40MG/ML, 80MG/2ML, INJECTION",
+        sellPrice: 66,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh598",
+        title: "GLIBENCLAMIDE 5MG , TABLET",
+        sellPrice: 7.92,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+{
+        id: "899999999-gh599",
+        title: "GRISEOFULVINE 500MG ,  TABLET",
+        sellPrice: 72.6,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh599",
+        title: "HALOPERIDOL 5MG, TABLET",
+        sellPrice: 26.4,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+    {
+        id: "899999999-gh5100",
+        title: "HEPATITIS  B  VACCINE 20ML",
+        sellPrice: 4884,
+        cover: "/images/formulary.jpg",
+        category: "injection",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+
     
     {
-        id: "899999999-gh5",
+        id: "899999999-gh5101",
+        title: "HYDROCHLOROTIAZIDE 50MG , TABLET",
+        sellPrice: 13.2,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
+    },
+
+
+
+
+
+
+
+
+    {
+        id: "899999999-gh5102",
         title: "PARACETAMOL 500MG",
         sellPrice: 7.92,
         cover: "/images/formulary.jpg",
@@ -213,7 +1103,7 @@ const books = [
     },
 
     {
-        id: "89999996543-th5",
+        id: "89999996543-th5103",
         title: "SODIUM CHLORIDE 0.9% 250ML ",
         sellPrice: 429,
         cover: "/images/formulary.jpg",
@@ -223,7 +1113,7 @@ const books = [
     },
 
     {
-        id: "89999996543-th510",
+        id: "89999996543-th5104",
         title: "NIFEDIPINE 20MG ",
         sellPrice: 13.2,
         cover: "/images/formulary.jpg",
@@ -232,7 +1122,7 @@ const books = [
         unit: "Tablet",
     },
     {
-        id: "89999996543-th58",
+        id: "89999996543-th5105",
         title: "BUTTERFLY NEEDLE 25G ",
         sellPrice: 31.68,
         cover: "/images/formulary.jpg",
@@ -242,7 +1132,7 @@ const books = [
     },
 
     {
-        id: "89999996543-th57",
+        id: "89999996543-th5106",
         title: "BUTTERFLY 23G ",
         sellPrice: 39.6,
         cover: "/images/formulary.jpg",
@@ -251,7 +1141,7 @@ const books = [
         unit: "Piece",
     },
     {
-        id: "89999996543-th55",
+        id: "89999996543-th5107",
         title: "ASPIRIN 81MG ",
         sellPrice: 18.085,
         cover: "/images/formulary.jpg",
@@ -260,7 +1150,7 @@ const books = [
         unit: "Tablet",
     },
     {
-        id: "89999996543-th551",
+        id: "89999996543-th5108",
         title: "CONSULTATION BOOK ",
         sellPrice: 113.52,
         cover: "/images/formulary.jpg",
@@ -269,7 +1159,7 @@ const books = [
         unit: "Piece",
     },
     {
-        id: "89999996543-th552",
+        id: "89999996543-th5109",
         title: "DELIVERY KIT ",
         sellPrice: 3800,
         cover: "/images/formulary.jpg",
@@ -278,7 +1168,7 @@ const books = [
         unit: "kit",
     },
     {
-        id: "89999996543-th553",
+        id: "89999996543-th5110",
         title: "CAESARIAN KIT WITH SPINAL ANAESTHESIA ",
         sellPrice: 34000,
         cover: "/images/formulary.jpg",
@@ -287,7 +1177,7 @@ const books = [
         unit: "Kit",
     },
     {
-        id: "89999996543-th554",
+        id: "89999996543-th5111",
         title: "CAESARIAN KIT WITH GENERAL ANAESTHESIA ",
         sellPrice: 29000,
         cover: "/images/formulary.jpg",
@@ -296,7 +1186,7 @@ const books = [
         unit: "kit",
     },
     {
-        id: "89999996543-th555",
+        id: "89999996543-th5112",
         title: "LARGE PRINTED PLASTIC BAG ",
         sellPrice: 47.52,
         cover: "/images/formulary.jpg",
@@ -306,7 +1196,7 @@ const books = [
     },
 
     {
-        id: "89999996543-th556",
+        id: "89999996543-th5113",
         title: "ANC CARD ",
         sellPrice: 50.16,
         cover: "/images/formulary.jpg",
@@ -315,7 +1205,7 @@ const books = [
         unit: "Piece",
     },
     {
-        id: "89999996543-th557",
+        id: "89999996543-th5114",
         title: "DRUG FORMULARY ",
         sellPrice: 2500,
         cover: "/images/formulary.jpg",
@@ -324,7 +1214,7 @@ const books = [
         unit: "Piece",
     },
     {
-        id: "89999996543-th558",
+        id: "89999996543-th5115",
         title: "STANDARD TREATMENT GUIDELINES ",
         sellPrice: 3000,
         cover: "/images/formulary.jpg",
@@ -333,7 +1223,7 @@ const books = [
         unit: "Piece",
     },
     {
-        id: "89999996543-th559",
+        id: "89999996543-th5116",
         title: "HEALTH VOUCHER ",
         sellPrice: 6000,
         cover: "/images/voucher.jpg",
