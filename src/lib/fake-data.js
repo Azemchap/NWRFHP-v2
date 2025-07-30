@@ -354,7 +354,7 @@ const books = [
 
         cover: "/images/nkambe.jpg",
 
-        desc: "Pharmacy Technician heading the Management of the Nkambe Sub-store of Ndonga and Mantung Division of the North West Region of Cameroon",
+        desc: "Pharmacy Technician heading the Management of the Nkambe Sub-store of Ndonga  Mantung Division of the North West Region of Cameroon",
         category: "nkambe",
         link: "  check the links below and click on Pharmaceutical Product Management for more details",
     },
@@ -382,16 +382,7 @@ const books = [
 
     
 
-    {
-        id: "899999999-gh032",
-        title: "Doctor NiNG",
-
-        cover: "/images/drning.jpg",
-
-        desc: "Works as Input Operator of the Universal HEALTH Coverage Section of thr North West Regional Fund",
-        category: "coverage",
-        link: "check the links below and click on Universal Health Coverage for more details",
-    },
+    
     
 
 

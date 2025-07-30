@@ -242,7 +242,7 @@ function App() {
 
                     <div className={classNames("zoom", "number-cards")}>
 
-                        <h6>Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region </h6>
+                        <h6>Nkambe Sub-store In Donga  Mantung Division Of The N.W. Region </h6>
 
                         <Image className='img'
                             alt="slider image" width={500} height={500}
