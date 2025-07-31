@@ -58,7 +58,7 @@ const books = [
     {
         id: "899999999-gh507",
         title: "GLUCOSE 10% 500ML",
-        sellPrice: 450,
+        sellPrice: 594,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -86,7 +86,7 @@ const books = [
     {
         id: "899999999-gh521",
         title: "GLUCOSE 5% 500ML",
-        sellPrice: 528,
+        sellPrice: 495,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
