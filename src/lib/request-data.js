@@ -1355,7 +1355,7 @@ const books = [
 {
         id: "899999999-gh628",
         title: "NYSTATINE  100 000 UI / 5ML, SUSPENSION, 30ML ",
-        sellPrice: 637.56,
+        sellPrice: 660,
         cover: "/images/formulary.jpg",
         category: "suspensions",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1932,6 +1932,37 @@ const books = [
         desc: "This product has passed our quality control test and has a good texture",
         unit: "Piece",
     },
+
+
+{
+        id: "89999996543-th685",
+        title: "MAGNESIUM SULPHATE 50MG/10ML, INJECTION ",
+        sellPrice: 693,
+        cover: "/images/voucher.jpg",
+        category: "injection",
+        desc: "This product has passed our quality control test and has a good expiry date",
+        unit: "Ampoule",
+    },
+
+
+{
+        id: "89999996543-th686",
+        title: "SODIUM CHLORIDE 1G/10ML, INJECTION ",
+        sellPrice: 116.16,
+        cover: "/images/voucher.jpg",
+        category: "injection",
+        desc: "This product has passed our quality control test and has a good texture",
+        unit: "Ampoule",
+    },
+
+
+
+
+
+
+
+
+
 ];
 
 const getAllBooks = () => {
