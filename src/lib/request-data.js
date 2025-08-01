@@ -1927,7 +1927,7 @@ const books = [
         id: "89999996543-th684",
         title: "HEALTH VOUCHER ",
         sellPrice: 6000,
-        cover: "/images/voucher.jpg",
+        cover: "/images/formulary.jpg",
         category: "print",
         desc: "This product has passed our quality control test and has a good texture",
         unit: "Piece",
@@ -1938,7 +1938,7 @@ const books = [
         id: "89999996543-th685",
         title: "MAGNESIUM SULPHATE 50MG/10ML, INJECTION ",
         sellPrice: 693,
-        cover: "/images/voucher.jpg",
+        cover: "/images/formulary.jpg",
         category: "injection",
         desc: "This product has passed our quality control test and has a good expiry date",
         unit: "Ampoule",
@@ -1949,10 +1949,52 @@ const books = [
         id: "89999996543-th686",
         title: "SODIUM CHLORIDE 1G/10ML, INJECTION ",
         sellPrice: 116.16,
-        cover: "/images/voucher.jpg",
+        cover: "/images/formulary.jpg",
         category: "injection",
         desc: "This product has passed our quality control test and has a good texture",
         unit: "Ampoule",
+    },
+
+
+{
+        id: "89999996543-th686",
+        title: "METHYLATED SPIRIT 70%, 100ML ",
+        sellPrice: 317.392,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This product has passed our quality control test and has a good texture",
+        unit: "Bottle",
+    },
+
+{
+        id: "89999996543-th686",
+        title: "METHYLATED SPIRIT 70%, 1000ML ",
+        sellPrice: 1818,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This product has passed our quality control test and has a good texture",
+        unit: "Bottle",
+    },
+
+{
+        id: "89999996543-th686",
+        title: "METHYLATED SPIRIT 96%, 1000ML ",
+        sellPrice: 1848,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This product has passed our quality control test and has a good texture",
+        unit: "Bottle",
+    },
+
+
+{
+        id: "89999996543-th686",
+        title: "ALUMINIUM HYDROXIDE + MAG. TRISILICATE ,TABLET ",
+        sellPrice: 19.8,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This product has passed our quality control test and has a good texture",
+        unit: "Tablet",
     },
 
 
