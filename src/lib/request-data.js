@@ -1957,7 +1957,7 @@ const books = [
 
 
 {
-        id: "89999996543-th686",
+        id: "89999996543-th687",
         title: "METHYLATED SPIRIT 70%, 100ML ",
         sellPrice: 317.392,
         cover: "/images/formulary.jpg",
@@ -1967,7 +1967,7 @@ const books = [
     },
 
 {
-        id: "89999996543-th686",
+        id: "89999996543-th688",
         title: "METHYLATED SPIRIT 70%, 1000ML ",
         sellPrice: 1818,
         cover: "/images/formulary.jpg",
@@ -1977,7 +1977,7 @@ const books = [
     },
 
 {
-        id: "89999996543-th686",
+        id: "89999996543-th689",
         title: "METHYLATED SPIRIT 96%, 1000ML ",
         sellPrice: 1848,
         cover: "/images/formulary.jpg",
@@ -1988,7 +1988,7 @@ const books = [
 
 
 {
-        id: "89999996543-th686",
+        id: "89999996543-th690",
         title: "ALUMINIUM HYDROXIDE + MAG. TRISILICATE ,TABLET ",
         sellPrice: 19.8,
         cover: "/images/formulary.jpg",
