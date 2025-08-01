@@ -1,5 +1,5 @@
 import React from 'react'
-import Coverage from "../../components/coverage/Coverage"
+import Coverage from "../../components/Coverage/Coverage"
 const Health = () => {
     return (
 
