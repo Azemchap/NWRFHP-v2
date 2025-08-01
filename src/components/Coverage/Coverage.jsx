@@ -130,7 +130,7 @@ const Coverage = () => {
                     <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
                 </div>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "800px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "700px" : "0px" }}>
 
 
 
@@ -863,13 +863,14 @@ const Coverage = () => {
                     <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
                 </div>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "400px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "500px" : "0px" }}>
 
                     <h1 className={styles.socials}>UHC Interventions include</h1>
 
                     <div className={styles.social}>
                         <h2 className={styles.number}>01</h2>
                         <h2>Consultation for children 0-5 years.</h2>
+                        
                     </div>
 
                     <div className={styles.social}>
@@ -931,7 +932,7 @@ const Coverage = () => {
 
                 {/* <div className={styles.height}> */}
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "1080px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "1180px" : "0px" }}>
 
 
                     <div className={styles.container}>
@@ -1027,7 +1028,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "2522px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "2622px" : "0px" }}>
 
 
                     <div className={styles.dialysis}>
@@ -1129,7 +1130,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "2000px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "2100px" : "0px" }}>
 
                     <div className={styles.container}>
                         <main className={styles.main}>
@@ -1287,7 +1288,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "900px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "1000px" : "0px" }}>
 
                     <div className={styles.dialysis} >
                         <div>

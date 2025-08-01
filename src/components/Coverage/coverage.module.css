@@ -354,6 +354,32 @@ margin-top: 10px;
         padding-right: 10px;
     }
 
+.number {
+    border-radius: 20px;
+    background-color: rgb(204, 202, 202);
+    color: rgb(31, 31, 173);
+    /* padding: 1px; */
+    font-size: 20px;
+}
+
+
+
+
+.social {
+    display: flex;
+    color: rgb(102, 97, 97);
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 500;
+word-wrap: break-word;
+padding-right: 15px;
+/* padding-left: 2px; */
+margin-left: 1px;
+}
+
+
+
 }
 
 
