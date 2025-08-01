@@ -10,7 +10,7 @@ export default function DefaultCarousel() {
 
             <Image className='h-full'
                 alt="slider image" width={1200} height={1200}
-                src="/images/096A0522.jpg"
+                src="/images/front4.jpg"
             />
 
             <Image className='h-full'
@@ -90,7 +90,7 @@ export default function DefaultCarousel() {
 
             <Image className='h-full'
                 alt="slider image" width={1200} height={1200}
-                src="/images/fonca.jpg"
+                src="/images/front1.jpg"
             />
 
             <Image className='h-full'
@@ -99,11 +99,11 @@ export default function DefaultCarousel() {
             />
             <Image className='h-full'
                 alt="slider image" width={1200} height={1200}
-                src="/images/intenship.jpg"
+                src="/images/front2.jpg"
             />
             <Image className='h-full'
                 alt="slider image" width={1200} height={1200}
-                src="/images/fon3.jpg"
+                src="/images/front3.jpg"
             />
             <Image className='h-full'
                 alt="slider image" width={1200} height={1200}

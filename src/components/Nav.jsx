@@ -53,6 +53,15 @@ export default function Nav() {
                 href: '/animation',
                 name: 'Animation'
             },
+
+{
+                id: '11',
+                href: '/health',
+                name: 'UniversalHealthCoverage'
+            },
+
+
+
         ]
     }
 
