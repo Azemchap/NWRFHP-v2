@@ -1092,7 +1092,7 @@ const Coverage = () => {
                     <div className={styles.card1}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>03</h1>
-                            <h1 className={styles.texts}>Pregnant Women + new born not older than 42 days, will pay FCFA 6,000/Pregnancy.</h1>
+                            <h1 className={styles.texts}>Pregnant Women + new born not older than 42 days, will pay FCFA 6,000 per Pregnancy.</h1>
                         </div>
                         {/* <h2 className={styles.card}>(FCFA 6,000/Pregnancy)</h2> */}
                     </div>
