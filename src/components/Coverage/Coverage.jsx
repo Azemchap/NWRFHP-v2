@@ -451,7 +451,7 @@ const Coverage = () => {
 
                                         <Image className='img'
                                             alt="slider image" width={280} height={200}
-                                            src="/images/dona.jpg"
+                                            src="/images/ndehca.jpg"
                                         />
                                         <div className={styles.infos}>
                                             <h6>Marketing Of  </h6>
@@ -1092,7 +1092,7 @@ const Coverage = () => {
                     <div className={styles.card1}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>03</h1>
-                            <h1 className={styles.texts}>Pregnant Women + new born not older than 42 days (FCFA 6,000/Pregnancy)</h1>
+                            <h1 className={styles.texts}>Pregnant Women + new born not older than 42 days, will pay FCFA 6,000/Pregnancy.</h1>
                         </div>
                         {/* <h2 className={styles.card}>(FCFA 6,000/Pregnancy)</h2> */}
                     </div>

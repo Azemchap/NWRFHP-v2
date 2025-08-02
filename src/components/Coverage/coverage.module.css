@@ -398,13 +398,17 @@
     }
 
     .texts {
-        text-align: start;
-        padding-right: 10px;
+        text-align: center;
+        padding-right: 20px;
+        margin-left: 5px;
+        text-align: left;
+
+        
     }
 
     .number {
         border-radius: 20px;
-        background-color: rgb(204, 202, 202);
+        background-color: rgb(226, 117, 117);
         color: rgb(31, 31, 173);
         /* padding: 1px; */
         font-size: 20px;
@@ -425,6 +429,11 @@
         /* padding-left: 2px; */
         margin-left: 1px;
     }
+
+    .card4 {
+    
+    
+}
 
 
 
