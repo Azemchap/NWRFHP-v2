@@ -565,7 +565,7 @@ const Coverage = () => {
 
                                         <Image className='img'
                                             alt="slider image" width={280} height={200}
-                                            src="/images/voucher5.jpg"
+                                            src="/images/voucher1.jpg"
                                         />
                                     </div>
                                 </div>
@@ -655,7 +655,7 @@ const Coverage = () => {
 
                                         <Image className='img'
                                             alt="slider image" width={280} height={200}
-                                            src="/images/voucher12.jpg"
+                                            src="/images/voucher30.jpg"
                                         />
                                     </div>
                                 </div>
@@ -746,7 +746,7 @@ const Coverage = () => {
 
                                         <Image className='img'
                                             alt="slider image" width={280} height={200}
-                                            src="/images/voucher19.jpg"
+                                            src="/images/voucher29.jpg"
                                         />
                                     </div>
                                 </div>
