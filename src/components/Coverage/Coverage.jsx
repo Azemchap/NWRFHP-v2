@@ -130,7 +130,7 @@ const Coverage = () => {
                     <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
                 </div>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "700px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "600px" : "0px" }}>
 
 
 
@@ -826,7 +826,7 @@ const Coverage = () => {
                         </div>
                         {/* <h2 className={styles.card}>to make your health better.</h2> */}
                     </div>
-                    <h3 className={styles.card2}>We are blessed with a well trained and committed staff ready to execute all the activities of the five packages of <b>Universal Health Coverage</b> in the north west region of Cameroon.</h3>
+                    <h3 className={styles.card7}>We are blessed with a well trained and committed staff ready to execute all the activities of the five packages of <b>Universal Health Coverage</b> in the north west region of Cameroon.</h3>
 
                 </div>
 
@@ -895,14 +895,14 @@ const Coverage = () => {
                 </div>
 
                 <div>
-                    <div className={styles.card1}>
+                    <div className={styles.card4}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>01</h1>
                             <h1 className={styles.texts}>The general public is free to get registered and benefit from health services free of charge.</h1>
                         </div>
                         {/* <h2 className={styles.card}>health services free of charge .</h2> */}
                     </div>
-                    <h3 className={styles.card2}>preventive and promotional services on the various health topics in all the enrolled Government facilities </h3>
+                    <h3 className={styles.card7}>preventive and promotional services on the various health topics in all the enrolled Government facilities </h3>
 
                 </div>
 
@@ -932,7 +932,7 @@ const Coverage = () => {
 
                 {/* <div className={styles.height}> */}
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "1180px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "1250px" : "0px" }}>
 
 
                     <div className={styles.container}>
@@ -993,7 +993,7 @@ const Coverage = () => {
 
 
                 <div>
-                    <div className={styles.card1}>
+                    <div className={styles.card6}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>02</h1>
                             <h1 className={styles.texts}>Children from 0 - 5 years are consulted and treated for malaria Free of charge.<b>Do not miss this opportunity</b></h1>
@@ -1028,7 +1028,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "2622px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "2772px" : "0px" }}>
 
 
                     <div className={styles.dialysis}>
@@ -1096,12 +1096,12 @@ const Coverage = () => {
                         </div>
                         {/* <h2 className={styles.card}>(FCFA 6,000/Pregnancy)</h2> */}
                     </div>
-                    <h3 className={styles.card2}>Antenatal consultations
+                    <h3 className={styles.card7}>Antenatal consultations
                     </h3>
 
-                    <h3 className={styles.card2}>Childbirth(even if Complication requiring a caesarean section)
+                    <h3 className={styles.card7}>Childbirth(even if Complication requiring a caesarean section)
                     </h3>
-                    <h3 className={styles.card2}>Care of a new born up to 42 days old
+                    <h3 className={styles.card7}>Care of a new born up to 42 days old
                     </h3>
 
                     {/* <h3 className={styles.card2}><a className={styles.lad2} href="./contact">Contact us for more information</a>
@@ -1130,7 +1130,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "2100px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "2125px" : "0px" }}>
 
                     <div className={styles.container}>
                         <main className={styles.main}>
@@ -1250,7 +1250,7 @@ const Coverage = () => {
                 </div>
 
                 <div>
-                    <div className={styles.card1}>
+                    <div className={styles.card4}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>04</h1>
                             <h1 className={styles.texts}>Persons living with HIV/AIDS,</h1>
@@ -1288,7 +1288,7 @@ const Coverage = () => {
 
                 <button className={styles.btn} onClick={toggleIsExpanded}>Read more and click again</button>
 
-                <div className={styles.collapse} style={{ height: isExpanded ? "1000px" : "0px" }}>
+                <div className={styles.collapse} style={{ height: isExpanded ? "1025px" : "0px" }}>
 
                     <div className={styles.dialysis} >
                         <div>
@@ -1318,11 +1318,11 @@ const Coverage = () => {
 
                     </div>
 
-                    <a className={styles.lad2} href="./contact">Contact us for more information</a>
+                    <a className={styles.lad2} href="./contact">Get more information</a>
                 </div>
 
                 <div>
-                    <div className={styles.card1}>
+                    <div className={styles.card6}>
                         <div className={styles.public}>
                             <h1 className={styles.text}>05</h1>
                             <h1 className={styles.texts}>People undergoing dialysis shall henceforth pay only</h1>
@@ -1331,7 +1331,7 @@ const Coverage = () => {
                         <h2 className={styles.card}>Instead Of FCFA 520,000</h2>
                         <h2 className={styles.card}>And benefit for all dialysis sessions  a  year.</h2>
                     </div>
-                    <h3 className={styles.card2}><a className={styles.lad2} href="./contact">Contact us for more information</a></h3>
+                    <h3 className={styles.cards}><a className={styles.lad2} href="./contact">Get more information</a></h3>
 
                 </div>
 
