@@ -31,7 +31,7 @@ const books = [
     {
         id: "899999999-gh504",
         title: "AMOXYCILLIN/CLAVULANIC ACID 500/125MG",
-        sellPrice: 198,
+        sellPrice: 211.2,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -49,7 +49,7 @@ const books = [
     {
         id: "899999999-gh506",
         title: "AMOXYCILLINE 500MG",
-        sellPrice: 31.02,
+        sellPrice: 30.36,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -97,7 +97,7 @@ const books = [
     {
         id: "899999999-gh510",
         title: "MANITOL 10% 500ML",
-        sellPrice: 1848,
+        sellPrice: 1452,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -106,7 +106,7 @@ const books = [
     {
         id: "899999999-gh511",
         title: "PARACETAMOL 10MG/ML INFUSION",
-        sellPrice: 990,
+        sellPrice: 514.8,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -133,7 +133,7 @@ const books = [
     {
         id: "899999999-gh514",
         title: "PARACETAMOL+IBUPROFEN(250mg+200mg)/5ml",
-        sellPrice: 660,
+        sellPrice: 594,
         cover: "/images/formulary.jpg",
         category: "suspensions",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -187,7 +187,7 @@ const books = [
     {
         id: "899999999-gh520",
         title: "SODIUM CHLORIDE 0.9% 500ML",
-        sellPrice: 594,
+        sellPrice: 495,
         cover: "/images/formulary.jpg",
         category: "infusion",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -262,11 +262,21 @@ const books = [
 {
         id: "899999999-gh527",
         title: "ANTITETANUS TOXOID 1500UI/ML 1ML VIAL",
-        sellPrice: 1122,
+        sellPrice: 924,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
         unit: "Ampoule",
+    },
+
+{
+        id: "899999999-gh527",
+        title: "ATENOLOL 50MG TAB",
+        sellPrice: 47.124,
+        cover: "/images/formulary.jpg",
+        category: "tablet",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Tablet",
     },
 
 {
@@ -386,7 +396,7 @@ const books = [
 {
         id: "899999999-gh539",
         title: "CAPTOPRIL 25MG TABLET",
-        sellPrice: 15.84,
+        sellPrice: 14.52,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -438,7 +448,7 @@ const books = [
 {
         id: "899999999-gh544",
         title: "I.V.  PLACEMENT TYPE  1.10 MM,  20G",
-        sellPrice: 221.76,
+        sellPrice: 217.8,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -459,7 +469,7 @@ const books = [
 {
         id: "899999999-gh546",
         title: "I.V. PLACEMENT 24G",
-        sellPrice: 221.76,
+        sellPrice: 217.8,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -499,7 +509,7 @@ const books = [
     {
         id: "899999999-gh550",
         title: "CEFTRIAZONE  1G , VIAL",
-        sellPrice: 363.2,
+        sellPrice: 330,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -580,7 +590,7 @@ const books = [
 {
         id: "899999999-gh558",
         title: "CIMETIDINE 200MG/2ML, INJECTION",
-        sellPrice: 105.6,
+        sellPrice: 92.4,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -601,11 +611,21 @@ const books = [
 {
         id: "899999999-gh560",
         title: "CIPROFLOXACINE 500 mg, TABLET",
-        sellPrice: 39.6,
+        sellPrice: 38.28,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
         unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh560",
+        title: "CIPROFLOXACINE  0.3% EyE DROP ",
+        sellPrice: 858,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
     },
 
 {
@@ -621,11 +641,21 @@ const books = [
 {
         id: "899999999-gh562",
         title: "CLOXACILLINE  500MG  CAPS",
-        sellPrice: 48.86,
+        sellPrice: 52.8,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
         unit: "Tablet",
+    },
+
+{
+        id: "899999999-gh562",
+        title: "CLOXACILLINE  500MG/2.5ml 60ml suspension",
+        sellPrice: 1320,
+        cover: "/images/formulary.jpg",
+        category: "suspension",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Bottle",
     },
 
 
@@ -1990,7 +2020,7 @@ const books = [
 {
         id: "89999996543-th690",
         title: "ALUMINIUM HYDROXIDE + MAG. TRISILICATE ,TABLET ",
-        sellPrice: 19.8,
+        sellPrice: 14.52,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This product has passed our quality control test and has a good texture",
