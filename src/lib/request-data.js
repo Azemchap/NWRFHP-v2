@@ -1018,7 +1018,7 @@ const books = [
 {
         id: "899999999-gh592",
         title: "FUROSEMIDE  40MG,  TABLET",
-        sellPrice: 13.2,
+        sellPrice: 10.56,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1028,7 +1028,7 @@ const books = [
 {
         id: "899999999-gh593",
         title: "SURGICAL  GLOVE  SIZE  7.5  PAIR",
-        sellPrice: 237.6,
+        sellPrice: 231,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1039,7 +1039,7 @@ const books = [
 {
         id: "899999999-gh594",
         title: "SURGICAL  GLOVE  SIZE  8  PAIR",
-        sellPrice: 237.6,
+        sellPrice: 231,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1110,7 +1110,7 @@ const books = [
 {
         id: "899999999-gh600",
         title: "HALOPERIDOL 5MG, TABLET",
-        sellPrice: 26.4,
+        sellPrice: 65.037,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1165,7 +1165,7 @@ const books = [
 {
         id: "899999999-gh605",
         title: "IBUPROFEN 400MG TABLET",
-        sellPrice: 13.2,
+        sellPrice: 11.88,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1327,7 +1327,7 @@ const books = [
 {
         id: "899999999-gh620",
         title: "METOCLOPRAMIDE  HYDROCHLORIDE 10MG/2ML, INJECTION",
-        sellPrice: 13.2,
+        sellPrice: 72.6,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1380,7 +1380,7 @@ const books = [
 {
         id: "899999999-gh625",
         title: "MICONAZOLE NITRATE CREAM 2% 30G TUBE",
-        sellPrice: 462,
+        sellPrice: 429,
         cover: "/images/formulary.jpg",
         category: "ointments",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1400,7 +1400,7 @@ const books = [
 {
         id: "899999999-gh627",
         title: "NEOMYCINE+BACITRACIN  0.5% + 500 UI/G, 15G, ",
-        sellPrice: 528,
+        sellPrice: 462,
         cover: "/images/formulary.jpg",
         category: "ointments",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1410,7 +1410,7 @@ const books = [
 {
         id: "899999999-gh628",
         title: "NYSTATINE  100 000 UI / 5ML, SUSPENSION, 30ML ",
-        sellPrice: 660,
+        sellPrice: 594,
         cover: "/images/formulary.jpg",
         category: "suspensions",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1420,7 +1420,7 @@ const books = [
 {
         id: "899999999-gh629",
         title: "NYSTATINE  500 000 UI  TABLET",
-        sellPrice: 59.4,
+        sellPrice: 52.8,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
