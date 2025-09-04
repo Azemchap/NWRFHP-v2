@@ -270,7 +270,7 @@ const books = [
     },
 
 {
-        id: "899999999-gh527",
+        id: "899999999-gh52732",
         title: "ATENOLOL 50MG TAB",
         sellPrice: 47.124,
         cover: "/images/formulary.jpg",
@@ -619,7 +619,7 @@ const books = [
     },
 
 {
-        id: "899999999-gh560",
+        id: "899999999-gh56052",
         title: "CIPROFLOXACINE  0.3% EyE DROP ",
         sellPrice: 858,
         cover: "/images/formulary.jpg",
@@ -816,7 +816,7 @@ const books = [
     },
 
 {
-        id: "899999999-gh577",
+        id: "899999999-gh57732",
         title: "EPHEDRINE 50MG/ML INJECTION",
         sellPrice: 990,
         cover: "/images/formulary.jpg",
