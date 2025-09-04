@@ -786,6 +786,19 @@ const books = [
     },
 
 {
+        id: "899999999-gh57434",
+        title: "DOBUTAMINE 250MG/20ML INJECTION ",
+        sellPrice: 19.8,
+        cover: "/images/formulary.jpg",
+        category: "injections",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "AMPOULE",
+    },
+
+
+
+
+{
         id: "899999999-gh575",
         title: "METHYLDOPA 250MG , TABLET",
         sellPrice: 52.8,
@@ -798,7 +811,7 @@ const books = [
 {
         id: "899999999-gh576",
         title: "DOPAMINE 40MG/5ML INJECTION",
-        sellPrice: 2640,
+        sellPrice: 2772,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -828,7 +841,7 @@ const books = [
 {
         id: "899999999-gh578",
         title: "STERILE  WATER  FOR  INJECTION 10ML",
-        sellPrice: 50.16,
+        sellPrice: 46.2,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -860,7 +873,7 @@ const books = [
 {
         id: "899999999-gh581",
         title: "FENTANYL 50µG/ML 100µG/2ML, INJECTION",
-        sellPrice: 2376,
+        sellPrice: 2244,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -902,7 +915,7 @@ const books = [
 {
         id: "899999999-gh585",
         title: "NYLON N0  1 CUTTING",
-        sellPrice: 274.999,
+        sellPrice: 274.56,
         cover: "/images/formulary.jpg",
         category: "dressings",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -918,6 +931,18 @@ const books = [
         desc: "This medication has passed our quality control test and has a good expiry date",
         unit: "Piece",
     },
+
+{
+        id: "899999999-gh58632",
+        title: "NYLON  N° 2/0 CUTTING",
+        sellPrice: 455.474,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+
 
 {
         id: "899999999-gh587",
@@ -943,16 +968,6 @@ const books = [
 {
         id: "899999999-gh589",
         title: "SUTURE   VICRYLE  N°  2/0  CUTTING",
-        sellPrice: 1700.16,
-        cover: "/images/formulary.jpg",
-        category: "dressings",
-        desc: "This medication has passed our quality control test and has a good expiry date",
-        unit: "Piece",
-    },
-
-{
-        id: "899999999-gh590",
-        title: "SUTURE  VICRYL   N°  2   PIECE  ROUND BODY",
         sellPrice: 1584,
         cover: "/images/formulary.jpg",
         category: "dressings",
@@ -962,6 +977,16 @@ const books = [
 
 {
         id: "899999999-gh590",
+        title: "SUTURE  VICRYLE   N°  2   PIECE  ROUND BODY",
+        sellPrice: 1584,
+        cover: "/images/formulary.jpg",
+        category: "dressings",
+        desc: "This medication has passed our quality control test and has a good expiry date",
+        unit: "Piece",
+    },
+
+{
+        id: "899999999-gh59036",
         title: "FLUCONAZOLE  200MG,  TABLET",
         sellPrice: 79.2,
         cover: "/images/formulary.jpg",
@@ -973,7 +998,7 @@ const books = [
 {
         id: "899999999-gh591",
         title: "FLUCONAZOLE 50MG/5ML pps, 100ML",
-        sellPrice: 1716,
+        sellPrice: 1320,
         cover: "/images/formulary.jpg",
         category: "suspensions",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -981,9 +1006,9 @@ const books = [
     },
 
 {
-        id: "899999999-gh591",
+        id: "899999999-gh591369",
         title: "FUROSEMIDE 10MG/ML  20MG/2ML, INJECTION",
-        sellPrice: 79.2,
+        sellPrice: 72.6,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1032,7 +1057,7 @@ const books = [
     },
 
 {
-        id: "899999999-gh595",
+        id: "899999999-gh59558",
         title: "COMPRESS STERIL 10CM X 10CM",
         sellPrice: 59.4,
         cover: "/images/formulary.jpg",
