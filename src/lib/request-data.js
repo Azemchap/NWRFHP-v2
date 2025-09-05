@@ -831,7 +831,7 @@ const books = [
 {
         id: "899999999-gh57732",
         title: "EPHEDRINE 50MG/ML INJECTION",
-        sellPrice: 990,
+        sellPrice: 924,
         cover: "/images/formulary.jpg",
         category: "injections",
         desc: "This medication has passed our quality control test and has a good expiry date",
@@ -1018,7 +1018,7 @@ const books = [
 {
         id: "899999999-gh592",
         title: "FUROSEMIDE  40MG,  TABLET",
-        sellPrice: 10.56,
+        sellPrice: 13.2,
         cover: "/images/formulary.jpg",
         category: "tablet",
         desc: "This medication has passed our quality control test and has a good expiry date",
