@@ -6,9 +6,9 @@ import { StoreContext } from '../../context';
 
 import Link from 'next/link';
 
-import { BookOpenIcon, CogIcon, CubeTransparentIcon, HomeIcon, SparklesIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { BookOpenIcon, CogIcon, CubeTransparentIcon, HomeIcon, SparklesIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 
-// import { BookOpenIcon,  HomeIcon,  ShoppingBagIcon,  } from '@heroicons/react/outline';
+// import { BookOpenIcon,  HomeIcon,  ShoppingBagIcon,  } from '@heroicons/react/24/outline';
 
 
 import styles from "./sidebar.module.css"

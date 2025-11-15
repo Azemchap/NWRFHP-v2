@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 
-import { ArrowRightIcon } from '@heroicons/react/outline'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Carousel from './Carousel'
 
