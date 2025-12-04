@@ -66,7 +66,21 @@ export default function DefaultCarousel() {
                 src="/images/UHC7.jpg"
             />
 
+            <Image
+                className="h-full"
+                alt="slider image"
+                width={1200}
+                height={1200}
+                src="/images/ndehuhc.jpg"
+            />
 
+            <Image
+                className="h-full"
+                alt="slider image"
+                width={1200}
+                height={1200}
+                src="/images/rhaoo1.jpg"
+            />
 
             <Image
                 className="h-full"
