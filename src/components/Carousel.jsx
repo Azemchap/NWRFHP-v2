@@ -79,7 +79,7 @@ export default function DefaultCarousel() {
                 alt="slider image"
                 width={1200}
                 height={1200}
-                src="/images/rhaoo1.jpg"
+                src="/images/rhahoo1.jpg"
             />
 
             <Image
