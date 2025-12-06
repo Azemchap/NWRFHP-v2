@@ -9,26 +9,61 @@
          display: inline-block; 
         flex-wrap: wrap;
      height: 450px; 
-        gap: 50px
-    }
-}  */
 
 .container {
-    align-items: center;
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
-    background-color: rgb(56, 56, 99);
+  align-items: center;
+  background-color: rgb(56, 56, 99);
 }
 
 .images {
-    /* max-width: 600px; */
-    margin: 0 auto;
-    /* color: rgb(220, 26, 26); */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-    .List {
-        display: flex;
-        flex-direction: column;
-    }
+  .List {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+  
+  .images {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+/* Error state */
+.error {
+  color: var(--color-error);
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-error-bg);
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-light);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius);
+  margin: 1rem 0;
 }
