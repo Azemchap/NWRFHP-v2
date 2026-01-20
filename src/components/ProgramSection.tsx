@@ -2,7 +2,7 @@
 import React from "react";
 import Programs from "./Programs";
 
-const ProgramSection = () => {
+const ProgramSection: React.FC = () => {
     return (
         <div
             className=" container mx-auto about-wrapper "

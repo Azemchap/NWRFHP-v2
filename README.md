@@ -1,34 +1,161 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NWRFHP Website
 
-## Getting Started
+Official website for the **North West Regional Fund for Health Promotion (NWRFHP)** - A public health organization serving communities in Cameroon.
 
-First, run the development server:
+[![CI/CD Pipeline](https://github.com/Azemchap/NWRFHP-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/Azemchap/NWRFHP-v2/actions/workflows/ci.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.1.6-blue)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-13.4.12-black)](https://nextjs.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+## 🚀 Features
+
+- ✅ **Full TypeScript** - Complete type safety across the application
+- ✅ **Design System** - Centralized Tailwind CSS design tokens
+- ✅ **Database Integration** - Drizzle ORM with MongoDB
+- ✅ **Form Validation** - React Hook Form with comprehensive validation
+- ✅ **Unit Tests** - Jest & React Testing Library
+- ✅ **SEO Optimized** - Auto-generated sitemap and robots.txt
+- ✅ **Security Headers** - XSS, clickjacking, and MIME-sniffing protection
+- ✅ **Error Handling** - Custom error boundaries
+- ✅ **Responsive Design** - Mobile-first approach
+- ✅ **CI/CD Pipeline** - GitHub Actions for automated testing and deployment
+
+## 📋 Prerequisites
+
+- **Node.js** >= 18.0.0
+- **npm** >= 9.0.0
+- **MongoDB** >= 5.0 (local or cloud instance)
+
+## 🛠️ Installation
+
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/Azemchap/NWRFHP-v2.git
+cd NWRFHP-v2
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. **Set up environment variables**
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Edit `.env.local` with your configuration:
+```env
+# Database
+DATABASE_URL="mongodb://localhost:27017/nwrfhp"
+DATABASE_NAME="nwrfhp"
 
-## Learn More
+# Email (Resend)
+RESEND_API_KEY="re_your_api_key_here"
 
-To learn more about Next.js, take a look at the following resources:
+# Public variables
+NEXT_PUBLIC_PHONE="+237611222333"
+NEXT_PUBLIC_WHATSAPP="+237611222333"
+NEXT_PUBLIC_EMAIL="info@nwrfhp.org"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Seed the database** (optional)
+```bash
+npm run db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. **Run development server**
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run tests in watch mode |
+| `npm run test:ci` | Run tests in CI mode |
+| `npm run db:seed` | Seed database with team data |
+| `npm run db:studio` | Open Drizzle Studio |
+
+## 🏗️ Project Structure
+
+```
+NWRFHP-v2/
+├── .github/
+│   └── workflows/           # GitHub Actions CI/CD
+├── public/
+│   ├── images/              # Static images
+│   └── robots.txt           # SEO robots file
+├── src/
+│   ├── app/                 # Next.js 13 App Router
+│   │   ├── api/             # API routes
+│   │   ├── layout.tsx       # Root layout
+│   │   ├── page.tsx         # Home page
+│   │   └── ...
+│   ├── components/          # React components
+│   ├── config/              # Configuration files
+│   ├── data/                # JSON data
+│   └── db/                  # Database layer
+├── jest.config.ts           # Jest configuration
+├── next.config.js           # Next.js configuration
+├── tailwind.config.js       # Tailwind CSS configuration
+└── package.json             # Dependencies
+```
+
+## 🎨 Design System
+
+Centralized design tokens in `tailwind.config.js`:
+- Primary color: `#2858dc`
+- Secondary color: `#059669`
+
+## 🗄️ Database
+
+MongoDB with Drizzle ORM. Seed database:
+```bash
+npm run db:seed
+```
+
+## 🧪 Testing
+
+Run tests with Jest:
+```bash
+npm test
+```
+
+## 🔒 Security
+
+- Security headers configured
+- Environment variables for secrets
+- Input validation on all forms
+
+## 📧 Contact Form
+
+Validated contact form with API endpoint at `/api/contact`.
+
+## 🚀 Deployment
+
+Deploy to Vercel:
+```bash
+vercel
+```
+
+## 📄 License
+
+MIT License
+
+## 👥 Contact
+
+- Email: info@nwrfhp.org
+- Phone: +237 611 222 333
+
+---
+
+**Built with ❤️ for better health in Cameroon**

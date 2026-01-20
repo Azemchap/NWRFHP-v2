@@ -4,19 +4,19 @@ import "./zoomIn.css"
 import classNames from 'classnames';
 import Image from 'next/image'
 
-function App() {
+function App(): JSX.Element {
 
     useEffect(() => {
         zoomAnimation();
     }, []);
 
 
-    const zoomAnimation = () => {
+    const zoomAnimation = (): void => {
 
         /**
  * Initialize index to count from
  */
-        var slideIndex = 0;
+        let slideIndex: number = 0;
 
         /**
          * Run animation method
@@ -26,24 +26,24 @@ function App() {
         /**
          * Animation method
          */
-        function showSlides() {
-            var i;
+        function showSlides(): void {
+            let i: number;
             /**
              * Store all elments in an array
              */
-            var slidesObj = document.getElementsByClassName("number-cards");
-            var slides = Array.from(slidesObj);
+            const slidesObj: HTMLCollectionOf<Element> = document.getElementsByClassName("number-cards");
+            const slides: Element[] = Array.from(slidesObj);
 
             /**
-             * Make all elements invisible 
+             * Make all elements invisible
              */
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                (slides[i] as HTMLElement).style.display = "none";
             }
 
             /**
-             * increment slideIndex and make sure  
-             * slideIndex is reset to 1 when count goes 
+             * increment slideIndex and make sure
+             * slideIndex is reset to 1 when count goes
              * beyond array lenght
              */
             slideIndex++;
@@ -53,10 +53,10 @@ function App() {
              * Make slide index at index slideIndex - 1 in array visible
              * by making it visible (display: flex)
              */
-            slides[slideIndex - 1].style.display = "flex";
+            (slides[slideIndex - 1] as HTMLElement).style.display = "flex";
 
             /**
-             * Add class name zoom which makes the object 
+             * Add class name zoom which makes the object
              * undergo the animation described in the zoom class
              */
             slides[slideIndex - 1].classList.add("zoom");
@@ -65,10 +65,6 @@ function App() {
              * Run this method every 4 seconds
              */
             setTimeout(showSlides, 15000);
-
-            return (
-                <div>Animate</div>
-            )
         }
 
 
@@ -267,7 +263,7 @@ function App() {
 
 
 
-                    
+
 
                 </div>
             </div>

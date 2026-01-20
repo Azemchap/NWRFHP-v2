@@ -2,7 +2,7 @@
 import React from "react";
 
 
-export default function OurMission() {
+export default function OurMission(): JSX.Element {
     return (
         <div
             className=" flex flex-col md:flex-row container mx-auto gap-4 p-4 my-12"

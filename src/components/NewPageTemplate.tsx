@@ -1,6 +1,6 @@
 import React from 'react'
 
-const page = () => {
+const NewPageTemplate: React.FC = () => {
     return (
         <div
             className="container-fluid container mx-auto pt-16 "
@@ -13,4 +13,4 @@ const page = () => {
     )
 }
 
-export default page
+export default NewPageTemplate

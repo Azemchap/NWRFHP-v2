@@ -1,7 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from '@heroicons/react/outline'
 
-const features = [
+interface Feature {
+    name: string;
+    description: string;
+}
+
+const features: Feature[] = [
     {
         name: 'Collaboration',
         description: 'Improving and sustaining performance depend on everyone in the system as a team (team work).',
@@ -28,7 +33,7 @@ const features = [
     },
 ]
 
-export default function OurValues() {
+export default function OurValues(): JSX.Element {
     return (
         <div
             className=" flex flex-col md:flex-row container mx-auto gap-4 p-3"

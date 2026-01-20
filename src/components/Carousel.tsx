@@ -3,7 +3,7 @@
 import { Carousel } from 'flowbite-react'
 import Image from 'next/image'
 
-export default function DefaultCarousel() {
+export default function DefaultCarousel(): JSX.Element {
     return (
 
         <Carousel className="w-full h-80 object-cover  ">
@@ -120,5 +120,4 @@ export default function DefaultCarousel() {
         </Carousel>
     )
 }
-
 

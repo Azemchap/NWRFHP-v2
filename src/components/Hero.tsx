@@ -6,7 +6,7 @@ import Carousel from './Carousel'
 
 
 
-export default function Hero() {
+export default function Hero(): JSX.Element {
     return (
 
         <div className="bg-hero px-4 py-16 sm:py-32 sm:px-6 xl:py-60">

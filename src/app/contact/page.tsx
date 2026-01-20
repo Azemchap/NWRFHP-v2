@@ -1,5 +1,5 @@
 import React from "react";
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import bgImg from "public/images/096A0599.jpg";
 import logo1 from "public/images/logo1.gif";
@@ -11,7 +11,7 @@ import logo6 from "public/images/logo6.png";
 import { FaPhone, FaPhoneFlip, FaPhoneSlash, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6";
 
 
-const ContactUs = () => {
+const ContactUs: React.FC = () => {
     return (
         <div
             className="container-fluid container mx-auto pt-16 about-wrapper"
@@ -57,7 +57,7 @@ const ContactUs = () => {
                                                 >
                                                   <FaPhoneVolume /> Make a phone call
                                                 </Link>
-                                               
+
                                             </div>
                                         </div>
                                     </div>

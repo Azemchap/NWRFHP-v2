@@ -1,6 +1,16 @@
 import Image from 'next/image'
 
-const logoCloud = {
+interface Logo {
+    id: string;
+    href: string;
+    name?: string;
+}
+
+interface LogoCloudData {
+    logos: Logo[];
+}
+
+const logoCloud: LogoCloudData = {
     logos: [
         {
             id: '1',
@@ -33,7 +43,7 @@ const logoCloud = {
     ]
 }
 
-export default function LogoCloud() {
+export default function LogoCloud(): JSX.Element {
 
 
 
@@ -50,7 +60,7 @@ export default function LogoCloud() {
                             <Image
                                 className="h-full w-full object-contain "
                                 src={logo.href}
-                                alt={logo.name}
+                                alt={logo.name || 'Partner logo'}
                                 width={400} height={400}
                             />
                         </div>

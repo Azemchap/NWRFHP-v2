@@ -6,7 +6,7 @@ import OurObjectives from '../components/OurObjectives'
 import OurValues from '../components/OurValues'
 import ProgramSection from '../components/ProgramSection'
 
-export default function Home() {
+export default function Home(): JSX.Element {
 
   return (
     <main>

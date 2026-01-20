@@ -1,6 +1,7 @@
+import React from 'react'
 import ProgramSection from '../../components/ProgramSection'
 
-const page = () => {
+const ProgramsPage: React.FC = () => {
     return (
         <div
             className="container-fluid container mx-auto pt-16 programs-wrapper"
@@ -14,4 +15,4 @@ const page = () => {
     )
 }
 
-export default page
+export default ProgramsPage

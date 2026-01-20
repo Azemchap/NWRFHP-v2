@@ -9,11 +9,19 @@ import { Fragment, useState } from 'react'
 import { FaPhone, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6"
 import { CONTACTS } from '@/config/contacts'
 
+interface NavigationLink {
+    href: string;
+    name: string;
+}
 
-export default function Nav() {
-    const [open, setOpen] = useState(false)
+interface Navigation {
+    links: NavigationLink[];
+}
 
-    const navigation = {
+export default function Nav(): JSX.Element {
+    const [open, setOpen] = useState<boolean>(false)
+
+    const navigation: Navigation = {
         links: [
             {
                 href: '/programs',

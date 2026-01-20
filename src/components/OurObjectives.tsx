@@ -3,7 +3,12 @@ import React from "react";
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from '@heroicons/react/outline'
 
-const features = [
+interface Feature {
+  name: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     name: 'Pharmaceutical products',
     description: 'Ensure the selection, procurement, distribution and use of pharmaceutical products.',
@@ -20,7 +25,7 @@ const features = [
   { name: 'Capacity building', description: 'Support capacity building of health personnel and dialogue structures.' },
 ]
 
-const OurObjectives = () => {
+const OurObjectives: React.FC = () => {
   return (
     <div
       className="container-fluid findus-wrapper"
