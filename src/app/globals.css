@@ -28,11 +28,11 @@ img {
 }
 
 .primary-button {
-  @apply bg-[#2858dc] text-white py-2 px-4 shadow outline-none hover:bg-[#2858dc] active:bg-[#2858dc] uppercase text-center;
+  @apply bg-primary text-white py-2 px-4 shadow outline-none hover:bg-primary-600 active:bg-primary-700 uppercase text-center transition-colors duration-200;
 }
 
 .secondary-button {
-  @apply bg-none text-[#2858dc] border border-[#2858dc] py-2 px-4 outline-none tracking-wider font-medium hover:bg-rose-50 active:bg-rose-50 uppercase text-center;
+  @apply bg-none text-primary border border-primary py-2 px-4 outline-none tracking-wider font-medium hover:bg-primary-50 active:bg-primary-100 uppercase text-center transition-colors duration-200;
 }
 
 .default-button {
@@ -47,61 +47,3 @@ img {
   background-color: rgba(180, 183, 197, 0.918);
   background-blend-mode: multiply;
 }
-
-/* @media (max-width:1536px) {
-
-  .container{
-    width:1366px
-  }
-  
-  }
-  
-  @media (max-width:1366px) {
-  
-    .container {
-      width: 1280px
-    }
-  
-  }
-  
-  @media (max-width:1280px) {
-  
-    .container {
-      width: 1024px;
-  padding-left: 20px;
-  padding-right: 20px;
-  
-    }
-  
-  }
-  
-  @media (max-width:1024px) {
-  
-    .container {
-      width: 768px
-    }
-  
-  }
-  
-  @media (max-width:768px) {
-  
-    .container {
-      width: 640px
-    }
-  
-  } 
-  
-  @media (max-width:640px) {
-  
-    .container {
-      width: 475px
-    }
-  
-  }  
-  @media (max-width:475px) {
-  
-    .container {
-      width: 380px
-    }
-  
-  } */

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "member-01",
+    "name": "DR. RICHARD MBARIKA FONDOH",
+    "role": "ADMINISTRATOR",
+    "image": "/images/fondoh1.jpg",
+    "date": "30/12/2024",
+    "slug": "dr-richard-mbarika-fondoh"
+  },
+  {
+    "id": "member-02",
+    "name": "KINYUY MARGARET GHAM",
+    "role": "HEAD OF SECTION, ADMINISTRATION AND FINANCE.",
+    "image": "/images/maggi.jpg",
+    "date": "30/12/2024",
+    "slug": "kinyuy-margaret-gham"
+  },
+  {
+    "id": "member-03",
+    "name": "UMEIKAI WYCLIFF AYABA",
+    "role": "HEAD OF SECTION, HEALTH PROMOTION AND PARTNERSHIP SUPPORT",
+    "image": "/images/ayaba.JPG",
+    "date": "30/12/2024",
+    "slug": "umeikai-wycliff-ayaba"
+  },
+  {
+    "id": "member-04",
+    "name": "MILDRED KONGLA NJAMNSI",
+    "role": "RESOURCE MOBILISATION OFFICER",
+    "image": "/images/njamsi.JPG",
+    "date": "30/12/2024",
+    "slug": "mildred-kongla-njamnsi"
+  },
+  {
+    "id": "member-05",
+    "name": "NDUM SEPHERINE KENG",
+    "role": "HEAD OF UNIT, FINANCE AND ACCOUNTING",
+    "image": "/images/ndum.JPG",
+    "date": "30/12/2024",
+    "slug": "ndum-sepherine-keng"
+  },
+  {
+    "id": "member-06",
+    "name": "NDEH DONATUS MOKOM",
+    "role": "HEAD OF UNIT, COMPUTERISED STOCK MANAGEMENT",
+    "image": "/images/ndeh.jpg",
+    "date": "30/12/2024",
+    "slug": "ndeh-donatus-mokom"
+  },
+  {
+    "id": "member-07",
+    "name": "YEMBE NLINWE OLIVER",
+    "role": "HEAD OF UNIT, HEALTH INSURANCE DEVELOPMENT",
+    "image": "/images/yembe.JPG",
+    "date": "30/12/2024",
+    "slug": "yembe-nlinwe-oliver"
+  },
+  {
+    "id": "member-08",
+    "name": "DR. KOME BECKY LIMYUY",
+    "role": "Regional Logistics officer-NW Contractor For USAID global Health Supply Chain Program Procurement And Supply Management project.",
+    "image": "/images/drbecky.jpg",
+    "date": "30/12/2024",
+    "slug": "dr-kome-becky-limyuy"
+  },
+  {
+    "id": "member-09",
+    "name": "KUH FOINMBAM JOSEPH",
+    "role": "HEAD OF UNIT, DISTRIBUTION & SUPERVISION",
+    "image": "/images/kuh.JPG",
+    "date": "30/12/2024",
+    "slug": "kuh-foinmbam-joseph"
+  },
+  {
+    "id": "member-10",
+    "name": "NDZI LAWRENCE NGAFFI",
+    "role": "HEAD OF UNIT, LABORATORY, Phone Number:111111111, Email Address:, ndzilu@gmail.com",
+    "image": "/images/ndzi.JPG",
+    "date": "30/12/2024",
+    "slug": "ndzi-lawrence-ngaffi"
+  },
+  {
+    "id": "member-11",
+    "name": "TUME AMOS NSAWIR",
+    "role": "HEAD OF UNIT, HUMAN RESOURCES & LOGISTICS, Phone Number:, 1253456789, Email Address:, 123456789",
+    "image": "/images/tome.JPG",
+    "date": "30/12/2024",
+    "slug": "tume-amos-nsawir"
+  },
+  {
+    "id": "member-12",
+    "name": "ASAFOR ATUNGOMBI ANIMBOM",
+    "role": "ADMINISTRATIVE ASSISTANT",
+    "image": "/images/anembum.JPG",
+    "date": "30/12/2024",
+    "slug": "asafor-atungombi-animbom"
+  },
+  {
+    "id": "member-13",
+    "name": "FON EVELINE MUNDI",
+    "role": "STOREKEEPER",
+    "image": "/images/fon3.jpg",
+    "date": "30/12/2024",
+    "slug": "fon-eveline-mundi"
+  },
+  {
+    "id": "member-14",
+    "name": "FON SAMUEL CHO",
+    "role": "JANITOR",
+    "image": "/images/sam.JPG",
+    "date": "30/12/2024",
+    "slug": "fon-samuel-cho"
+  },
+  {
+    "id": "member-15",
+    "name": "SANGU MUSA SHINTOUO",
+    "role": "CHIEF DRIVER",
+    "image": "/images/musa.JPG",
+    "date": "30/12/2024",
+    "slug": "sangu-musa-shintouo"
+  },
+  {
+    "id": "member-16",
+    "name": "NDONG SAMUEL ASSISTANT",
+    "role": "HEAD OF UNIT, REGIONAL MEDICAL STORE, ON SECONDMENT",
+    "image": "/images/ndong.JPG",
+    "date": "30/12/2024",
+    "slug": "ndong-samuel-assistant"
+  },
+  {
+    "id": "member-17",
+    "name": "MARTINA NGENWIE AKAMANGWA",
+    "role": "SECRETARY",
+    "image": "/images/ngwenei.JPG",
+    "date": "30/12/2024",
+    "slug": "martina-ngenwie-akamangwa"
+  },
+  {
+    "id": "member-18",
+    "name": "NGWANA ALPHONSE",
+    "role": "DRIVER & JANITOR",
+    "image": "/images/ngwana.JPG",
+    "date": "30/12/2024",
+    "slug": "ngwana-alphonse"
+  },
+  {
+    "id": "member-19",
+    "name": "BUDZI JULIUS NFOR",
+    "role": "STOREKEEPER",
+    "image": "/images/nfor.JPG",
+    "date": "30/12/2024",
+    "slug": "budzi-julius-nfor"
+  },
+  {
+    "id": "member-20",
+    "name": "FOPA TEMBONG ALIDA",
+    "role": "STOREKEEPER - LAB",
+    "image": "/images/alida.jpg",
+    "date": "30/12/2024",
+    "slug": "fopa-tembong-alida"
+  },
+  {
+    "id": "member-21",
+    "name": "TAMAJONG DIVINE AMBE",
+    "role": "STOREKEEPER",
+    "image": "/images/ambe.JPG",
+    "date": "30/12/2024",
+    "slug": "tamajong-divine-ambe"
+  },
+  {
+    "id": "member-22",
+    "name": "APO JONAS AMANDONG",
+    "role": "STOREKEEPER",
+    "image": "/images/apo.JPG",
+    "date": "30/12/2024",
+    "slug": "apo-jonas-amandong"
+  },
+  {
+    "id": "member-23",
+    "name": "KWANYUY RELINDIS",
+    "role": "STOREKEEPER , KUMBO SUB-STORE",
+    "image": "/images/brenda.jpg",
+    "date": "30/12/2024",
+    "slug": "kwanyuy-relindis"
+  },
+  {
+    "id": "member-24",
+    "name": "COMET MBIANDA",
+    "role": "DRIVER",
+    "image": "/images/comet.JPG",
+    "date": "30/12/2024",
+    "slug": "comet-mbianda"
+  },
+  {
+    "id": "member-25",
+    "name": "ABAHMUM DENISE",
+    "role": "JANITOR",
+    "image": "/images/denis.JPG",
+    "date": "30/12/2024",
+    "slug": "abahmum-denise"
+  },
+  {
+    "id": "member-26",
+    "name": "AYENI ELEEN",
+    "role": "LABORATORY SCIENTIST, UHC",
+    "image": "/images/eleen.jpg",
+    "date": "30/12/2024",
+    "slug": "ayeni-eleen"
+  },
+  {
+    "id": "member-27",
+    "name": "LUKONG JULIUS",
+    "role": "STOREKEEPER-OKP",
+    "image": "/images/lukong.JPG",
+    "date": "30/12/2024",
+    "slug": "lukong-julius"
+  },
+  {
+    "id": "member-28",
+    "name": "MBAH JONATHAN",
+    "role": "DRIVER",
+    "image": "/images/mbah.JPG",
+    "date": "30/12/2024",
+    "slug": "mbah-jonathan"
+  },
+  {
+    "id": "member-29",
+    "name": "ZOW SHEILA CHE",
+    "role": "SECRETARY/JANITOR , UHC",
+    "image": "/images/zuh.JPG",
+    "date": "30/12/2024",
+    "slug": "zow-sheila-che"
+  },
+  {
+    "id": "member-30",
+    "name": "SHAIKA MARTHA",
+    "role": "STOREKEEPER",
+    "image": "/images/matha2.jpg",
+    "date": "30/12/2024",
+    "slug": "shaika-martha"
+  },
+  {
+    "id": "member-31",
+    "name": "IBRAHIM ADAMU",
+    "role": "STOREKEEPER",
+    "image": "/images/ibrahim.jpg",
+    "date": "30/12/2024",
+    "slug": "ibrahim-adamu"
+  },
+  {
+    "id": "member-32",
+    "name": "FOSEH RENITA NCHUYEKE",
+    "role": "STOREKEEPER",
+    "image": "/images/renita.jpg",
+    "date": "30/12/2024",
+    "slug": "foseh-renita-nchuyeke"
+  },
+  {
+    "id": "member-33",
+    "name": "NJAIBO JARADINE CHEPNGUM",
+    "role": "INTERNAL AUDITOR",
+    "image": "/images/njaibo.jpg",
+    "date": "30/12/2024",
+    "slug": "njaibo-jaradine-chepngum"
+  },
+  {
+    "id": "member-34",
+    "name": "MUMA NGUM PASCALINE",
+    "role": "CASHIER",
+    "image": "/images/pascaline.png",
+    "date": "30/12/2024",
+    "slug": "muma-ngum-pascaline"
+  },
+  {
+    "id": "member-35",
+    "name": "NFOR BLAISE",
+    "role": "PHARMACY TECHNICIAN , NKAMBE SUBSTORE",
+    "image": "/images/placeholder.jpg",
+    "date": "30/12/2024",
+    "slug": "nfor-blaise"
+  },
+  {
+    "id": "member-36",
+    "name": "ZOH DANIEL",
+    "role": "STOREKEEPER/DRIVER",
+    "image": "/images/dan.jpg",
+    "date": "30/12/2024",
+    "slug": "zoh-daniel"
+  },
+  {
+    "id": "member-37",
+    "name": "KOMETA PROMISE MBOHLE",
+    "role": "HEAD OF UNIT, REGIONAL MEDICAL STORE",
+    "image": "/images/promise.jpg",
+    "date": "30/12/2024",
+    "slug": "kometa-promise-mbohle"
+  },
+  {
+    "id": "member-38",
+    "name": "NWA EBUI MARILYNE",
+    "role": "STOREKEEPER",
+    "image": "/images/nwa.jpg",
+    "date": "30/12/2024",
+    "slug": "nwa-ebui-marilyne"
+  },
+  {
+    "id": "member-39",
+    "name": "NKAIMBI COMFORT",
+    "role": "STOREKEEPER, PUBLIC HEALTH PROGRAM , ON SECONDMENT",
+    "image": "/images/nkambi.JPG",
+    "date": "30/12/2024",
+    "slug": "nkaimbi-comfort"
+  },
+  {
+    "id": "member-40",
+    "name": "Lorem ipsum dolor, sit",
+    "role": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias veritatis eum vel cupiditate deleniti suscipit, repellat consectetur sed dolore sit.",
+    "image": "/images/ibrahim.jpg",
+    "date": "30/12/2024",
+    "slug": "lorem-ipsum-dolor-sit"
+  }
+]
