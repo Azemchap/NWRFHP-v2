@@ -238,14 +238,33 @@ function App(): JSX.Element {
 
                     <div className={classNames("zoom", "number-cards")}>
 
-                        <h6>Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region </h6>
+                        <h6>Nkambe Sub-store In Donga  Mantung Division Of The N.W. Region </h6>
 
                         <Image className='img'
                             alt="slider image" width={500} height={500}
-                            src="/images/delivery-beds.jpg"
+                            src="/images/nfor blaise.jpg"
                         />
 
                     </div>
+
+
+
+                    <div className={classNames("zoom", "number-cards")}>
+
+                        <h6>Manager of  Nkambe Sub-store In Donga And Mantung Division Of The N.W. Region </h6>
+
+                        <Image className='img'
+                            alt="slider image" width={500} height={500}
+                            src="/images/ blaise.jpg"
+                        />
+
+                    </div>
+
+
+
+
+
+
 
 
                     <div className={classNames("zoom", "number-cards")}>
@@ -258,6 +277,7 @@ function App(): JSX.Element {
                         />
 
                     </div>
+<<<<<<<< HEAD:src/components/zoomIn/ZoomIn.tsx
 
 
 
@@ -265,6 +285,8 @@ function App(): JSX.Element {
 
 
 
+========
+>>>>>>>> upstream/main:src/components/zoomIn/ZoomIn .jsx
                 </div>
             </div>
         </div>
