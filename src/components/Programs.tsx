@@ -82,7 +82,7 @@ export default function Programs(): JSX.Element {
                         </span>
                     </h1>
                     <p className="mt-4 text-xl text-gray-500 leading-8">
-                        Essential medicines (EMs), which satisfy the priority health care needs of the population, are backbone of health care and well-being of individuals and populations. However, its physical access was a big challenge particularly in rural communities in Cameroon. This was influenced by many interlinked factors such as the availability of medicines in the health care facilities, availability of sustainable financing and reliable health systems, rational selection and use of medicines, and affordable price. This is the raison d'être of setting up the NWRFHP PIG in 1987 as a revolving medicines program with a high participation of the population.
+                        Essential medicines (EMs), which satisfy the priority health care needs of the population, are backbone of health care and well-being of individuals and populations. However, its physical access was a big challenge particularly in rural communities in Cameroon. This was influenced by many interlinked factors such as the availability of medicines in the health care facilities, availability of sustainable financing and reliable health systems, rational selection and use of medicines, and affordable price. This is the raison d&apos;être of setting up the NWRFHP PIG in 1987 as a revolving medicines program with a high participation of the population.
                     </p>
                 </div>
                 <div className="mt-6 max-w-screen-lg text-gray-500 mx-auto">

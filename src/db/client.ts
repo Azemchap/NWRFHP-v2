@@ -1,10 +1,6 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient, Db, Document } from "mongodb";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("Please add your MongoDB URI to .env or .env.local");
-}
-
-const uri = process.env.DATABASE_URL;
+const uri = process.env.DATABASE_URL || "";
 const options = {};
 
 let client: MongoClient;
@@ -37,6 +33,9 @@ export default clientPromise;
  * Get the database instance
  */
 export async function getDatabase(): Promise<Db> {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("Please add your MongoDB URI to .env or .env.local");
+  }
   const client = await clientPromise;
   return client.db(process.env.DATABASE_NAME || "nwrfhp");
 }
@@ -44,7 +43,7 @@ export async function getDatabase(): Promise<Db> {
 /**
  * Get a specific collection with type safety
  */
-export async function getCollection<T>(collectionName: string) {
+export async function getCollection<T extends Document>(collectionName: string) {
   const db = await getDatabase();
   return db.collection<T>(collectionName);
 }

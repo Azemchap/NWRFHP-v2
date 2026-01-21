@@ -35,7 +35,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 Something went wrong
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                We're sorry for the inconvenience. Please try refreshing the page.
+                We&apos;re sorry for the inconvenience. Please try refreshing the page.
               </p>
             </div>
             <div className="mt-5">

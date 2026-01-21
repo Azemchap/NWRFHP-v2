@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm outdated:*)",
+      "Bash(npm run build:*)",
+      "Bash(dir /s /b c:UsersAzemDocumentsGitHubNWRFHP-v2public)",
+      "Bash(npm install)",
+      "Bash(taskkill:*)",
+      "Bash(tasklist:*)",
+      "Bash(cmd.exe /c \"taskkill /F /IM node.exe\")"
+    ]
+  }
+}

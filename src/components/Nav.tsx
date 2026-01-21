@@ -1,10 +1,9 @@
 'use client'
 
 import { Dialog, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Bars3Icon as MenuIcon, XMarkIcon as XIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import logoImg from 'public/images/logo.jpg'
 import { Fragment, useState } from 'react'
 import { FaPhone, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6"
 import { CONTACTS } from '@/config/contacts'
@@ -68,7 +67,7 @@ export default function Nav(): JSX.Element {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 bg-primary bg-opacity-25" />
+                        <div className="fixed inset-0 bg-primary bg-opacity-25" />
                     </Transition.Child>
 
                     <Transition.Child
@@ -84,7 +83,7 @@ export default function Nav(): JSX.Element {
                             <div className="px-4 pt-5 pb-2 flex">
                                 <div className=" flex ">
                                     <Link onClick={() => setOpen(false)} href="/" className='flex items-center gap-2'>
-                                        <Image className='w-6 h-8 object-contain ' src={logoImg} alt='logo' width={80} height={80} />
+                                        <Image className='w-6 h-8 object-contain ' src="/images/logo.jpg" alt='logo' width={80} height={80} />
                                         <h2 className='text-lg text-primary font-bold'>NWRFHP</h2>
                                     </Link>
                                 </div>
@@ -133,7 +132,7 @@ export default function Nav(): JSX.Element {
                             {/* Logo */}
                             <div className="ml-4 flex lg:ml-0">
                                 <Link href="/" className='flex items-center gap-2'>
-                                    <Image className='w-6 h-8 lg:w-12 lg:h-12 object-contain ' src={logoImg} alt='logo' width={80} height={80} />
+                                    <Image className='w-6 h-8 lg:w-12 lg:h-12 object-contain ' src="/images/logo.jpg" alt='logo' width={80} height={80} />
                                     <h2 className='text-lg text-primary font-bold'>NWRFHP</h2>
                                 </Link>
                             </div>

@@ -19,8 +19,6 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       <body>
         <Nav />
         <main className=" mt-16 min-h-screen">{children}</main>
-
-
         <Footer />
       </body>
     </html>

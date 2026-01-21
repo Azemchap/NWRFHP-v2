@@ -1,13 +1,6 @@
 import React from "react";
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
-import bgImg from "public/images/096A0599.jpg";
-import logo1 from "public/images/logo1.gif";
-import logo2 from "public/images/logo2.png";
-import logo3 from "public/images/logo3.png";
-import logo4 from "public/images/logo4.png";
-import logo5 from "public/images/logo5.png";
-import logo6 from "public/images/logo6.png";
 import { FaPhone, FaPhoneFlip, FaPhoneSlash, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6";
 
 
@@ -29,8 +22,9 @@ const ContactUs: React.FC = () => {
                                     <div className="absolute inset-0">
                                         <Image
                                             className="h-full w-full object-cover"
-                                            src={bgImg}
+                                            src="/images/096A0599.jpg"
                                             alt="People working on laptops"
+                                            fill
                                         />
                                         <div className="absolute inset-0 bg-indigo-300 mix-blend-multiply" />
                                     </div>
@@ -77,42 +71,50 @@ const ContactUs: React.FC = () => {
 
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
-                                        <Image className="h-12 grayscale object-contain" src={logo1} alt="Tuple" />
+                                        <Image className="h-12 grayscale object-contain" src="/images/logo1.gif" alt="Tuple" width={100} height={48} />
                                     </div>
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
-                                        <Image className="h-12 grayscale object-contain" src={logo2} alt="Mirage" />
+                                        <Image className="h-12 grayscale object-contain" src="/images/logo2.png" alt="Mirage" width={100} height={48} />
                                     </div>
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
                                         <Image
                                             className="h-12 grayscale object-contain"
-                                            src={logo3}
+                                            src="/images/logo3.png"
                                             alt="StaticKit"
+                                            width={100}
+                                            height={48}
                                         />
                                     </div>
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
                                         <Image
                                             className="h-12 grayscale object-contain"
-                                            src={logo4}
+                                            src="/images/logo4.png"
                                             alt="Transistor"
+                                            width={100}
+                                            height={48}
                                         />
                                     </div>
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
                                         <Image
                                             className="h-12 grayscale object-contain"
-                                            src={logo5}
+                                            src="/images/logo5.png"
                                             alt="Transistor"
+                                            width={100}
+                                            height={48}
                                         />
                                     </div>
 
                                     <div className="flex justify-center md:col-span-2 lg:col-span-1">
                                         <Image
                                             className="h-12 grayscale object-contain"
-                                            src={logo6}
+                                            src="/images/logo6.png"
                                             alt="Transistor"
+                                            width={100}
+                                            height={48}
                                         />
                                     </div>
 

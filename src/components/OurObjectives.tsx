@@ -1,7 +1,7 @@
 
 import React from "react";
 /* This example requires Tailwind CSS v2.0+ */
-import { CheckIcon } from '@heroicons/react/outline'
+import { CheckIcon } from '@heroicons/react/24/outline'
 
 interface Feature {
   name: string;

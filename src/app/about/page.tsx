@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import React from 'react'
 import Image from 'next/image'
-import sideImg from "../../../public/images/096A0583.jpg"; // Import the image
 
 const AboutUs: React.FC = () => {
   return (
@@ -16,8 +15,9 @@ const AboutUs: React.FC = () => {
             <div className="lg:absolute m-4 rounded lg:inset-y-0 lg:left-0 lg:w-1/2">
               <Image
                 className="h-56 w-full object-cover lg:absolute lg:h-full"
-                src={sideImg}
+                src="/images/096A0583.jpg"
                 alt=""
+                fill
               />
             </div>
           </div>
@@ -43,7 +43,7 @@ const AboutUs: React.FC = () => {
                 </div>
                 <div className="mt-5 prose prose-indigo text-gray-500">
                   <h3 className="mt-5 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    How we're different</h3>
+                    How we&apos;re different</h3>
                   <p className="mt-8 text-lg text-gray-500">
                     As PIG, it is a public corporate dialogue structure of the state, the technical/financial partners and the North West Community. As an essential health care program based on practical, scientifically sound, and socially acceptable methods, its services are made accessible to the population through their full participation and at a cost they can afford. Starting with 59 Community Pharmacies, about 100 Village Health Posts (now Integrated Health Centres) and a geographical coverage of 90%, it supplies medicines to 217 community pharmacies in public health facilities covering a population of 2.2 million inhabitants.
                   </p>

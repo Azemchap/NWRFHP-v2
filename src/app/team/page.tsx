@@ -12,20 +12,13 @@ const TeamPage = () => {
             data-aos-duration="1000"
         >
             <div className=" container mx-auto p-4" >
-
-
                 <div>
                     <h1 className={styles.headContainer}>Staff Of The Fund</h1>
-
-
                     <div className={styles.container}>
 
                         <div className={styles.post}>
                             <PostCard />
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

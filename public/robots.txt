@@ -1,13 +1,9 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
 
-# Disallow admin or private paths if any
-# Disallow: /admin/
-# Disallow: /api/
+# Host
+Host: http://localhost:3000
 
-# Sitemap
-Sitemap: https://yourdomain.com/sitemap.xml
-
-# Crawl-delay (optional, in seconds)
-# Crawl-delay: 10
+# Sitemaps
+Sitemap: http://localhost:3000/sitemap.xml
