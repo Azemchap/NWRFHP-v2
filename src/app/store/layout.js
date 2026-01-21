@@ -1,25 +1,18 @@
-// import Sidebar from "../iu/sidebar/Sidebar";
 import styles from "./store.module.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import StoreProvider from "../provider";
+import { Toaster } from "sonner";
 
 export const metadata = {
-    Title: "NWRFHP-buy and rent books",
-    Description: "An on line bookstore to sell and rent used books",
+    title: "NWRFHP - Buy and Rent Books",
+    description: "An online bookstore to sell and rent used books",
 };
 
 export default function BookStoreLayout({ children }) {
     return (
         <StoreProvider>
             <div className={styles.main}>
-                <div className={styles.main}>
-                    {/* < Sidebar />  */}
-
-                    {children}
-
-                    <ToastContainer />
-                </div>
+                {children}
+                <Toaster position="bottom-right" />
             </div>
         </StoreProvider>
     );

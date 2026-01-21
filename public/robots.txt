@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nwrfhp.org
+
+# Sitemaps
+Sitemap: https://nwrfhp.org/sitemap.xml

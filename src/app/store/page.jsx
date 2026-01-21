@@ -1,19 +1,16 @@
-import React from "react";
+"use client";
 
-import BookList from "../iu/books/BookList.js";
+import { FilterProvider } from "@/components/FilterContext";
+import FormContent from "@/components/FormContent";
+import Sidebar from "@/components/Sidebar";
 
-import styles from "./store.module.css";
-
-const BookListPage = (books) => {
-    // const books = getAllBooks()
-
+export default function StorePage() {
     return (
-        <>
-            <div className={styles.images}>
-                <BookList books={books} />
+        <FilterProvider>
+            <div className="flex min-h-screen">
+                <Sidebar />
+                <FormContent />
             </div>
-        </>
+        </FilterProvider>
     );
-};
-
-export default BookListPage;
+}
