@@ -15,7 +15,6 @@ const TeamPage = () => {
                 <div>
                     <h1 className={styles.headContainer}>Staff Of The Fund</h1>
                     <div className={styles.container}>
-
                         <div className={styles.post}>
                             <PostCard />
                         </div>
