@@ -1,6 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
-
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Carousel from './Carousel'
 
@@ -28,7 +26,7 @@ export default function Hero(): JSX.Element {
                                         href="/about"
                                         className="group w-full flex gap-2 items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 md:px-10"
                                     >
-                                       Learn more.. <ArrowRightIcon className='w-4 transition-all group-hover:translate-x-1 mt-1 opacity-75' />
+                                       Learn more.. <ArrowRight className='w-4 h-4 transition-all group-hover:translate-x-1 mt-1 opacity-75' />
                                     </Link>
                                 </div>
                             </div>

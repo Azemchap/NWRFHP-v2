@@ -1,8 +1,9 @@
 'use client'
 
+import { useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import Autoplay from 'embla-carousel-autoplay'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel'
+import { useState } from 'react'
 
 const carouselImages = [
   { src: '/images/096A0522.jpg', alt: 'NWRFHP Event 1' },
@@ -28,14 +29,22 @@ const carouselImages = [
   { src: '/images/medalists2.jpg', alt: 'Medalists 2' },
 ]
 
-export default function DefaultCarousel(): JSX.Element {
+export default function DefaultCarousel() {
+  const [api, setApi] = useState<CarouselApi>()
+
+  useEffect(() => {
+    if (!api) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [api])
+
   return (
     <Carousel
-      plugins={[
-        Autoplay({
-          delay: 5000,
-        }),
-      ]}
+      setApi={setApi}
       className="w-full h-80 rounded-lg overflow-hidden"
       opts={{
         align: 'start',
@@ -63,4 +72,3 @@ export default function DefaultCarousel(): JSX.Element {
     </Carousel>
   )
 }
-

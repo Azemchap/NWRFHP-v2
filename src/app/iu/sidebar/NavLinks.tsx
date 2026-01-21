@@ -6,34 +6,17 @@ import { StoreContext } from '../../context';
 
 import Link from 'next/link';
 
-import { BookOpenIcon, CogIcon, CubeTransparentIcon, HomeIcon, SparklesIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon, UserGroupIcon } from '@heroicons/react/24/outline';
-
-// import { BookOpenIcon,  HomeIcon,  ShoppingBagIcon,  } from '@heroicons/react/24/outline';
+import { BookOpen, Settings, Box, Home, Sparkles, ShoppingBag, ShoppingCart, Truck, Users } from 'lucide-react';
 
 
 import styles from "./sidebar.module.css"
 
 
 const links = [
-
-    { name: "Return Home", href: "/", icon: HomeIcon },
-
-    { name: "Return To Store", href: "/store", icon: BookOpenIcon },
-
-    { name: "Check Results", href: "/store/cart", icon: ShoppingBagIcon },
-
-    // { name: "Sell or lend", href: "/store/sell-lend", icon: SparklesIcon },
-
-    // { name: "Track Order", href: "/store/track", icon: TruckIcon },
-
-    // { name: "Community", href: "/store/community", icon: UserGroupIcon },
-
-    // { name: "Settings", href: "/store/settings", icon: CogIcon },
-
-    { name: "Contact", href: "/contact", icon: ShoppingCartIcon },
-
-    // { name: "Admin", href: "/store/admin", icon: CubeTransparentIcon },
-
+    { name: "Return Home", href: "/", icon: Home },
+    { name: "Return To Store", href: "/store", icon: BookOpen },
+    { name: "Check Results", href: "/store/cart", icon: ShoppingBag },
+    { name: "Contact", href: "/contact", icon: ShoppingCart },
 ];
 
 const NavLinks = () => {

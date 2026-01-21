@@ -1,6 +1,6 @@
 "use client";
-import { ShoppingBagIcon, TruckIcon } from "@heroicons/react/24/outline";
-import { toast } from "react-toastify";
+import { ShoppingBag, Truck } from "lucide-react";
+import { toast } from "sonner";
 import styles from "./Books.module.css";
 import { useContext } from "react";
 import { StoreContext } from "../../context";
@@ -16,11 +16,7 @@ const AddToCart = ({ book }) => {
 
     // alert(cartData)
 
-    toast.success(`Added ${newData.title} to the cart`, {
-      autoClose: 1000,
-
-      // position:toast.POSITION.TOP_RIGHT
-    });
+    toast.success(`Added ${newData.title} to the cart`);
   };
 
   return (
@@ -29,7 +25,7 @@ const AddToCart = ({ book }) => {
         className={styles.buy}
         onClick={(event) => handleCart(event, "Buy")}
       >
-        <TruckIcon className={styles.icon} />
+        <Truck className={styles.icon} />
         Buy
       </button>
 

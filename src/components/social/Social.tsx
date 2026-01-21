@@ -1,14 +1,26 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel'
 
 export default function SocialPage() {
+  const [api, setApi] = useState<CarouselApi>()
+
+  useEffect(() => {
+    if (!api) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [api])
+
   return (
     <div className="bg-neutral-50">
       {/* Hero Section */}
@@ -248,7 +260,7 @@ export default function SocialPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <Carousel
-              plugins={[Autoplay({ delay: 4000 })]}
+              setApi={setApi}
               className="w-full h-80 rounded-lg overflow-hidden shadow-xl"
               opts={{ align: 'start', loop: true }}
             >

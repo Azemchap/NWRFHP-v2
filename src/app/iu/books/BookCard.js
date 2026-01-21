@@ -2,8 +2,6 @@ import styles from "./BookCard.module.css";
 import AddToCart from "./AddToCart.js";
 import Image from "next/image";
 import Link from "next/link";
-import { SparklesIcon, TruckIcon } from "@heroicons/react/24/outline";
-// import Sidebar from "../../iu/sidebar/Sidebar";
 
 const BookCard = ({ book }) => {
   return (

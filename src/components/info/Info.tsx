@@ -1,9 +1,9 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel'
 
 const infoSlides = [
   { image: '/images/coach.jpg', title: 'LUKONG JULIUS', alt: 'Coaching event' },
@@ -12,6 +12,18 @@ const infoSlides = [
 ]
 
 export default function DefaultInfo() {
+  const [api, setApi] = useState<CarouselApi>()
+
+  useEffect(() => {
+    if (!api) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [api])
+
   return (
     <div className="bg-neutral-50 py-16 sm:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +41,7 @@ export default function DefaultInfo() {
           <Card className="overflow-hidden shadow-xl border-neutral-200">
             <CardContent className="p-0">
               <Carousel
-                plugins={[Autoplay({ delay: 5000 })]}
+                setApi={setApi}
                 className="w-full"
                 opts={{ align: 'start', loop: true }}
               >
