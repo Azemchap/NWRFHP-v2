@@ -1,28 +1,34 @@
-import React from "react";
-import styles from "./Team.module.css";
-import PostCard from "../../components/postCard/PostCard";
+import TeamMemberCard from '@/components/TeamMemberCard'
+import teamData from '@/data/team.json'
 
+interface TeamMember {
+  id: string
+  name: string
+  role: string
+  image: string
+  date: string
+  slug: string
+}
 
-const TeamPage = () => {
-    return (
-
-        <div
-            className="container-fluid container mx-auto pt-16 "
-            data-aos="fade-up"
-            data-aos-duration="1000"
-        >
-            <div className=" container mx-auto p-4" >
-                <div>
-                    <h1 className={styles.headContainer}>Staff Of The Fund</h1>
-                    <div className={styles.container}>
-                        <div className={styles.post}>
-                            <PostCard />
-                        </div>
-                    </div>
-                </div>
-            </div>
+export default function TeamPage() {
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Page Header */}
+        <div className="text-center mb-12">
+          <h1 className="heading-hero mb-4">Staff Of The Fund</h1>
+          <p className="text-body max-w-2xl mx-auto">
+            Meet our dedicated team of professionals committed to promoting health and wellness in the North West Region.
+          </p>
         </div>
-    );
-};
 
-export default TeamPage;
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teamData.map((member: TeamMember) => (
+            <TeamMemberCard key={member.id} member={member} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

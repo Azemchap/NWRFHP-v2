@@ -1,23 +1,23 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
-import React from "react";
-import Programs from "./Programs";
+import { Badge } from '@/components/ui/badge'
+import Programs from './Programs'
 
-const ProgramSection: React.FC = () => {
-    return (
-        <div
-            className=" container mx-auto about-wrapper "
-            data-aos="fade-up"
-            data-aos-duration="1000"
-        >
-            <div className="bg-white" >
-                <div className="container nx-auto p-4 py-12">
-                    <h2 className="text-center leading-6 text-blue-600 font-semibold tracking-wide uppercase"> Management</h2>
-                    <h3 className="text-center mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Management of Health products</h3>
-                    <Programs />
-                </div>
-            </div>
+export default function ProgramSection() {
+  return (
+    <div className="bg-neutral-50 py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          {/* Page Header */}
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4 bg-primary-100 text-primary-700 uppercase tracking-wide">
+              Management
+            </Badge>
+            <h1 className="heading-hero mb-6">Management of Health Products</h1>
+          </div>
+
+          {/* Programs Content */}
+          <Programs />
         </div>
-    );
-};
-
-export default ProgramSection;
+      </div>
+    </div>
+  )
+}

@@ -1,73 +1,68 @@
 'use client'
 
-import React from 'react'
-import { Carousel } from 'flowbite-react'
 import Image from 'next/image'
-import styles from "./infos.module.css"
+import { Card, CardContent } from '@/components/ui/card'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
 
+const infoSlides = [
+  { image: '/images/coach.jpg', title: 'LUKONG JULIUS', alt: 'Coaching event' },
+  { image: '/images/puncture.jpg', title: 'KUH JOSEPH', alt: 'Van puncture' },
+  { image: '/images/offload.jpg', title: 'KUH JOSEPH', alt: 'Medicine offloading' },
+]
 
 export default function DefaultInfo() {
-    return (
-        <div className={styles.infos}>
-
-            <div className={styles.social}>
-                <h1>Daily Events<br /> That Make News<br />In The Fund</h1>
+  return (
+    <div className="bg-neutral-50 py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Page Header */}
+          <div className="bg-gradient-to-r from-primary-900 to-primary-700 text-white py-16 sm:py-20 rounded-lg mb-12 shadow-xl">
+            <div className="text-center px-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                Daily Events<br />That Make News<br />In The Fund
+              </h1>
             </div>
+          </div>
 
-
-
-            <div className={styles.info}>
-                <Carousel className="w-full h-80 object-cover  ">
-                    <div className={styles.slider}>
-                        <div className={styles.img}>
-
-                            <Image src="/images/coach.jpg" alt="slider image" className="h-full" width={1200} height={1200} />
-
+          {/* Info Carousel */}
+          <Card className="overflow-hidden shadow-xl border-neutral-200">
+            <CardContent className="p-0">
+              <Carousel
+                plugins={[Autoplay({ delay: 5000 })]}
+                className="w-full"
+                opts={{ align: 'start', loop: true }}
+              >
+                <CarouselContent>
+                  {infoSlides.map((slide, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative w-full h-96 sm:h-[500px]">
+                        <Image
+                          src={slide.image}
+                          alt={slide.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 1024px"
+                          priority={index === 0}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end">
+                          <div className="p-8 sm:p-12">
+                            <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
+                              {slide.title}
+                            </h2>
+                          </div>
                         </div>
-
-                        <div className={styles.text}>
-                            <h1>LUKONG JULIUS</h1>
-                            {/* <p>Coaching on the use of Patograph at Mbingo Baptist.</p> */}
-
-                        </div>
-                    </div>
-
-                    <div className={styles.slider}>
-                        <div className={styles.img}>
-
-                            <Image src="/images/puncture.jpg" alt="slider image" className="h-full" width={1200} height={1200} />
-
-                        </div>
-
-                        <div className={styles.text}>
-                            <h1>KUH JOSEPH</h1>
-                            {/* <p>A supply van to Fundong had a tyre puncture .</p> */}
-
-                        </div>
-                    </div>
-
-                    <div className={styles.slider}>
-                        <div className={styles.img}>
-
-                            <Image src="/images/offload.jpg" alt="slider image" className="h-full" width={1200} height={1200} />
-
-                        </div>
-
-                        <div className={styles.text}>
-                            <h1>KUH JOSEPH</h1>
-                            {/* <p>Offloading of medicines donated by International Medical core at Fundong Health District.</p> */}
-
-                        </div>
-                    </div>
-
-
-                </Carousel>
-
-            </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
+              </Carousel>
+            </CardContent>
+          </Card>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
-
-
-
-

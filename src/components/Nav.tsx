@@ -1,164 +1,131 @@
 'use client'
 
-import { Dialog, Transition } from '@headlessui/react'
-import { Bars3Icon as MenuIcon, XMarkIcon as XIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Fragment, useState } from 'react'
-import { FaPhone, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6"
+import { useState } from 'react'
+import { Menu, Phone, MessageCircle } from 'lucide-react'
 import { CONTACTS } from '@/config/contacts'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 
 interface NavigationLink {
     href: string;
     name: string;
 }
 
-interface Navigation {
-    links: NavigationLink[];
-}
-
 export default function Nav(): JSX.Element {
     const [open, setOpen] = useState<boolean>(false)
 
-    const navigation: Navigation = {
-        links: [
-            {
-                href: '/programs',
-                name: 'Our Programs'
-            },
-            {
-                href: '/contact',
-                name: 'Contact Us'
-            },
-            {
-                href: '/about',
-                name: 'About Us'
-            },
-            {
-                href: '/team',
-                name: 'Our Team'
-            },
-            {
-                href: '/socials',
-                name: 'Socials'
-            },
-            {
-                href: '/infos',
-                name: 'Infos'
-            },
-            {
-                href: '/animation',
-                name: 'Animation'
-            },
-        ]
-    }
+    const navigationLinks: NavigationLink[] = [
+        { href: '/programs', name: 'Our Programs' },
+        { href: '/contact', name: 'Contact Us' },
+        { href: '/about', name: 'About Us' },
+        { href: '/team', name: 'Our Team' },
+        { href: '/socials', name: 'Socials' },
+        { href: '/infos', name: 'Infos' },
+        { href: '/animation', name: 'Animation' },
+    ]
 
     return (
-        <div className="bg-white fixed top-0 left-0 right-0 z-40">
-            {/* Mobile menu */}
-            <Transition.Root show={open} as={Fragment}>
-                <Dialog as="div" className="fixed inset-0 flex z-40 lg:hidden" onClose={setOpen}>
-                    <Transition.Child
-                        as={Fragment}
-                        enter="transition-opacity ease-linear duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="transition-opacity ease-linear duration-300"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
+        <div className="bg-white fixed top-0 left-0 right-0 z-40 shadow-sm">
+            {/* Top contact bar */}
+            <div className="bg-primary-950 border-b border-primary-900">
+                <div className="container mx-auto flex gap-6 items-center justify-end h-10 text-xs px-4 sm:px-6 lg:px-8">
+                    <Link
+                        href={`tel:${CONTACTS.phone}`}
+                        className="flex gap-2 items-center text-primary-100 hover:text-white transition-colors font-medium"
+                        rel="noopener"
+                        target="_blank"
                     >
-                        <div className="fixed inset-0 bg-primary bg-opacity-25" />
-                    </Transition.Child>
-
-                    <Transition.Child
-                        as={Fragment}
-                        enter="transition ease-in-out duration-300 transform"
-                        enterFrom="-translate-x-full"
-                        enterTo="translate-x-0"
-                        leave="transition ease-in-out duration-300 transform"
-                        leaveFrom="translate-x-0"
-                        leaveTo="-translate-x-full"
+                        <Phone className="h-3.5 w-3.5" />
+                        Call Us Now
+                    </Link>
+                    <Link
+                        href={`https://wa.me/${CONTACTS.whatsapp}`}
+                        className="flex gap-2 items-center text-primary-100 hover:text-white transition-colors font-medium"
+                        rel="noopener"
+                        target="_blank"
                     >
-                        <div className="relative container w-full text-primary  uppercase font-bold bg-slate-50 shadow-xl py-6 px-4 flex flex-col overflow-y-auto z-50">
-                            <div className="px-4 pt-5 pb-2 flex">
-                                <div className=" flex ">
-                                    <Link onClick={() => setOpen(false)} href="/" className='flex items-center gap-2'>
-                                        <Image className='w-6 h-8 object-contain ' src="/images/logo.jpg" alt='logo' width={80} height={80} />
-                                        <h2 className='text-lg text-primary font-bold'>NWRFHP</h2>
-                                    </Link>
-                                </div>
-                                <button
-                                    type="button"
-                                    className="-m-2 ml-auto p-2 rounded-md inline-flex items-end justify-end text-primary"
-                                    onClick={() => setOpen(false)}
-                                >
-                                    <span className="sr-only">Close menu</span>
-                                    <XIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-                                </button>
-                            </div>
-
-
-                            {/* Mobile menu  */}
-                            <div className="border-t border-gray-200 py-6 px-4 space-y-6 ">
-                                {navigation.links.map((link) => (
-                                    <div className='flow-root' key={link.href}>
-                                        <Link onClick={() => setOpen(false)} className='-m-2 p-2 block text-primary transition-all duration-200 ease-in-out hover:bg-primary hover:text-white font-medium ' href={link.href}>{link.name}</Link>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </Transition.Child>
-                </Dialog>
-            </Transition.Root>
-
-            <header className="relative bg-white">
-
-                {/* Top navigation  */}
-                <div className="bg-white border-b ">
-                    <div className="container mx-auto flex gap-8 items-center justify-end text-xs font-medium text-primary px-4 sm:px-6 lg:px-8 h-10">
-                        <Link rel="noopener" target="_blank" href={`tel:${CONTACTS.phone}`}> <span className='flex gap-2 font-semibold text-xs items-center'> <FaPhoneVolume /> Call Us Now!</span>
-                        </Link>
-                        <Link rel="noopener" target="_blank" href={`https://wa.me/${CONTACTS.whatsapp}`}> <span className=' flex gap-1 font-semibold text-xs items-center '><FaWhatsapp />  Whatsapp </span>
-                        </Link>
-                    </div>
+                        <MessageCircle className="h-3.5 w-3.5" />
+                        WhatsApp
+                    </Link>
                 </div>
+            </div>
 
-                {/* Desktop nav list  */}
-                <nav aria-label="Top" className="shadow-lg px-4 sm:px-6 lg:px-8">
-                    <div className="container mx-auto text-primary">
-                        <div className="h-16 flex items-center">
+            {/* Main navigation */}
+            <nav aria-label="Top" className="px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto">
+                    <div className="h-16 flex items-center justify-between">
+                        {/* Logo */}
+                        <Link href="/" className="flex items-center gap-3">
+                            <Image
+                                src="/images/logo.jpg"
+                                alt="NWRFHP Logo"
+                                width={48}
+                                height={48}
+                                className="w-8 h-8 lg:w-12 lg:h-12 object-contain"
+                            />
+                            <span className="text-lg lg:text-xl font-bold text-primary-950">NWRFHP</span>
+                        </Link>
 
-
-                            {/* Logo */}
-                            <div className="ml-4 flex lg:ml-0">
-                                <Link href="/" className='flex items-center gap-2'>
-                                    <Image className='w-6 h-8 lg:w-12 lg:h-12 object-contain ' src="/images/logo.jpg" alt='logo' width={80} height={80} />
-                                    <h2 className='text-lg text-primary font-bold'>NWRFHP</h2>
+                        {/* Desktop Navigation */}
+                        <div className="hidden lg:flex items-center gap-8">
+                            {navigationLinks.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className="text-sm font-medium text-primary-700 hover:text-primary-500 transition-colors uppercase tracking-wide"
+                                >
+                                    {link.name}
                                 </Link>
-                            </div>
+                            ))}
+                        </div>
 
-                            <div className="ml-auto flex items-center leading-loose">
-                                <div className="hidden lg:flex lg:flex-1 lg:items-center text-center lg:justify-end lg:space-x-8 ">
-                                    {navigation.links.map((link) => (
-                                        <div className='flow-root' key={link.href}>
-                                            <Link onClick={() => setOpen(false)} className='-m-2 p-2 block text-primary font-medium text-sm uppercase transition-all duration-200 ease-in-out hover:text-primary tracking-wide underline-offset-8 hover:underline ' href={link.href}>{link.name}</Link>
-                                        </div>
+                        {/* Mobile Menu */}
+                        <Sheet open={open} onOpenChange={setOpen}>
+                            <SheetTrigger asChild className="lg:hidden">
+                                <Button variant="ghost" size="icon" aria-label="Open menu">
+                                    <Menu className="h-6 w-6 text-primary-950" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side="left" className="w-[300px] bg-white">
+                                <div className="flex flex-col gap-6 mt-8">
+                                    {/* Mobile Logo */}
+                                    <Link
+                                        href="/"
+                                        onClick={() => setOpen(false)}
+                                        className="flex items-center gap-3 mb-4"
+                                    >
+                                        <Image
+                                            src="/images/logo.jpg"
+                                            alt="NWRFHP Logo"
+                                            width={32}
+                                            height={32}
+                                            className="w-8 h-8 object-contain"
+                                        />
+                                        <span className="text-lg font-bold text-primary-950">NWRFHP</span>
+                                    </Link>
+
+                                    <Separator />
+
+                                    {/* Mobile Navigation Links */}
+                                    {navigationLinks.map((link) => (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            onClick={() => setOpen(false)}
+                                            className="text-primary-900 font-medium text-lg hover:text-primary-500 transition-colors uppercase tracking-wide"
+                                        >
+                                            {link.name}
+                                        </Link>
                                     ))}
                                 </div>
-
-                                <button
-                                    type="button"
-                                    className="bg-white p-2 rounded-md text-primary lg:hidden"
-                                    onClick={() => setOpen(true)}
-                                >
-                                    <span className="sr-only">Open menu</span>
-                                    <MenuIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-                                </button>
-                            </div>
-                        </div>
+                            </SheetContent>
+                        </Sheet>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </nav>
         </div>
     )
 }

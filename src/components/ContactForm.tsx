@@ -1,33 +1,39 @@
 'use client'
 
-import React, { useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  phone?: string;
-  subject: string;
-  message: string;
-}
+const contactFormSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().optional(),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(20, 'Message must be at least 20 characters'),
+})
+
+type ContactFormValues = z.infer<typeof contactFormSchema>
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    },
+  })
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContactFormData>()
-
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
-    setSubmitStatus(null)
-
+  async function onSubmit(data: ContactFormValues) {
     try {
-      // TODO: Replace with actual API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -37,175 +43,123 @@ export default function ContactForm() {
       })
 
       if (response.ok) {
-        setSubmitStatus('success')
-        reset()
+        toast.success('Message sent successfully!', {
+          description: "Thank you for your message. We'll get back to you soon.",
+        })
+        form.reset()
       } else {
-        setSubmitStatus('error')
+        toast.error('Failed to send message', {
+          description: 'Please try again later.',
+        })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
+      toast.error('Failed to send message', {
+        description: 'Please try again later.',
+      })
     }
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+    <Card className="max-w-2xl mx-auto shadow-xl border-neutral-200">
+      <CardHeader>
+        <CardTitle className="text-2xl text-primary-950">Send us a message</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">
+                    Name <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your full name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-      {submitStatus === 'success' && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md">
-          <p className="text-green-800 font-medium">
-            Thank you for your message! We&apos;ll get back to you soon.
-          </p>
-        </div>
-      )}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">
+                    Email <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="your.email@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-      {submitStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-red-800 font-medium">
-            Sorry, there was an error submitting your message. Please try again.
-          </p>
-        </div>
-      )}
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">Phone Number (Optional)</FormLabel>
+                  <FormControl>
+                    <Input type="tel" placeholder="+237 XXX XXX XXX" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Name Field */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            {...register('name', {
-              required: 'Name is required',
-              minLength: {
-                value: 2,
-                message: 'Name must be at least 2 characters',
-              },
-            })}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.name ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Your full name"
-          />
-          {errors.name && (
-            <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-          )}
-        </div>
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">
+                    Subject <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="How can we help you?" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        {/* Email Field */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
-              },
-            })}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="your.email@example.com"
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-          )}
-        </div>
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">
+                    Message <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell us more about your inquiry..."
+                      className="min-h-32"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        {/* Phone Field (Optional) */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-            Phone Number (Optional)
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            {...register('phone', {
-              pattern: {
-                value: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
-                message: 'Invalid phone number',
-              },
-            })}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.phone ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="+237 XXX XXX XXX"
-          />
-          {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-          )}
-        </div>
-
-        {/* Subject Field */}
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-            Subject <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="subject"
-            {...register('subject', {
-              required: 'Subject is required',
-              minLength: {
-                value: 5,
-                message: 'Subject must be at least 5 characters',
-              },
-            })}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.subject ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="How can we help you?"
-          />
-          {errors.subject && (
-            <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
-          )}
-        </div>
-
-        {/* Message Field */}
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-            Message <span className="text-red-500">*</span>
-          </label>
-          <textarea
-            id="message"
-            rows={5}
-            {...register('message', {
-              required: 'Message is required',
-              minLength: {
-                value: 20,
-                message: 'Message must be at least 20 characters',
-              },
-            })}
-            className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent ${
-              errors.message ? 'border-red-500' : 'border-gray-300'
-            }`}
-            placeholder="Tell us more about your inquiry..."
-          />
-          {errors.message && (
-            <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        <div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full primary-button disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </div>
-      </form>
-    </div>
+            <Button
+              type="submit"
+              className="w-full bg-primary-500 hover:bg-primary-600 text-white"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   )
 }

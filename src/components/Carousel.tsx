@@ -1,123 +1,66 @@
 'use client'
 
-import { Carousel } from 'flowbite-react'
 import Image from 'next/image'
+import Autoplay from 'embla-carousel-autoplay'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+
+const carouselImages = [
+  { src: '/images/096A0522.jpg', alt: 'NWRFHP Event 1' },
+  { src: '/images/096A0583.jpg', alt: 'NWRFHP Event 2' },
+  { src: '/images/096A0599.png', alt: 'NWRFHP Event 3' },
+  { src: '/images/rock.jpg', alt: 'NWRFHP Rock Event' },
+  { src: '/images/head-office.jpg', alt: 'NWRFHP Head Office' },
+  { src: '/images/nnfca.jpg', alt: 'NNFCA' },
+  { src: '/images/vanca.jpg', alt: 'VANCA' },
+  { src: '/images/nkca.jpg', alt: 'NKCA' },
+  { src: '/images/csmu1.jpg', alt: 'CSMU' },
+  { src: '/images/fondoh1.jpg', alt: 'Fondoh' },
+  { src: '/images/yembe1.jpg', alt: 'Yembe' },
+  { src: '/images/comca.jpg', alt: 'COMCA' },
+  { src: '/images/odrana1.jpg', alt: 'Odrana' },
+  { src: '/images/mbakong1.jpg', alt: 'Mbakong' },
+  { src: '/images/management1.jpg', alt: 'Management' },
+  { src: '/images/fonca.jpg', alt: 'FONCA' },
+  { src: '/images/ndehca.jpg', alt: 'NDEHCA' },
+  { src: '/images/intenship.jpg', alt: 'Internship' },
+  { src: '/images/fon3.jpg', alt: 'Fon Event' },
+  { src: '/images/medalists.jpg', alt: 'Medalists' },
+  { src: '/images/medalists2.jpg', alt: 'Medalists 2' },
+]
 
 export default function DefaultCarousel(): JSX.Element {
-    return (
-
-        <Carousel className="w-full h-80 object-cover  ">
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/096A0522.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/096A0583.jpg"
-            />
-
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/096A0599.png"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/rock.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/head-office.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/nnfca.jpg"
-            />
-
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/vanca.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/nkca.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/csmu1.jpg"
-            />
-
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/fondoh1.jpg"
-            />
-
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/yembe1.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/comca.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/odrana1.jpg"
-            />
-
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/mbakong1.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/management1.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/fonca.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/ndehca.jpg"
-            />
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/intenship.jpg"
-            />
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/fon3.jpg"
-            />
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/medalists.jpg"
-            />
-
-            <Image className='h-full'
-                alt="slider image" width={1200} height={1200}
-                src="/images/medalists2.jpg"
-            />
-
-
-
-        </Carousel>
-    )
+  return (
+    <Carousel
+      plugins={[
+        Autoplay({
+          delay: 5000,
+        }),
+      ]}
+      className="w-full h-80 rounded-lg overflow-hidden"
+      opts={{
+        align: 'start',
+        loop: true,
+      }}
+    >
+      <CarouselContent>
+        {carouselImages.map((image, index) => (
+          <CarouselItem key={index}>
+            <div className="relative w-full h-80">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                priority={index === 0}
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="left-4" />
+      <CarouselNext className="right-4" />
+    </Carousel>
+  )
 }
 

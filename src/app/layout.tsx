@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import './globals.css'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
         <Nav />
         <main className="mt-16 min-h-screen">{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   )
