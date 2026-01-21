@@ -24,7 +24,6 @@ export default function Nav(): JSX.Element {
         { href: '/team', name: 'Our Team' },
         { href: '/socials', name: 'Socials' },
         { href: '/infos', name: 'Infos' },
-        { href: '/animation', name: 'Animation' },
     ]
 
     return (

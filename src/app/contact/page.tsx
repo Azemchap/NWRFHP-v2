@@ -1,7 +1,7 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from "react";
-import Image from 'next/image'
-import Link from 'next/link'
-import { FaPhone, FaPhoneFlip, FaPhoneSlash, FaPhoneVolume, FaWhatsapp } from "react-icons/fa6";
+import { FaPhoneVolume, FaWhatsapp } from "react-icons/fa6";
 
 
 const ContactUs: React.FC = () => {
