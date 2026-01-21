@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getCollection } from '@/db/client'
-import { ContactSubmission, COLLECTIONS } from '@/db/schema'
+import { db } from '@/db/drizzle/client'
+import { contactSubmissions } from '@/db/drizzle/schema'
 import { Resend } from 'resend'
 
-// Initialize Resend if API key is available
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 export async function POST(request: NextRequest) {
@@ -11,7 +10,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email, phone, subject, message } = body
 
-    // Validate required fields
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -19,7 +17,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate email format
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -28,24 +25,15 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Save to database
-    const collection = await getCollection<ContactSubmission>(COLLECTIONS.CONTACT_SUBMISSIONS)
-
-    const submission: ContactSubmission = {
-      id: `contact_${Date.now()}_${Math.random().toString(36).substring(7)}`,
+    const [submission] = await db.insert(contactSubmissions).values({
       name,
       email,
       phone,
       subject,
       message,
       status: 'new',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }
+    }).returning()
 
-    await collection.insertOne(submission as any)
-
-    // Send email notification if Resend is configured
     if (resend && process.env.NEXT_PUBLIC_EMAIL) {
       try {
         await resend.emails.send({
@@ -66,7 +54,6 @@ export async function POST(request: NextRequest) {
         })
       } catch (emailError) {
         console.error('Error sending email notification:', emailError)
-        // Don't fail the request if email fails
       }
     }
 

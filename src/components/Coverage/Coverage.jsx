@@ -3,7 +3,7 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import styles from "./coverage.module.css";
 import "../../components/zoomIn/zoomIn.css"
-import classNames from 'classnames';
+import { cn } from '@/lib/utils';
 import Image from 'next/image'
 // import "../../components/zoomIn.css"
 
@@ -141,7 +141,7 @@ const Coverage = () => {
 
                             <div className="man">
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -168,7 +168,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -182,7 +182,7 @@ const Coverage = () => {
 
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -198,7 +198,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -212,7 +212,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -226,7 +226,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -240,7 +240,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -254,7 +254,7 @@ const Coverage = () => {
 
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -268,7 +268,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -281,7 +281,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -305,7 +305,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -332,7 +332,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -354,7 +354,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -377,7 +377,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
                                     <div className={styles.show}>
 
                                         <h6> Training</h6>
@@ -399,7 +399,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -422,7 +422,7 @@ const Coverage = () => {
 
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -443,7 +443,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -464,7 +464,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -484,7 +484,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -505,7 +505,7 @@ const Coverage = () => {
                                 </div>
 
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -518,7 +518,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -531,7 +531,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -544,7 +544,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -557,7 +557,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -570,7 +570,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -583,7 +583,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -596,7 +596,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -609,7 +609,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -622,7 +622,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -635,7 +635,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -647,7 +647,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -660,7 +660,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -673,7 +673,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -686,7 +686,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -699,7 +699,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -712,7 +712,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -725,7 +725,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -738,7 +738,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -751,7 +751,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -764,7 +764,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 
@@ -777,7 +777,7 @@ const Coverage = () => {
                                     </div>
                                 </div>
 
-                                <div className={classNames("zoom", "number-cards")}>
+                                <div className={cn("zoom", "number-cards")}>
 
                                     <div className={styles.show}>
 

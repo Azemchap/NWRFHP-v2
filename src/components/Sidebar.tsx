@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
 
                 const books: Book[] = await response.json();
                 const uniqueCategories = Array.from(
-                    new Set(books.map((book) => book.category).filter(Boolean))
+                    new Set(books.map((book) => book.category).filter((c): c is string => Boolean(c)))
                 );
 
                 setCategories(uniqueCategories.sort());

@@ -5,16 +5,30 @@
  * Usage: npm run db:seed
  */
 
-import { TeamMemberRepository } from "./repositories/teamRepository";
+import { db } from "./drizzle/client";
+import { teamMembers } from "./drizzle/schema";
 import teamData from "../data/team.json";
 
 async function seed() {
   try {
     console.log("🌱 Starting database seeding...");
 
+    // Clear existing team members
+    console.log("🗑️  Clearing existing team members...");
+    await db.delete(teamMembers);
+
     // Seed team members
     console.log("📝 Seeding team members...");
-    await TeamMemberRepository.seedFromJSON(teamData);
+    for (const [index, member] of teamData.entries()) {
+      await db.insert(teamMembers).values({
+        name: member.name,
+        role: member.role,
+        image: member.image,
+        slug: member.slug,
+        order: index + 1,
+        isActive: true,
+      });
+    }
     console.log(`✅ Successfully seeded ${teamData.length} team members`);
 
     console.log("🎉 Database seeding completed successfully!");
