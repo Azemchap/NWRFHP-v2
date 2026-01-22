@@ -1,11 +1,9 @@
 "use client";
 
 import { ProgramCard } from "@/components/shared/program-card";
-import { StaggerContainer } from "@/components/animations/stagger-container";
-import { StaggerItem } from "@/components/animations/stagger-item";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Layers } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const programs = [
@@ -34,58 +32,51 @@ const programs = [
 
 export function ProgramsSection() {
   return (
-    <section className="relative py-20 lg:py-28 bg-neutral-50 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary-100/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent-100/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
-
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
-            <Layers className="w-3.5 h-3.5" />
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
             What We Do
           </span>
-          <h2 className="text-3xl font-bold text-neutral-900 sm:text-4xl lg:text-5xl mb-4">
+          <h2 className="text-3xl font-bold text-neutral-900 sm:text-4xl mb-4">
             Our Healthcare Programs
           </h2>
-          <p className="max-w-2xl mx-auto text-neutral-600 text-lg">
+          <p className="max-w-2xl mx-auto text-neutral-600">
             Comprehensive initiatives designed to improve healthcare access and outcomes across the North West Region
           </p>
         </motion.div>
 
         {/* Programs Grid */}
-        <StaggerContainer>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
-            {programs.map((program) => (
-              <StaggerItem key={program.slug}>
-                <ProgramCard {...program} />
-              </StaggerItem>
-            ))}
-          </div>
-        </StaggerContainer>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-10">
+          {programs.map((program, index) => (
+            <motion.div
+              key={program.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProgramCard {...program} />
+            </motion.div>
+          ))}
+        </div>
 
         {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/programs" className="group">
+            <Link href="/programs">
               Explore All Programs
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

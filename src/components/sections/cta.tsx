@@ -7,29 +7,17 @@ import { motion } from "framer-motion";
 
 export function CTASection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900" />
+    <section className="relative py-16 lg:py-24 bg-primary-600 overflow-hidden">
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800" />
 
-      {/* Pattern Overlay */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}
-      />
-
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
-
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container relative">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto text-center"
         >
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
@@ -40,22 +28,22 @@ export function CTASection() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            Ready to Make a <br className="hidden sm:block" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Ready to Make a{" "}
             <span className="text-accent-300">Difference Together?</span>
           </h2>
 
           {/* Description */}
-          <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Whether you're looking to partner with us, access our services, or support our mission,
             we'd love to hear from you. Let's build a healthier community together.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Button
-              size="xl"
-              className="w-full sm:w-auto bg-white text-primary-700 hover:bg-neutral-100 hover:text-primary-800 shadow-lg hover:shadow-xl transition-all"
+              size="lg"
+              className="w-full sm:w-auto bg-white text-primary-700 hover:bg-neutral-100"
               asChild
             >
               <Link href="/contact">
@@ -64,9 +52,9 @@ export function CTASection() {
               </Link>
             </Button>
             <Button
-              size="xl"
+              size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50"
+              className="w-full sm:w-auto border-2 border-white/30 bg-transparent text-white hover:bg-white/10"
               asChild
             >
               <a href="tel:+237651421052">
@@ -80,32 +68,26 @@ export function CTASection() {
           <div className="flex flex-wrap items-center justify-center gap-6 pt-8 border-t border-white/10">
             <a
               href="mailto:info@nwrfhp.org"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
             >
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                <Mail className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-medium">info@nwrfhp.org</span>
+              <Mail className="w-4 h-4" />
+              <span className="text-sm">info@nwrfhp.org</span>
             </a>
             <a
               href="https://wa.me/237651421052"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/70 hover:text-accent-300 transition-colors group"
+              className="flex items-center gap-2 text-white/70 hover:text-accent-300 transition-colors"
             >
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
-                <MessageCircle className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-medium">WhatsApp</span>
+              <MessageCircle className="w-4 h-4" />
+              <span className="text-sm">WhatsApp</span>
             </a>
             <a
               href="tel:+237651421052"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
             >
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                <Phone className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-medium">+237 651 421 052</span>
+              <Phone className="w-4 h-4" />
+              <span className="text-sm">+237 651 421 052</span>
             </a>
           </div>
         </motion.div>

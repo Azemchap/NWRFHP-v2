@@ -3,32 +3,30 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /*
-   * GOOGLE-INSPIRED COLOR SYSTEM
-   * Designed for WCAG AA compliance with excellent contrast ratios
-   * Inspired by Google Material Design 3 and Google's healthcare products
-   */
+  /* ============================================
+     COLOR SYSTEM - Google Material Design inspired
+     ============================================ */
 
-  /* Primary Blue - Deep Healthcare Blue (Google Blue inspired) */
+  /* Primary Blue */
   --color-primary-50: #e8f0fe;
   --color-primary-100: #d2e3fc;
   --color-primary-200: #aecbfa;
   --color-primary-300: #8ab4f8;
   --color-primary-400: #669df6;
-  --color-primary-500: #1a73e8;  /* Google Blue - Main brand color */
-  --color-primary-600: #1967d2;  /* Hover state - darker for contrast */
+  --color-primary-500: #1a73e8;
+  --color-primary-600: #1967d2;
   --color-primary-700: #185abc;
   --color-primary-800: #174ea6;
   --color-primary-900: #1a3f7a;
   --color-primary-950: #0d2240;
 
-  /* Accent - Teal for healthcare trust */
+  /* Accent Teal */
   --color-accent-50: #e6f7f5;
   --color-accent-100: #b3ebe3;
   --color-accent-200: #80dfd2;
   --color-accent-300: #4dd3c0;
   --color-accent-400: #26c9b2;
-  --color-accent-500: #00bfa5;  /* Main accent */
+  --color-accent-500: #00bfa5;
   --color-accent-600: #00a896;
   --color-accent-700: #008f7d;
   --color-accent-800: #007566;
@@ -37,25 +35,25 @@
   /* Success Green */
   --color-success-50: #e6f4ea;
   --color-success-100: #ceead6;
-  --color-success-500: #34a853;  /* Google Green */
+  --color-success-500: #34a853;
   --color-success-600: #2d9249;
   --color-success-700: #1e7e34;
 
-  /* Warning Amber */
+  /* Warning */
   --color-warning-50: #fef7e0;
   --color-warning-100: #feefb3;
-  --color-warning-500: #fbbc04;  /* Google Yellow */
+  --color-warning-500: #fbbc04;
   --color-warning-600: #f9ab00;
   --color-warning-700: #e69500;
 
-  /* Error Red */
+  /* Error */
   --color-error-50: #fce8e6;
   --color-error-100: #facec9;
-  --color-error-500: #ea4335;  /* Google Red */
+  --color-error-500: #ea4335;
   --color-error-600: #d93025;
   --color-error-700: #c5221f;
 
-  /* Neutral - Carefully calibrated for readability */
+  /* Neutral */
   --color-neutral-50: #f8fafc;
   --color-neutral-100: #f1f5f9;
   --color-neutral-200: #e2e8f0;
@@ -68,416 +66,83 @@
   --color-neutral-900: #0f172a;
   --color-neutral-950: #020617;
 
-  /* Legacy aliases */
-  --color-primary: #1a73e8;
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  /* Typography - Google Fonts optimized */
-  --font-sans: 'Inter', 'Google Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Inter', 'Google Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Roboto Mono', 'Courier New', monospace;
-
-  /* Spacing - 4px base system (Google standard) */
-  --spacing-18: 4.5rem;
-  --spacing-20: 5rem;
-  --spacing-22: 5.5rem;
-  --spacing-24: 6rem;
-  --spacing-28: 7rem;
-  --spacing-32: 8rem;
-  --spacing-36: 9rem;
-  --spacing-40: 10rem;
-
-  /* Border Radius - Google rounded corners */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.25rem;
-  --radius-full: 9999px;
-
-  /* Shadows - Subtle, Google-style elevation */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-
-  /* Transitions - Smooth, Google-style motion */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 /* ============================================
-   CSS RESET & BASE STYLES
+   BASE STYLES
    ============================================ */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--font-sans);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  line-height: 1.6;
-  color: var(--color-neutral-900);
-  background-color: var(--color-neutral-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ============================================
-   GOOGLE-STYLE BUTTON CLASSES
+   CONTAINER - Fix centering
    ============================================ */
 
-.btn-primary,
-.primary-button {
-  @apply inline-flex items-center justify-center gap-2;
-  @apply bg-primary-500 text-white;
-  @apply px-6 py-3 rounded-lg;
-  @apply font-semibold text-sm tracking-wide;
-  @apply transition-all duration-200 ease-out;
-  @apply hover:bg-primary-600 hover:shadow-md;
-  @apply active:bg-primary-700 active:scale-[0.98];
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-500 disabled:hover:shadow-none;
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.btn-secondary,
-.secondary-button {
-  @apply inline-flex items-center justify-center gap-2;
-  @apply bg-white text-primary-600 border-2 border-primary-200;
-  @apply px-6 py-3 rounded-lg;
-  @apply font-semibold text-sm tracking-wide;
-  @apply transition-all duration-200 ease-out;
-  @apply hover:bg-primary-50 hover:border-primary-300 hover:text-primary-700;
-  @apply active:bg-primary-100 active:scale-[0.98];
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-.btn-ghost {
-  @apply inline-flex items-center justify-center gap-2;
-  @apply bg-transparent text-neutral-700;
-  @apply px-4 py-2 rounded-lg;
-  @apply font-medium text-sm;
-  @apply transition-all duration-200 ease-out;
-  @apply hover:bg-neutral-100 hover:text-neutral-900;
-  @apply active:bg-neutral-200;
-  @apply focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2;
-}
-
-.btn-link {
-  @apply inline-flex items-center gap-1;
-  @apply text-primary-600 font-semibold text-sm;
-  @apply transition-all duration-200;
-  @apply hover:text-primary-700;
-  @apply underline-offset-4 hover:underline;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:rounded;
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* ============================================
-   LAYOUT UTILITIES
-   ============================================ */
-
-.container-custom {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-.section-spacing {
-  @apply py-16 sm:py-20 lg:py-24 xl:py-32;
-}
-
-.section-spacing-sm {
-  @apply py-12 sm:py-16 lg:py-20;
-}
-
-/* ============================================
-   TYPOGRAPHY - Google-style headings
-   ============================================ */
-
-.heading-display {
-  @apply text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-neutral-900;
-  @apply leading-[1.1];
-}
-
-.heading-hero {
-  @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900;
-  @apply leading-[1.15];
-}
-
-.heading-section {
-  @apply text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900;
-  @apply leading-tight;
-}
-
-.heading-subsection {
-  @apply text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-800;
-}
-
-.heading-card {
-  @apply text-xl font-semibold text-neutral-900;
-}
-
-.text-body {
-  @apply text-base sm:text-lg text-neutral-600 leading-relaxed;
-}
-
-.text-body-sm {
-  @apply text-sm text-neutral-600 leading-relaxed;
-}
-
-.text-caption {
-  @apply text-xs text-neutral-500 uppercase tracking-wider font-medium;
-}
-
-/* ============================================
-   CARD STYLES - Google Material Design inspired
-   ============================================ */
-
-.card-elevated {
-  @apply bg-white rounded-xl border border-neutral-200;
-  @apply transition-all duration-300 ease-out;
-  @apply hover:shadow-lg hover:border-neutral-300;
-  @apply hover:-translate-y-0.5;
-}
-
-.card-outlined {
-  @apply bg-white rounded-xl border-2 border-neutral-200;
-  @apply transition-all duration-300 ease-out;
-  @apply hover:border-primary-400 hover:shadow-md;
-}
-
-.card-filled {
-  @apply bg-neutral-50 rounded-xl;
-  @apply transition-all duration-300 ease-out;
-  @apply hover:bg-neutral-100;
-}
-
-/* ============================================
-   INTERACTIVE ELEMENTS
-   ============================================ */
-
-/* Links with excellent contrast */
-.link-primary {
-  @apply text-primary-600 font-medium;
-  @apply transition-colors duration-200;
-  @apply hover:text-primary-800;
-  @apply underline-offset-4 decoration-primary-300;
-  @apply hover:underline hover:decoration-primary-500;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:rounded;
-}
-
-/* Navigation links */
-.nav-link {
-  @apply text-neutral-600 font-medium text-sm;
-  @apply transition-all duration-200;
-  @apply hover:text-primary-600;
-  @apply relative;
-}
-
-.nav-link::after {
-  @apply content-[''] absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500;
-  @apply transition-all duration-300;
-}
-
-.nav-link:hover::after {
-  @apply w-full;
-}
-
-.nav-link-active {
-  @apply text-primary-600 font-semibold;
-}
-
-.nav-link-active::after {
-  @apply w-full;
-}
-
-/* ============================================
-   FORM ELEMENTS - Clean, accessible
-   ============================================ */
-
-.input-base {
-  @apply w-full px-4 py-3 rounded-lg;
-  @apply border-2 border-neutral-200 bg-white;
-  @apply text-neutral-900 placeholder:text-neutral-400;
-  @apply transition-all duration-200;
-  @apply hover:border-neutral-300;
-  @apply focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-100;
-}
-
-.input-error {
-  @apply border-error-500 focus:border-error-500 focus:ring-error-100;
-}
-
-.label-base {
-  @apply block text-sm font-medium text-neutral-700 mb-1.5;
-}
-
-/* ============================================
-   BADGES & CHIPS
-   ============================================ */
-
-.badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full;
-  @apply text-xs font-semibold;
-}
-
-.badge-primary {
-  @apply bg-primary-100 text-primary-800;
-}
-
-.badge-success {
-  @apply bg-success-100 text-success-700;
-}
-
-.badge-warning {
-  @apply bg-warning-100 text-warning-700;
-}
-
-.badge-error {
-  @apply bg-error-100 text-error-700;
-}
-
-/* ============================================
-   ICON CONTAINERS
-   ============================================ */
-
-.icon-container {
-  @apply flex items-center justify-center rounded-full;
-  @apply transition-all duration-300;
-}
-
-.icon-container-sm {
-  @apply w-10 h-10;
-}
-
-.icon-container-md {
-  @apply w-12 h-12;
-}
-
-.icon-container-lg {
-  @apply w-16 h-16;
-}
-
-.icon-container-xl {
-  @apply w-20 h-20;
-}
-
-.icon-container-primary {
-  @apply bg-primary-100 text-primary-600;
-  @apply group-hover:bg-primary-200 group-hover:text-primary-700;
-}
-
-.icon-container-accent {
-  @apply bg-accent-100 text-accent-600;
-}
-
-/* ============================================
-   HERO BACKGROUNDS
-   ============================================ */
-
-.bg-hero {
-  background-image: url('/images/head-office.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.bg-hero-overlay {
-  @apply relative;
-}
-
-.bg-hero-overlay::before {
-  @apply content-[''] absolute inset-0;
-  background: linear-gradient(
-    135deg,
-    rgba(26, 115, 232, 0.9) 0%,
-    rgba(13, 34, 64, 0.85) 100%
-  );
-}
-
-/* Gradient backgrounds */
-.bg-gradient-hero {
-  background: linear-gradient(135deg, #e8f0fe 0%, #f8fafc 50%, #e6f7f5 100%);
-}
-
-.bg-gradient-section {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.bg-gradient-cta {
-  background: linear-gradient(135deg, #1a73e8 0%, #174ea6 100%);
-}
-
-/* ============================================
-   ACCESSIBILITY FOCUS STATES
-   ============================================ */
-
-:focus-visible {
-  @apply outline-none ring-2 ring-primary-500 ring-offset-2;
-}
-
-/* Skip link for accessibility */
-.skip-link {
-  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4;
-  @apply focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg;
-  @apply focus:shadow-lg focus:text-primary-600 focus:font-semibold;
-}
-
-/* ============================================
-   IMAGE DEFAULTS
-   ============================================ */
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* ============================================
-   CSS VARIABLES FOR SHADCN
+   CSS VARIABLES FOR SHADCN UI
    ============================================ */
 
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
-
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
-
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-
   --primary: 217 91% 50%;
   --primary-foreground: 0 0% 100%;
-
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222.2 47.4% 11.2%;
-
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
-
   --accent: 168 100% 37%;
   --accent-foreground: 0 0% 100%;
-
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 100%;
-
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
   --ring: 217 91% 50%;
-
   --radius: 0.5rem;
-
-  /* Sidebar */
   --sidebar: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
   --sidebar-primary: 217 91% 50%;
@@ -491,33 +156,23 @@ img {
 .dark {
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
-
   --card: 222.2 84% 4.9%;
   --card-foreground: 210 40% 98%;
-
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;
-
   --primary: 217 91% 60%;
   --primary-foreground: 222.2 84% 4.9%;
-
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
-
   --muted: 217.2 32.6% 17.5%;
   --muted-foreground: 215 20.2% 65.1%;
-
   --accent: 168 100% 40%;
   --accent-foreground: 0 0% 100%;
-
   --destructive: 0 62.8% 50.6%;
   --destructive-foreground: 210 40% 98%;
-
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 217 91% 60%;
-
-  /* Sidebar Dark */
   --sidebar: 240 5.9% 10%;
   --sidebar-foreground: 240 4.8% 95.9%;
   --sidebar-primary: 217 91% 60%;
@@ -531,32 +186,23 @@ img {
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
-
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
-
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
-
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
-
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
-
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
-
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-
   --color-sidebar: hsl(var(--sidebar));
   --color-sidebar-foreground: hsl(var(--sidebar-foreground));
   --color-sidebar-primary: hsl(var(--sidebar-primary));
@@ -569,7 +215,7 @@ img {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -577,7 +223,7 @@ img {
 }
 
 /* ============================================
-   SMOOTH SCROLLBAR
+   SCROLLBAR
    ============================================ */
 
 ::-webkit-scrollbar {
@@ -590,19 +236,19 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-300);
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-400);
+  background: #94a3b8;
 }
 
 /* ============================================
-   SELECTION STYLING
+   SELECTION
    ============================================ */
 
 ::selection {
-  background-color: var(--color-primary-200);
-  color: var(--color-primary-900);
+  background-color: #aecbfa;
+  color: #1a3f7a;
 }

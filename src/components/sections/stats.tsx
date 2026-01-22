@@ -1,8 +1,6 @@
 "use client";
 
 import { StatCard } from "@/components/shared/stat-card";
-import { StaggerContainer } from "@/components/animations/stagger-container";
-import { StaggerItem } from "@/components/animations/stagger-item";
 import { Building2, Users, Package, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -41,18 +39,15 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(26,115,232,0.03)_0%,transparent_50%)]" />
-
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
             Our Impact
@@ -60,29 +55,32 @@ export function StatsSection() {
           <h2 className="text-3xl font-bold text-neutral-900 sm:text-4xl mb-4">
             Making a Difference Every Day
           </h2>
-          <p className="max-w-2xl mx-auto text-neutral-600 text-lg">
+          <p className="max-w-2xl mx-auto text-neutral-600">
             Numbers that reflect our commitment to healthcare excellence
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <StaggerContainer>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => (
-              <StaggerItem key={stat.label}>
-                <StatCard
-                  value={stat.value}
-                  label={stat.label}
-                  description={stat.description}
-                  suffix={stat.suffix}
-                  icon={stat.icon}
-                  color={stat.color}
-                  delay={index * 0.1}
-                />
-              </StaggerItem>
-            ))}
-          </div>
-        </StaggerContainer>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <StatCard
+                value={stat.value}
+                label={stat.label}
+                description={stat.description}
+                suffix={stat.suffix}
+                icon={stat.icon}
+                color={stat.color}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
