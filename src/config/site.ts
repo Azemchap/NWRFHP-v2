@@ -33,17 +33,17 @@ export const siteConfig = {
 
   // Location
   location: {
-    address: "Commercial Avenue",
+    address: "Hospital Round About",
     city: "Bamenda",
     region: "North West Region",
     country: "Cameroon",
-    fullAddress: "Commercial Avenue, Bamenda, North West Region, Cameroon",
-    shortAddress: "Bamenda, North West Region, Cameroon",
+    fullAddress: "Bamenda Regional Hospital, North West Region, Cameroon",
+    shortAddress: "Regional Hospital, Bamenda, NWR, CM",
     coordinates: {
-      lat: 5.9631,
-      lng: 10.1591,
+      lat: 5.9607799,
+      lng: 10.1476556,
     },
-    googleMapsUrl: "https://maps.google.com/?q=5.9631,10.1591",
+    googleMapsUrl: "https://maps.google.com/?q=5.9607799,10.1476556",
   },
 
   // Social Media Links
@@ -67,10 +67,10 @@ export const siteConfig = {
   // Navigation Links
   navLinks: [
     { href: "/programs", label: "Programs" },
-    { href: "/about", label: "About" },
-    { href: "/team", label: "Team" },
     { href: "/gallery", label: "Gallery" },
+    { href: "/team", label: "Team" },
     { href: "/contact", label: "Contact" },
+    { href: "/about", label: "About" },
   ],
 
   // Footer Links
@@ -82,10 +82,10 @@ export const siteConfig = {
       { label: "All Programs", href: "/programs" },
     ],
     organization: [
-      { label: "About Us", href: "/about" },
-      { label: "Our Team", href: "/team" },
       { label: "Gallery", href: "/gallery" },
+      { label: "Our Team", href: "/team" },
       { label: "Contact", href: "/contact" },
+      { label: "About Us", href: "/about" },
     ],
   },
 } as const;
