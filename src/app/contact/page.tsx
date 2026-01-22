@@ -93,7 +93,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              We're Here to{" "}
+              We Are Here to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-accent-400">
                 Help You
               </span>

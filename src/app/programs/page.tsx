@@ -161,12 +161,12 @@ export default function ProgramsPage() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}
                 >
-                  <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                     <Image
                       src={program.image}
                       alt={program.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 to-transparent" />
                   </div>

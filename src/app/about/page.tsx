@@ -75,7 +75,7 @@ export default function AboutPage() {
                 className="text-lg text-white/80 mb-8 leading-relaxed"
               >
                 The North West Regional Fund for Health Promotion - PIG is a public corporate dialogue
-                structure serving the healthcare needs of Cameroon's North West Region since 1987.
+                structure serving the healthcare needs of Cameroon&apos;s North West Region since 1987.
               </motion.p>
 
               <motion.div
@@ -206,12 +206,12 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-[450px] lg:h-[550px] rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/delivery.jpg"
                   alt="Our Difference"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs">
@@ -230,7 +230,7 @@ export default function AboutPage() {
                 Our Approach
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
-                How We're Different
+                How We Are Different
               </h2>
               <p className="text-neutral-600 leading-relaxed mb-6">
                 As PIG, we are a public corporate dialogue structure of the state, the technical/financial partners

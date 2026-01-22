@@ -85,12 +85,12 @@ export default function TeamPage() {
               >
                 <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-neutral-200 bg-white h-full">
                   <CardHeader className="p-0">
-                    <div className="relative w-full h-72 overflow-hidden bg-neutral-100">
+                    <div className="relative w-full h-80 sm:h-96 overflow-hidden bg-neutral-100">
                       <Image
                         src={member.image}
                         alt={`${member.name} - ${member.role}`}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -149,7 +149,7 @@ export default function TeamPage() {
               Interested in Working With Us?
             </h2>
             <p className="text-neutral-600 mb-8">
-              We're always looking for passionate individuals who want to make a difference
+              We are always looking for passionate individuals who want to make a difference
               in healthcare delivery across the North West Region.
             </p>
             <Button size="lg" asChild>

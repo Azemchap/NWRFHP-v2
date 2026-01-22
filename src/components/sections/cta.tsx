@@ -64,8 +64,8 @@ export function CTASection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-lg text-white/80 mb-8 leading-relaxed"
             >
-              Whether you're looking to partner with us, access our services, or support our mission,
-              we'd love to hear from you. Let's build a healthier community together.
+              Whether you are looking to partner with us, access our services, or support our mission,
+              we would love to hear from you. Let us build a healthier community together.
             </motion.p>
 
             {/* CTA Buttons */}

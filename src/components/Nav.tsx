@@ -3,23 +3,61 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, Phone, MessageCircle, X, ChevronRight } from 'lucide-react'
+import { Menu, Phone, MessageCircle, ChevronRight, Heart, Camera, Users } from 'lucide-react'
 import { CONTACTS } from '@/config/contacts'
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface NavigationLink {
     href: string;
     name: string;
+    icon: React.ComponentType<{ className?: string }>;
+}
+
+// Animation variants for the mobile menu
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.1,
+        },
+    },
+} as const
+
+const itemVariants = {
+    hidden: { opacity: 0, x: 30, scale: 0.95 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        transition: {
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 24,
+        },
+    },
+}
+
+const quickLinkVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring" as const,
+            stiffness: 400,
+            damping: 25,
+        },
+    },
 }
 
 export default function Nav(): JSX.Element {
     const [open, setOpen] = useState<boolean>(false)
     const [scrolled, setScrolled] = useState<boolean>(false)
 
-    // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 10)
@@ -29,10 +67,11 @@ export default function Nav(): JSX.Element {
     }, [])
 
     const navigationLinks: NavigationLink[] = [
-        { href: '/programs', name: 'Programs' },
-        { href: '/about', name: 'About' },
-        { href: '/team', name: 'Team' },
-        { href: '/contact', name: 'Contact' },
+        { href: '/programs', name: 'Programs', icon: Heart },
+        { href: '/about', name: 'About', icon: Users },
+        { href: '/gallery', name: 'Gallery', icon: Camera },
+        { href: '/team', name: 'Team', icon: Users },
+        { href: '/contact', name: 'Contact', icon: Phone },
     ]
 
     return (
@@ -43,7 +82,7 @@ export default function Nav(): JSX.Element {
                     : 'bg-white shadow-sm'
             }`}
         >
-            {/* Top contact bar - Compact and professional */}
+            {/* Top contact bar */}
             <div className="bg-neutral-900">
                 <div className="container mx-auto flex gap-6 items-center justify-end h-9 text-xs px-4 sm:px-6 lg:px-8">
                     <Link
@@ -136,84 +175,154 @@ export default function Nav(): JSX.Element {
                             </SheetTrigger>
                             <SheetContent
                                 side="right"
-                                className="w-full sm:w-[360px] bg-white border-l border-neutral-200 p-0"
+                                className="w-full sm:w-[360px] border-l-0 p-0 overflow-hidden"
                             >
-                                <div className="flex flex-col h-full">
-                                    {/* Mobile Header */}
-                                    <div className="flex items-center justify-between p-5 border-b border-neutral-100">
+                                <div className="flex flex-col h-full bg-gradient-to-b from-primary-600 via-primary-700 to-primary-800">
+                                    {/* Mobile Header - Primary Blue Background */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                        className="relative px-6 pt-6 pb-8"
+                                    >
+                                        {/* Decorative blur circles */}
+                                        <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+                                        <div className="absolute top-10 -left-10 w-32 h-32 bg-accent-400/20 rounded-full blur-2xl" />
+
                                         <Link
                                             href="/"
                                             onClick={() => setOpen(false)}
-                                            className="flex items-center gap-3"
+                                            className="relative flex items-center gap-4 group"
                                         >
-                                            <Image
-                                                src="/images/logo.jpg"
-                                                alt="NWRFHP Logo"
-                                                width={40}
-                                                height={40}
-                                                className="w-10 h-10 object-contain rounded-lg"
-                                            />
-                                            <span className="text-lg font-bold text-neutral-900">NWRFHP</span>
+                                            <motion.div
+                                                initial={{ scale: 0.8, opacity: 0 }}
+                                                animate={{ scale: 1, opacity: 1 }}
+                                                transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
+                                                className="w-14 h-14 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm p-1 ring-2 ring-white/30 group-hover:ring-white/50 transition-all"
+                                            >
+                                                <Image
+                                                    src="/images/logo.jpg"
+                                                    alt="NWRFHP Logo"
+                                                    width={56}
+                                                    height={56}
+                                                    className="w-full h-full object-contain rounded-lg"
+                                                />
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{ opacity: 0, x: -10 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.2 }}
+                                                className="flex flex-col"
+                                            >
+                                                <span className="text-xl font-bold text-white tracking-tight">
+                                                    NWRFHP
+                                                </span>
+                                                <span className="text-xs text-white/70 font-medium tracking-wide">
+                                                    Health Promotion
+                                                </span>
+                                            </motion.div>
                                         </Link>
-                                    </div>
+                                    </motion.div>
 
                                     {/* Mobile Navigation Links */}
-                                    <nav className="flex-1 overflow-y-auto py-6 px-4">
-                                        <div className="space-y-1">
-                                            {navigationLinks.map((link, index) => (
+                                    <nav className="flex-1 overflow-y-auto px-4 py-4">
+                                        <AnimatePresence>
+                                            {open && (
                                                 <motion.div
-                                                    key={link.href}
-                                                    initial={{ opacity: 0, x: 20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: index * 0.05 }}
+                                                    variants={containerVariants}
+                                                    initial="hidden"
+                                                    animate="visible"
+                                                    className="space-y-2"
                                                 >
+                                                    {navigationLinks.map((link) => (
+                                                        <motion.div
+                                                            key={link.href}
+                                                            variants={itemVariants}
+                                                        >
+                                                            <Link
+                                                                href={link.href}
+                                                                onClick={() => setOpen(false)}
+                                                                className="flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                                                        <link.icon className="h-5 w-5 text-white/90" />
+                                                                    </div>
+                                                                    <span>{link.name}</span>
+                                                                </div>
+                                                                <ChevronRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                                                            </Link>
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+
+                                        {/* Quick Links Section */}
+                                        <motion.div
+                                            initial="hidden"
+                                            animate="visible"
+                                            variants={{
+                                                visible: {
+                                                    transition: { staggerChildren: 0.1, delayChildren: 0.5 }
+                                                }
+                                            }}
+                                            className="mt-8 pt-6 border-t border-white/10"
+                                        >
+                                            <motion.p
+                                                variants={quickLinkVariants}
+                                                className="px-2 text-xs font-semibold text-white/50 uppercase tracking-wider mb-4"
+                                            >
+                                                Quick Access
+                                            </motion.p>
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <motion.div variants={quickLinkVariants}>
                                                     <Link
-                                                        href={link.href}
+                                                        href="/infos"
                                                         onClick={() => setOpen(false)}
-                                                        className="flex items-center justify-between px-4 py-3.5 text-neutral-800 font-medium text-base hover:bg-neutral-50 hover:text-primary-600 rounded-lg transition-all duration-200 group"
+                                                        className="flex flex-col items-center gap-2 p-4 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
                                                     >
-                                                        {link.name}
-                                                        <ChevronRight className="h-4 w-4 text-neutral-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" />
+                                                        <Heart className="h-5 w-5" />
+                                                        <span className="text-xs text-center">Health Info</span>
                                                     </Link>
                                                 </motion.div>
-                                            ))}
-                                        </div>
-
-                                        <Separator className="my-6" />
-
-                                        {/* Quick Links */}
-                                        <div className="space-y-1">
-                                            <p className="px-4 text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
-                                                Quick Links
-                                            </p>
-                                            <Link
-                                                href="/infos"
-                                                onClick={() => setOpen(false)}
-                                                className="flex items-center justify-between px-4 py-3 text-neutral-600 text-sm hover:bg-neutral-50 hover:text-primary-600 rounded-lg transition-all duration-200"
-                                            >
-                                                Health Information
-                                                <ChevronRight className="h-4 w-4 text-neutral-400" />
-                                            </Link>
-                                            <Link
-                                                href="/socials"
-                                                onClick={() => setOpen(false)}
-                                                className="flex items-center justify-between px-4 py-3 text-neutral-600 text-sm hover:bg-neutral-50 hover:text-primary-600 rounded-lg transition-all duration-200"
-                                            >
-                                                Social Media
-                                                <ChevronRight className="h-4 w-4 text-neutral-400" />
-                                            </Link>
-                                        </div>
+                                                <motion.div variants={quickLinkVariants}>
+                                                    <Link
+                                                        href="/socials"
+                                                        onClick={() => setOpen(false)}
+                                                        className="flex flex-col items-center gap-2 p-4 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
+                                                    >
+                                                        <MessageCircle className="h-5 w-5" />
+                                                        <span className="text-xs text-center">Social Media</span>
+                                                    </Link>
+                                                </motion.div>
+                                            </div>
+                                        </motion.div>
                                     </nav>
 
                                     {/* Mobile Footer Actions */}
-                                    <div className="p-5 border-t border-neutral-100 bg-neutral-50 space-y-3">
-                                        <Button className="w-full" size="lg" asChild>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.6, duration: 0.4 }}
+                                        className="p-5 bg-primary-900/50 backdrop-blur-sm space-y-3 border-t border-white/10"
+                                    >
+                                        <Button
+                                            className="w-full bg-white text-primary-700 hover:bg-white/90 font-semibold shadow-lg"
+                                            size="lg"
+                                            asChild
+                                        >
                                             <a href={`tel:${CONTACTS.phone}`}>
                                                 <Phone className="h-4 w-4" />
                                                 Call Us Now
                                             </a>
                                         </Button>
-                                        <Button variant="outline" className="w-full" size="lg" asChild>
+                                        <Button
+                                            variant="outline"
+                                            className="w-full border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 font-semibold"
+                                            size="lg"
+                                            asChild
+                                        >
                                             <a
                                                 href={`https://wa.me/${CONTACTS.whatsapp}`}
                                                 target="_blank"
@@ -223,7 +332,7 @@ export default function Nav(): JSX.Element {
                                                 WhatsApp Us
                                             </a>
                                         </Button>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             </SheetContent>
                         </Sheet>
