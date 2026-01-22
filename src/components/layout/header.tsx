@@ -6,13 +6,7 @@ import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
-const navItems = [
-  { href: "/programs", label: "Programs" },
-  { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact" },
-];
+import { siteConfig } from "@/config/site";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +49,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
+            {siteConfig.navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -72,7 +66,7 @@ export function Header() {
               <Link href="/contact">Get in Touch</Link>
             </Button>
             <Button size="sm" asChild>
-              <a href="tel:+237651421052">
+              <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>
                 <Phone className="h-4 w-4" />
                 Call Now
               </a>
@@ -105,7 +99,7 @@ export function Header() {
                 {/* Navigation */}
                 <nav className="flex-1 p-4">
                   <div className="space-y-1">
-                    {navItems.map((item) => (
+                    {siteConfig.navLinks.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -121,7 +115,7 @@ export function Header() {
                 {/* Footer */}
                 <div className="p-4 border-t bg-neutral-50">
                   <Button className="w-full" asChild>
-                    <a href="tel:+237651421052">
+                    <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>
                       <Phone className="h-4 w-4" />
                       Call Us Now
                     </a>
