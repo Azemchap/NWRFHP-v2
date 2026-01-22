@@ -79,13 +79,20 @@ export const siteConfig = {
       { label: "Essential Medicines", href: "/programs/essential-medicines" },
       { label: "Community Health", href: "/programs/community-health" },
       { label: "Health Coverage", href: "/programs/universal-health-coverage" },
+      { label: "Maternal Health", href: "/programs/maternal-child-health" },
       { label: "All Programs", href: "/programs" },
     ],
     organization: [
       { label: "Gallery", href: "/gallery" },
       { label: "Our Team", href: "/team" },
-      { label: "Contact", href: "/contact" },
+      { label: "UHC Services", href: "/health" },
       { label: "About Us", href: "/about" },
+    ],
+    quickLinks: [
+      { label: "Contact Us", href: "/contact" },
+      { label: "Health Voucher", href: "/health" },
+      { label: "Hemodialysis", href: "/programs/hemodialysis" },
+      { label: "Disease Management", href: "/programs/disease-management" },
     ],
   },
 } as const;
