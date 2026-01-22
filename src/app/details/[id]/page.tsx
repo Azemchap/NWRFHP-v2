@@ -31,9 +31,7 @@ interface StaffMember {
 }
 
 const quickLinks = [
-  { href: "/gallery", label: "Staff Gallery", icon: Users },
   { href: "/committee", label: "Management Committee", icon: Briefcase },
-  { href: "/accounts", label: "Accounts Section", icon: FileText },
   { href: "/ppm", label: "Pharmaceutical Products", icon: Pill },
   { href: "/health", label: "Universal Health Coverage", icon: Shield },
   { href: "/support", label: "Partnership Support", icon: Heart },
@@ -51,18 +49,16 @@ export default function DetailsPage({
 
   if (!member) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-neutral-900 mb-4">
-            Staff member not found
-          </h1>
-          <Button asChild>
-            <Link href="/gallery">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Gallery
-            </Link>
-          </Button>
-        </div>
+      <div className="min-h-screen bg-neutral-50 gap-2 flex items-center justify-center">
+        <h1 className="text-2xl font-bold text-neutral-900 mb-4">
+          Staff member not found
+        </h1>
+        <Button asChild>
+          <Link href="/gallery">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Gallery
+          </Link>
+        </Button>
       </div>
     );
   }
@@ -83,23 +79,25 @@ export default function DetailsPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link
-              href="/gallery"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>Back to Gallery</span>
-            </Link>
+            <div className="flex items-center gap-4 mb-6">
+              <Link
+                href="/gallery"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span>Back to Gallery</span>
+              </Link>
 
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium capitalize"
-            >
-              <Users className="w-4 h-4" />
-              {member.category.replace(/_/g, " ")}
-            </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium capitalize"
+              >
+                <Users className="w-4 h-4" />
+                {member.category.replace(/_/g, " ")}
+              </motion.span>
+            </div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
