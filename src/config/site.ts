@@ -51,17 +51,26 @@ export const siteConfig = {
     facebook: "https://facebook.com/nwrfhp",
     instagram: "https://instagram.com/nwrfhp",
     twitter: "https://twitter.com/nwrfhp",
-    linkedin: "https://linkedin.com/company/nwrfhp",
+    linkedin: "https://cm.linkedin.com/company/nwrfhp-pig",
     youtube: "https://youtube.com/@nwrfhp",
   },
 
-  // Key Statistics
+  // External Links
+  externalLinks: {
+    officialWebsite: "https://www.nwrfundforhealth.org/",
+  },
+
+  // Key Statistics (Based on official data)
   stats: {
     healthFacilities: 217,
-    communitiesServed: "500K+",
+    communitiesServed: "2.2M",
     yearsOfService: new Date().getFullYear() - 1987,
     healthWorkers: 850,
-    medicineAvailability: "95%",
+    medicineAvailability: "90%",
+    regionalStoreAvailability: "85%",
+    geographicCoverage: "90%",
+    healthDistricts: 19,
+    expiryRate: "<4%",
   },
 
   // Navigation Links
