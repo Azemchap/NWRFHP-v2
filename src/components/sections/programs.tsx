@@ -13,21 +13,21 @@ const programs = [
     title: "Essential Medicines Management",
     description:
       "Ensuring 95% availability of quality medicines across 217 community pharmacies serving rural and urban populations.",
-    imageUrl: "/images/programs/medicines.jpg",
+    imageUrl: "/images/formulary.jpg",
     slug: "essential-medicines",
   },
   {
     title: "Community Health Services",
     description:
       "Comprehensive primary healthcare services delivered through our extensive network of community health workers.",
-    imageUrl: "/images/programs/community-health.jpg",
+    imageUrl: "/images/delivery.jpg",
     slug: "community-health",
   },
   {
     title: "Universal Health Coverage",
     description:
       "Working towards accessible, affordable, and quality healthcare for all residents of North West Region.",
-    imageUrl: "/images/programs/uhc.jpg",
+    imageUrl: "/images/UHC1.jpg",
     slug: "universal-health-coverage",
   },
 ];
