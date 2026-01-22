@@ -68,10 +68,10 @@ export default function Nav(): JSX.Element {
 
     const navigationLinks: NavigationLink[] = [
         { href: '/programs', name: 'Programs', icon: Heart },
-        { href: '/about', name: 'About', icon: Users },
         { href: '/gallery', name: 'Gallery', icon: Camera },
         { href: '/team', name: 'Team', icon: Users },
         { href: '/contact', name: 'Contact', icon: Phone },
+        { href: '/about', name: 'About', icon: Users },
     ]
 
     return (
@@ -83,7 +83,7 @@ export default function Nav(): JSX.Element {
             }`}
         >
             {/* Top contact bar */}
-            <div className="bg-neutral-900">
+            <div className="bg-blue-600">
                 <div className="container mx-auto flex gap-6 items-center justify-end h-9 text-xs px-4 sm:px-6 lg:px-8">
                     <Link
                         href={`tel:${CONTACTS.phone}`}

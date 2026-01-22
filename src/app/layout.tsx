@@ -19,7 +19,9 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <div className='pt-10'>
+          <main className="min-h-screen">{children}</main>
+        </div>
         <Footer />
         <Toaster />
       </body>

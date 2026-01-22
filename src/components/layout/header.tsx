@@ -83,7 +83,7 @@ export function Header() {
       }`}
     >
       {/* Top contact bar */}
-      <div className="bg-neutral-900">
+      <div className="bg-primary-600">
         <div className="container mx-auto flex gap-6 items-center justify-end h-9 text-xs px-4 sm:px-6 lg:px-8">
           <Link
             href={`tel:${siteConfig.contact.phone.primaryRaw}`}

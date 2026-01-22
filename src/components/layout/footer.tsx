@@ -23,7 +23,7 @@ const itemVariants = {
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white">
+    <footer className="bg-primary-900 text-white">
       <div className="container py-12 lg:py-16">
         <motion.div
           variants={containerVariants}
