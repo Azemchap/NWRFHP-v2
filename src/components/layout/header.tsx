@@ -56,10 +56,10 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { href: "/programs", label: "Programs", icon: Heart },
-  { href: "/about", label: "About", icon: Users },
   { href: "/gallery", label: "Gallery", icon: Camera },
   { href: "/team", label: "Team", icon: Users },
   { href: "/contact", label: "Contact", icon: Phone },
+  { href: "/about", label: "About", icon: Users },
 ];
 
 export function Header() {
@@ -147,12 +147,6 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="outline" size="sm" asChild>
               <Link href="/contact">Get in Touch</Link>
-            </Button>
-            <Button size="sm" asChild>
-              <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>
-                <Phone className="h-4 w-4" />
-                Call Now
-              </a>
             </Button>
           </div>
 
