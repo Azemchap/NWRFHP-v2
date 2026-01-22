@@ -1,5 +1,8 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import { SOCIAL_LINKS } from '@/config/contacts'
+import { Mail, Phone, MapPin, Heart } from 'lucide-react'
 
 interface NavigationLink {
     name: string;
@@ -14,15 +17,22 @@ interface SocialLink {
 
 interface Navigation {
     main: NavigationLink[];
+    programs: NavigationLink[];
     social: SocialLink[];
 }
 
 const navigation: Navigation = {
     main: [
         { name: 'Home', href: '/' },
-        { name: 'Programs', href: '/programs' },
         { name: 'About', href: '/about' },
+        { name: 'Team', href: '/team' },
         { name: 'Contact', href: '/contact' },
+    ],
+    programs: [
+        { name: 'All Programs', href: '/programs' },
+        { name: 'Health Coverage', href: '/health' },
+        { name: 'Gallery', href: '/gallery' },
+        { name: 'Information', href: '/infos' },
     ],
     social: [
         {
@@ -65,30 +75,134 @@ const navigation: Navigation = {
 
 export default function Footer(): JSX.Element {
     return (
-        <footer className="bg-slate-900 ">
-            <div className="max-w-screen-2xl mx-auto py-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-                <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                    {navigation.main.map((item) => (
-                        <div key={item.name} className="px-5 py-2">
-                            <a href={item.href} className="text-base text-gray-50 hover:text-gray-200 hover:underline underline-offset-2 ">
-                                {item.name}
+        <footer className="bg-neutral-900 text-white">
+            {/* Main Footer */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+                    {/* Brand Column */}
+                    <div className="lg:col-span-1">
+                        <Link href="/" className="inline-flex items-center gap-3 mb-6">
+                            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-1.5">
+                                <Image
+                                    src="/images/logo.jpg"
+                                    alt="NWRFHP"
+                                    width={40}
+                                    height={40}
+                                    className="w-full h-full object-contain"
+                                />
+                            </div>
+                            <div>
+                                <span className="text-xl font-bold block">NWRFHP</span>
+                                <span className="text-xs text-neutral-400 font-medium tracking-wider uppercase">
+                                    Health Promotion
+                                </span>
+                            </div>
+                        </Link>
+                        <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
+                            Promoting sustainable quality healthcare for the population of
+                            North West Region, Cameroon since 1987.
+                        </p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-300 mb-4">
+                            Organization
+                        </h3>
+                        <nav className="flex flex-col gap-3">
+                            {navigation.main.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+                                >
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Programs */}
+                    <div>
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-300 mb-4">
+                            Programs
+                        </h3>
+                        <nav className="flex flex-col gap-3">
+                            {navigation.programs.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+                                >
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Contact */}
+                    <div>
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-300 mb-4">
+                            Contact Us
+                        </h3>
+                        <div className="flex flex-col gap-3">
+                            <a
+                                href="tel:+237651421052"
+                                className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors duration-200 group"
+                            >
+                                <Phone className="h-4 w-4 text-primary-400 group-hover:scale-110 transition-transform" />
+                                +237 651 421 052
                             </a>
+                            <a
+                                href="mailto:info@nwrfhp.org"
+                                className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors duration-200 group"
+                            >
+                                <Mail className="h-4 w-4 text-primary-400 group-hover:scale-110 transition-transform" />
+                                info@nwrfhp.org
+                            </a>
+                            <div className="flex items-start gap-2 text-sm text-neutral-400">
+                                <MapPin className="h-4 w-4 text-primary-400 mt-0.5 flex-shrink-0" />
+                                <span>Bamenda, North West Region, Cameroon</span>
+                            </div>
                         </div>
-                    ))}
-                </nav>
-                <div className="mt-8 flex justify-center space-x-6">
-                    {navigation.social.map((item) => (
-                        <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-50">
-                            <span className="sr-only">{item.name}</span>
-                            <item.icon className="h-6 w-6" aria-hidden="true" />
-                        </a>
-                    ))}
+                    </div>
                 </div>
-                <p className="mt-8 text-center text-sm text-gray-300">&copy;
-                 {new Date().getFullYear()} NWRFHP, All rights reserved.</p>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-neutral-800">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        {/* Copyright */}
+                        <p className="text-sm text-neutral-500">
+                            &copy; {new Date().getFullYear()} NWRFHP. All rights reserved.
+                        </p>
+
+                        {/* Social Links */}
+                        <div className="flex items-center gap-2">
+                            {navigation.social.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 rounded-lg bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-200"
+                                    aria-label={item.name}
+                                >
+                                    <item.icon className="h-4 w-4" aria-hidden="true" />
+                                </a>
+                            ))}
+                        </div>
+
+                        {/* Made with love */}
+                        <p className="text-xs text-neutral-600 flex items-center gap-1">
+                            <span>Made with</span>
+                            <Heart className="h-3 w-3 text-primary-500 fill-primary-500" />
+                            <span>for healthcare</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </footer>
-
-
     )
 }

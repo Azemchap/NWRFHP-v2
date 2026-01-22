@@ -1,5 +1,5 @@
-import Footer from '../components/Footer'
-import Nav from '../components/Nav'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import './globals.css'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -12,8 +12,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'NORTH WEST REGIONAL FUND FOR HEALTH PROMOTION',
-  description: 'This is the official website of NORTH WEST REGIONAL FUND FOR HEALTH PROMOTION',
+  title: 'NWRFHP - Quality Healthcare for North West Region',
+  description: 'Promoting sustainable access to essential medicines and quality health services across the North West Region of Cameroon.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 }
 
@@ -25,8 +25,8 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="antialiased">
-        <Nav />
-        <main className="mt-16 min-h-screen">{children}</main>
+        <Header />
+        <main className="min-h-screen">{children}</main>
         <Footer />
         <Toaster />
       </body>

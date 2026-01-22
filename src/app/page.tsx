@@ -1,21 +1,19 @@
-
-import Hero from '../components/Hero'
-import LogoCloud from '../components/LogoCloud'
-import OurMission from '../components/OurMission'
-import OurObjectives from '../components/OurObjectives'
-import OurValues from '../components/OurValues'
-import ProgramSection from '../components/ProgramSection'
+import {
+  HeroSection,
+  StatsSection,
+  MissionSection,
+  ProgramsSection,
+  CTASection
+} from '@/components/sections'
 
 export default function Home(): JSX.Element {
-
   return (
     <main>
-      <Hero />
-      <LogoCloud />
-      <OurMission />
-      <OurValues />
-      <OurObjectives />
-      <ProgramSection />
+      <HeroSection />
+      <StatsSection />
+      <MissionSection />
+      <ProgramsSection />
+      <CTASection />
     </main>
   )
 }
