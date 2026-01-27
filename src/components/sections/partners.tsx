@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { siteConfig } from "@/config/site";
 
 const partners = [
   { src: "/images/logo8.jpg", alt: "Ministry of Health", name: "Ministry of Health" },
@@ -89,7 +90,7 @@ export function PartnersSection() {
             </div>
             <div className="w-px h-12 bg-neutral-200 hidden sm:block" />
             <div>
-              <p className="text-3xl font-bold text-primary-600">37+</p>
+              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.yearsOfService}+</p>
               <p className="text-sm text-neutral-600">Years of Partnership</p>
             </div>
           </div>

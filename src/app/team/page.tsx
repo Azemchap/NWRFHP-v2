@@ -224,7 +224,7 @@ export default function TeamPage() {
                 className="border-2 border-white/30 bg-transparent text-white hover:bg-white/10"
                 asChild
               >
-                <a href={`tel:+237651421052`}>
+                <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>
                   <Phone className="mr-2 h-5 w-5" />
                   Call Us
                 </a>

@@ -289,19 +289,19 @@ export default function AboutPage() {
               {
                 icon: Eye,
                 title: "Our Vision",
-                description: "A North West Region where every individual has access to quality, affordable healthcare services and essential medicines.",
+                description: "To provide sustainable quality healthcare for the population of the North West Region.",
                 color: "bg-blue-500",
               },
               {
                 icon: Target,
                 title: "Our Mission",
-                description: "To promote sustainable quality healthcare through community partnership, ensuring essential medicines are available and accessible to all.",
+                description: "To assist the Ministry of Public Health in promoting access to quality healthcare of the population of the North West Region by stimulating the performance of the health system.",
                 color: "bg-primary-500",
               },
               {
                 icon: Heart,
                 title: "Our Values",
-                description: "Integrity, community participation, accessibility, quality assurance, and commitment to serving the underserved populations.",
+                description: "Collaboration, communication, openness, respect, partnership, and outcome-focused decision making.",
                 color: "bg-accent-500",
               },
             ].map((item, index) => (

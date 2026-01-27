@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight, Send } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { PartnersSection } from "@/components/sections";
 
 const contactMethods = [
   {
@@ -42,15 +42,6 @@ const contactMethods = [
     color: "bg-red-500",
     external: true,
   },
-];
-
-const partners = [
-  { src: "/images/logo1.gif", alt: "Partner 1" },
-  { src: "/images/logo2.png", alt: "Partner 2" },
-  { src: "/images/logo3.png", alt: "Partner 3" },
-  { src: "/images/logo4.png", alt: "Partner 4" },
-  { src: "/images/logo5.png", alt: "Partner 5" },
-  { src: "/images/logo6.png", alt: "Partner 6" },
 ];
 
 export default function ContactPage() {
@@ -250,45 +241,7 @@ export default function ContactPage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-8 lg:py-12 bg-neutral-50">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
-              Our Partners
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
-              Trusted by Leading Organizations
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="flex justify-center"
-              >
-                <Image
-                  src={partner.src}
-                  alt={partner.alt}
-                  width={120}
-                  height={60}
-                  className="h-12 w-auto object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnersSection />
     </div>
   );
 }
