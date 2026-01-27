@@ -60,15 +60,6 @@ export function Footer() {
                 <Instagram className="h-4 w-4" />
               </a>
               <a
-                href={siteConfig.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-neutral-800 hover:bg-sky-500 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
                 href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -57,14 +57,16 @@ export const siteConfig = {
       secondaryRaw: "+237677123456",
     },
     email: {
-      primary: "info@nwrfhp.org",
-      support: "support@nwrfhp.org",
-      partnerships: "partnerships@nwrfhp.org",
+      primary: "nwrfhp@nwrfundforhealth.org",
+      contact: "contact@nwrfundforhealth.org",
+      partnerships: "partnerships@nwrfundforhealth.org",
+      recruitment: "recruitment@nwrfundforhealth.org"
     },
     whatsapp: {
       number: "+237 651 421 052",
       numberRaw: "237651421052", // For wa.me links (no + sign)
       link: "https://wa.me/237651421052",
+      channelLink: "https://whatsapp.com/channel/0029Vb6H2mbFnSz0BzhGWI27"
     },
   },
 
@@ -77,19 +79,17 @@ export const siteConfig = {
     fullAddress: "Bamenda Regional Hospital, North West Region, Cameroon",
     shortAddress: "Regional Hospital, Bamenda, NWR, CM",
     coordinates: {
-      lat: 5.9607799,
-      lng: 10.1476556,
+      lat: 5.9547297,
+      lng: 10.1439435,
     },
-    googleMapsUrl: "https://maps.google.com/?q=5.9607799,10.1476556",
+    googleMapsUrl: "https://maps.google.com/?q=5.9547297,10.1439435",
   },
 
   // Social Media Links
   social: {
     facebook: "https://facebook.com/nwrfhp",
     instagram: "https://instagram.com/nwrfhp",
-    twitter: "https://twitter.com/nwrfhp",
-    linkedin: "https://linkedin.com/company/nwrfhp",
-    youtube: "https://youtube.com/@nwrfhp",
+    linkedin: "https://www.linkedin.com/company/nwrfhp-pig/",
   },
 
   // Key Statistics

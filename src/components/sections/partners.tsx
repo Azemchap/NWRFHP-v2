@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const partners = [
-  { src: "/images/logo1.gif", alt: "Ministry of Public Health", name: "Ministry of Public Health" },
-  { src: "/images/logo2.png", alt: "WHO", name: "World Health Organization" },
-  { src: "/images/logo3.png", alt: "UNICEF", name: "UNICEF" },
-  { src: "/images/logo4.png", alt: "USAID", name: "USAID" },
-  { src: "/images/logo5.png", alt: "Global Fund", name: "Global Fund" },
-  { src: "/images/logo6.png", alt: "Regional Delegation", name: "NW Regional Delegation" },
+  { src: "/images/logo8.jpg", alt: "Ministry of Health", name: "Ministry of Health" },
+  { src: "/images/logo1.gif", alt: "GIZ", name: "GIZ" },
+  { src: "/images/logo3.png", alt: "USAID", name: "USAID" },
+  { src: "/images/logo4.png", alt: "WHO", name: "WHO" },
+  { src: "/images/logo5.png", alt: "KFW", name: "KFW" },
+  { src: "/images/logo9.jpg", alt: "Universal Health Coverage", name: "Universal Health Coverage" },
 ];
 
 export function PartnersSection() {
@@ -58,8 +58,8 @@ export function PartnersSection() {
                   src={partner.src}
                   alt={partner.alt}
                   width={120}
-                  height={60}
-                  className="h-12 w-auto object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  height={80}
+                  className="h-16 w-auto object-contain grayscale-25 hover:grayscale-0 opacity-40 hover:cursor-pointer hover:opacity-100 transition-all duration-300"
                 />
               </div>
               <p className="mt-3 text-xs text-neutral-500 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

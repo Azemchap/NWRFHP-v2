@@ -11,7 +11,6 @@ interface Logo {
 
 const logoCloud: Logo[] = [
   { id: '1', href: '/images/logo1.gif' },
-  { id: '4', href: '/images/logo2.png' },
   { id: '6', href: '/images/logo3.png' },
   { id: '8', href: '/images/logo5.png' },
   { id: '9', href: '/images/logo6.png' },
