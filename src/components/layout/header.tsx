@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Phone, MessageCircle, ChevronRight, Heart } from "lucide-react";
+import { Menu, Phone, MessageCircle, ChevronRight, Heart, Linkedin, LinkedinIcon } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -72,6 +72,13 @@ export function Header() {
       {/* Top contact bar */}
       <div className="bg-primary-600">
         <div className="container mx-auto flex gap-6 items-center justify-end h-9 text-xs px-4 sm:px-6 lg:px-8">
+          <Link
+            href={`${siteConfig.social.linkedin}`} 
+            className="flex gap-2 items-center text-neutral-300 hover:text-white transition-colors duration-200 font-medium group"
+          >
+            <LinkedinIcon className="h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
+            <span className="hidden sm:inline">Linked-In</span>
+          </Link>
           <Link
             href={`tel:${siteConfig.contact.phone.primaryRaw}`}
             className="flex gap-2 items-center text-neutral-300 hover:text-white transition-colors duration-200 font-medium group"
