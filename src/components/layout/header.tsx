@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, Phone, MessageCircle, ChevronRight, Heart, Linkedin, LinkedinIcon } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { siteConfig, navigationLinks } from "@/config/site";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -129,6 +129,7 @@ export function Header() {
               side="right"
               className="w-full sm:w-[360px] border-l-0 p-0 overflow-hidden"
             >
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full bg-gradient-to-b from-primary-600 via-primary-700 to-primary-800">
                 {/* Mobile Header - Primary Blue Background */}
                 <motion.div
