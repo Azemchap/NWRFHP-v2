@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, Phone, MessageCircle, ChevronRight, Heart } from "lucide-react";
+import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { siteConfig, navigationLinks } from "@/config/site";
@@ -94,26 +95,7 @@ export function Header() {
       <div className="container">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12 rounded-lg overflow-hidden bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
-              <Image
-                src="/images/logo.jpg"
-                alt="NWRFHP"
-                width={48}
-                height={48}
-                priority
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg lg:text-xl font-bold text-neutral-900 tracking-tight group-hover:text-primary-600 transition-colors">
-                NWRFHP
-              </span>
-              <span className="text-[10px] text-neutral-500 font-medium tracking-wider uppercase hidden sm:block">
-                Health Promotion
-              </span>
-            </div>
-          </Link>
+          <Logo variant="default" size="md" showTagline />
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">

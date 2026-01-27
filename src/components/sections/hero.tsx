@@ -21,9 +21,9 @@ export function HeroSection() {
           priority
           quality={90}
         />
-        {/* Gradient Overlay - Using new primary blue */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/40 via-primary-900/40 to-primary-800/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 via-transparent to-transparent" />
+        {/* Gradient Overlay - Using new primary blue with stronger contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/65 via-primary-900/50 to-primary-800/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/60 via-transparent to-primary-950/40" />
       </div>
 
       {/* Animated Background Elements */}
@@ -81,7 +81,7 @@ export function HeroSection() {
             {/* Heading */}
             <motion.h1
               variants={staggerItem}
-              className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]"
+              className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-lg"
             >
               Quality Healthcare for{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 via-accent-400 to-accent-300">
@@ -92,7 +92,7 @@ export function HeroSection() {
             {/* Description */}
             <motion.p
               variants={staggerItem}
-              className="mb-8 text-lg lg:text-xl text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0"
+              className="mb-8 text-lg lg:text-xl text-white/95 leading-relaxed max-w-xl mx-auto lg:mx-0 drop-shadow-md"
             > We partner with organizations and communities to build a healthier future for over 2.2 million people in Cameroon.
             </motion.p>
 
@@ -110,7 +110,7 @@ export function HeroSection() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 text-sm text-white/90"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-white/15 backdrop-blur-sm rounded-full border border-white/20 text-sm text-white font-medium"
                 >
                   <CheckCircle className="w-4 h-4 text-accent-400" />
                   {feature}
@@ -183,7 +183,7 @@ export function HeroSection() {
                       <p className={`text-3xl xl:text-4xl font-bold ${stat.color === 'primary' ? 'text-white' : 'text-accent-400'}`}>
                         {stat.value}
                       </p>
-                      <p className="text-sm text-white/60 mt-2">{stat.label}</p>
+                      <p className="text-sm text-white/80 mt-2">{stat.label}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -200,7 +200,7 @@ export function HeroSection() {
                   </div>
                   <div className="text-left">
                     <p className="text-white font-semibold text-lg">WHO Standards</p>
-                    <p className="text-white/60 text-sm">Certified Healthcare Provider</p>
+                    <p className="text-white/80 text-sm">Certified Healthcare Provider</p>
                   </div>
                 </motion.div>
               </div>
@@ -215,16 +215,16 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 1.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-3"
         >
-          <span className="text-white/50 text-sm font-medium">Scroll to explore</span>
+          <span className="text-white/70 text-sm font-medium">Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
+            className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2"
           >
             <motion.div
               animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-white/60 rounded-full"
+              className="w-1.5 h-1.5 bg-white/80 rounded-full"
             />
           </motion.div>
         </motion.div>

@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Facebook, Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Logo } from "@/components/shared/logo";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Twitter } from "lucide-react";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,7 +24,7 @@ const itemVariants = {
 export function Footer() {
   return (
     <footer className="bg-primary-900 text-white">
-      <div className="container py-6 lg:py-8">
+      <div className="container py-20 lg:py-32">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -34,20 +34,8 @@ export function Footer() {
         >
           {/* Brand Column */}
           <motion.div variants={itemVariants} className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
-                <Image
-                  src="/images/logo.jpg"
-                  alt={siteConfig.name}
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-lg font-bold group-hover:text-primary-400 transition-colors">
-                {siteConfig.name}
-              </span>
-            </Link>
+            {/* Logo */}
+            <Logo variant="light" size="md" showTagline={false} className="mb-4" />
             <p className="text-neutral-400 text-sm leading-relaxed mb-6">
               {siteConfig.tagline}
             </p>
