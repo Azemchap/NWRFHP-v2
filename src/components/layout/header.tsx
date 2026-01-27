@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Phone, MessageCircle, ChevronRight, Heart, Camera, Users, X } from "lucide-react";
+import { Menu, Phone, MessageCircle, ChevronRight, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { siteConfig } from "@/config/site";
+import { siteConfig, navigationLinks } from "@/config/site";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Animation variants for the mobile menu
@@ -47,20 +47,6 @@ const quickLinkVariants = {
     },
   },
 };
-
-interface NavLink {
-  href: string;
-  label: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-const navLinks: NavLink[] = [
-  { href: "/programs", label: "Programs", icon: Heart },
-  { href: "/gallery", label: "Gallery", icon: Camera },
-  { href: "/team", label: "Team", icon: Users },
-  { href: "/contact", label: "Contact", icon: Phone },
-  { href: "/about", label: "About", icon: Users },
-];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -131,7 +117,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((item) => (
+            {navigationLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -142,13 +128,6 @@ export function Header() {
               </Link>
             ))}
           </nav>
-
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <Link href="/contact">Get in Touch</Link>
-            </Button>
-          </div>
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -218,7 +197,7 @@ export function Header() {
                         animate="visible"
                         className="space-y-2"
                       >
-                        {navLinks.map((link) => (
+                        {navigationLinks.map((link) => (
                           <motion.div key={link.href} variants={itemVariants}>
                             <Link
                               href={link.href}

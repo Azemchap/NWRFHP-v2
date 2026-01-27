@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 import { ArrowRight, Pill, Heart, Shield, Baby, Stethoscope, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { siteConfig } from "@/config/site";
 
 const services = [
   {
     icon: Pill,
     title: "Essential Medicines",
-    description: "Quality medicines available at 217 pharmacies with 95% availability rate.",
+    description: `Quality medicines available at ${siteConfig.stats.communityPharmacies} pharmacies with ${siteConfig.stats.medicineAvailability}% availability rate.`,
     href: "/programs/essential-medicines",
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
@@ -19,7 +20,7 @@ const services = [
   {
     icon: Heart,
     title: "Community Health",
-    description: "850+ trained health workers providing primary care across 19 districts.",
+    description: `${siteConfig.stats.healthWorkers}+ trained health workers providing primary care across ${siteConfig.stats.healthDistricts} districts.`,
     href: "/programs/community-health",
     color: "from-rose-500 to-rose-600",
     bgColor: "bg-rose-50",
@@ -28,7 +29,7 @@ const services = [
   {
     icon: Shield,
     title: "Health Coverage",
-    description: "Universal Health Coverage serving 2.2 million with subsidized care.",
+    description: `Universal Health Coverage serving ${siteConfig.stats.populationServed} million with subsidized care.`,
     href: "/programs/universal-health-coverage",
     color: "from-emerald-500 to-emerald-600",
     bgColor: "bg-emerald-50",
@@ -65,7 +66,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="py-20 lg:py-32 bg-neutral-50">
+    <section className="py-10 lg:py-16 bg-neutral-50">
       <div className="container">
         {/* Header */}
         <motion.div

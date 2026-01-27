@@ -1,7 +1,44 @@
+import { Heart, Camera, Users, Phone, Info, type LucideIcon } from 'lucide-react';
+
 /**
  * Central Site Configuration
  * Update contact info here and it will reflect throughout the entire website
  */
+
+// ============================================
+// NAVIGATION TYPES
+// ============================================
+
+export interface NavigationLink {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+export interface NavigationGroup {
+  title: string;
+  links: Omit<NavigationLink, 'icon'>[];
+}
+
+// ============================================
+// NAVIGATION CONFIG
+// ============================================
+
+/**
+ * Main navigation links used in header, mobile menu, and footer
+ * Order matters - links appear in this order throughout the site
+ */
+export const navigationLinks: NavigationLink[] = [
+  { href: '/about', label: 'About Us', icon: Info },
+  { href: '/programs', label: 'Our Programs', icon: Heart },
+  { href: '/team', label: 'Our Team', icon: Users },
+  { href: '/contact', label: 'Get in Touch', icon: Phone },
+  { href: '/gallery', label: 'Gallery', icon: Camera },
+];
+
+// ============================================
+// SITE CONFIG
+// ============================================
 
 export const siteConfig = {
   // Organization Info
@@ -57,21 +94,15 @@ export const siteConfig = {
 
   // Key Statistics
   stats: {
-    healthFacilities: 217,
-    communitiesServed: "500K+",
+    healthFacilities: 430,
+    communityPharmacies: 430,
+    communitiesServed: 500,
+    populationServed: 2.2, // In millions (2.2M)
     yearsOfService: new Date().getFullYear() - 1987,
     healthWorkers: 850,
-    medicineAvailability: "95%",
+    medicineAvailability: 95,
+    healthDistricts: 21,
   },
-
-  // Navigation Links
-  navLinks: [
-    { href: "/programs", label: "Programs" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/team", label: "Team" },
-    { href: "/contact", label: "Contact" },
-    { href: "/about", label: "About" },
-  ],
 
   // Footer Links
   footerLinks: {

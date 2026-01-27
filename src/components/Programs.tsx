@@ -4,6 +4,7 @@ import car_in_mud from 'public/images/car-in-mud.jpg'
 import car_and_mud from 'public/images/car_and_mud.jpg'
 import car_and_rock from 'public/images/rock.jpg'
 import supply_team from 'public/images/supply-team.jpg'
+import { siteConfig } from '@/config/site'
 
 export default function Programs(): JSX.Element {
   return (
@@ -47,7 +48,7 @@ export default function Programs(): JSX.Element {
       <Card className="border-neutral-200 shadow-md">
         <CardContent className="p-8 sm:p-10">
           <p className="text-body mb-6">
-            On application, new communities are offered drug seed stock, safety measures for the community pharmacy locality and training. The local community has to provide a well-furnished locality, to select the community pharmacy attendant, and to elect the local Health Committee. In 1995 the NWRFHP PIG provided AND maintained a medicine supply system for an estimated 80% of the rural population and a good portion of the urban areas. Today, 217 community pharmacies are supplied from the regional medical store covering 90% of the population.
+            On application, new communities are offered drug seed stock, safety measures for the community pharmacy locality and training. The local community has to provide a well-furnished locality, to select the community pharmacy attendant, and to elect the local Health Committee. In 1995 the NWRFHP PIG provided AND maintained a medicine supply system for an estimated 80% of the rural population and a good portion of the urban areas. Today, {siteConfig.stats.communityPharmacies} community pharmacies are supplied from the regional medical store covering 90% of the population.
           </p>
         </CardContent>
       </Card>

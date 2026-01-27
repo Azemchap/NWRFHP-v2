@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { siteConfig } from "@/config/site";
 
 const faqs = [
   {
@@ -24,7 +25,7 @@ const faqs = [
   },
   {
     question: "How do I find a community pharmacy near me?",
-    answer: "NWRFHP operates 217 community pharmacies across all 19 health districts in the North West Region. Contact us at +237 651 421 052 or visit our office in Bamenda for information about the nearest community pharmacy to your location.",
+    answer: `NWRFHP operates ${siteConfig.stats.communityPharmacies} community pharmacies across all ${siteConfig.stats.healthDistricts} health districts in the North West Region. Contact us at ${siteConfig.contact.phone.primary} or visit our office in ${siteConfig.location.city} for information about the nearest community pharmacy to your location.`,
   },
   {
     question: "Can I become a community health worker?",
@@ -36,7 +37,7 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="py-10 lg:py-16 bg-white">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left - Header */}

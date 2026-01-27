@@ -108,7 +108,7 @@ const uhcPackages = [
 
 const stats = [
   { value: "5", label: "Service Packages", icon: Shield },
-  { value: "2.2M", label: "Population Covered", icon: Users },
+  { value: `${siteConfig.stats.populationServed}M`, label: "Population Covered", icon: Users },
   { value: "90%", label: "Geographic Coverage", icon: Building },
   { value: "6K", label: "FCFA Health Voucher", icon: Heart },
 ];
@@ -179,7 +179,7 @@ export default function HealthPage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-10 lg:py-14 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Content */}
@@ -275,7 +275,7 @@ export default function HealthPage() {
       </section>
 
       {/* UHC Packages Section */}
-      <section id="packages" className="py-20 lg:py-28 bg-neutral-50">
+      <section id="packages" className="py-10 lg:py-14 bg-neutral-50">
         <div className="container">
           {/* Header */}
           <motion.div
@@ -380,7 +380,7 @@ export default function HealthPage() {
       </section>
 
       {/* How to Benefit Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-10 lg:py-14 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Steps */}
@@ -474,7 +474,7 @@ export default function HealthPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-10 lg:py-14 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

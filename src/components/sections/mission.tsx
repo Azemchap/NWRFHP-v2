@@ -32,7 +32,7 @@ const values = [
 
 export function MissionSection() {
   return (
-    <section className="py-16 lg:py-24 bg-neutral-50">
+    <section className="py-8 lg:py-12 bg-neutral-50">
       <div className="container">
         {/* Section Header */}
         <motion.div

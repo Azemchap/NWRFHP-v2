@@ -57,7 +57,7 @@ export function SectionWrapper({
   return (
     <section
       id={id}
-      className={`py-16 lg:py-24 ${backgroundClasses[background]} ${className}`}
+      className={`py-8 lg:py-12 ${backgroundClasses[background]} ${className}`}
     >
       <div className="container">
         {(badge || title || description) && (

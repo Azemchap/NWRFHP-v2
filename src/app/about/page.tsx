@@ -18,7 +18,7 @@ const milestones = [
 
 const stats = [
   { value: siteConfig.stats.healthFacilities, label: "Community Pharmacies", icon: Building },
-  { value: "2.2M", label: "Population Served", icon: Users },
+  { value: `${siteConfig.stats.populationServed}M`, label: "Population Served", icon: Users },
   { value: "90%", label: "Geographic Coverage", icon: Target },
   { value: `${siteConfig.stats.yearsOfService}+`, label: "Years of Service", icon: Award },
 ];
@@ -39,7 +39,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/85 to-primary-800/70" />
         </div>
 
-        <div className="container relative z-10 py-20 lg:py-28">
+        <div className="container relative z-10 py-10 lg:py-14">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -120,7 +120,7 @@ export default function AboutPage() {
       </section>
 
       {/* History Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-8 lg:py-12 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -196,7 +196,7 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Different */}
-      <section className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -242,8 +242,8 @@ export default function AboutPage() {
               <div className="space-y-4">
                 {[
                   "Started with 59 Community Pharmacies",
-                  "Now serving 217 community pharmacies",
-                  "Coverage of 2.2 million inhabitants",
+                  `Now serving ${siteConfig.stats.communityPharmacies} community pharmacies`,
+                  `Coverage of ${siteConfig.stats.populationServed} million inhabitants`,
                   "90% geographical coverage",
                 ].map((item, index) => (
                   <motion.div
@@ -267,7 +267,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision, Mission, Values */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-8 lg:py-12 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,7 +326,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary-600">
+      <section className="py-8 lg:py-12 bg-primary-600">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

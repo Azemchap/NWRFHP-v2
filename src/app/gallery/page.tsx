@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { getAllBooks } from "@/lib/fake-data";
+import { siteConfig } from "@/config/site";
 
 const categories = [
   { value: "all", label: "All Staff" },
@@ -116,7 +117,7 @@ export default function GalleryPage() {
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="container relative z-10 py-20 lg:py-28">
+        <div className="container relative z-10 py-10 lg:py-14">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -176,11 +177,11 @@ export default function GalleryPage() {
               <p className="text-neutral-600 text-sm mt-1">Departments</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">37+</p>
+              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.yearsOfService}+</p>
               <p className="text-neutral-600 text-sm mt-1">Years Experience</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">217</p>
+              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.communityPharmacies}</p>
               <p className="text-neutral-600 text-sm mt-1">Pharmacies Served</p>
             </div>
           </motion.div>
@@ -421,7 +422,7 @@ export default function GalleryPage() {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-8 lg:py-12 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

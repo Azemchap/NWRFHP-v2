@@ -80,7 +80,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* Programs Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-8 lg:py-12">
         <div className="container">
           {/* Section Header */}
           <motion.div
@@ -219,7 +219,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

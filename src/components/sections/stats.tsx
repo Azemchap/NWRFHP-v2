@@ -3,10 +3,11 @@
 import { StatCard } from "@/components/shared/stat-card";
 import { Building2, Users, Package, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 const stats = [
   {
-    value: 217,
+    value: siteConfig.stats.communityPharmacies,
     label: "Community Pharmacies",
     description: "Serving rural & urban areas",
     icon: Building2,
@@ -21,7 +22,7 @@ const stats = [
     color: "accent" as const,
   },
   {
-    value: 95,
+    value: siteConfig.stats.medicineAvailability,
     label: "Medicine Availability",
     description: "Essential medicines in stock",
     suffix: "%",
@@ -29,7 +30,7 @@ const stats = [
     color: "success" as const,
   },
   {
-    value: 19,
+    value: siteConfig.stats.healthDistricts,
     label: "Health Districts",
     description: "Actively supported",
     icon: MapPin,
@@ -39,7 +40,7 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-8 lg:py-12 bg-white">
       <div className="container">
         {/* Section Header */}
         <motion.div

@@ -4,19 +4,20 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Building, Users, Pill, MapPin, Heart, Award } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { siteConfig } from "@/config/site";
 
 const impactStats = [
   {
     icon: Building,
-    value: 217,
-    suffix: "",
+    value: siteConfig.stats.communityPharmacies,
+    suffix: "+",
     label: "Community Pharmacies",
     description: "Serving rural & urban areas",
     color: "from-primary-500 to-primary-600",
   },
   {
     icon: Users,
-    value: 2.2,
+    value: siteConfig.stats.populationServed,
     suffix: "M+",
     label: "Population Served",
     description: "Across the region",
@@ -24,7 +25,7 @@ const impactStats = [
   },
   {
     icon: Pill,
-    value: 95,
+    value: siteConfig.stats.medicineAvailability,
     suffix: "%",
     label: "Medicine Availability",
     description: "WHO quality standards",
@@ -32,7 +33,7 @@ const impactStats = [
   },
   {
     icon: MapPin,
-    value: 19,
+    value: siteConfig.stats.healthDistricts,
     suffix: "",
     label: "Health Districts",
     description: "Complete coverage",
@@ -40,7 +41,7 @@ const impactStats = [
   },
   {
     icon: Heart,
-    value: 850,
+    value: siteConfig.stats.healthWorkers,
     suffix: "+",
     label: "Health Workers",
     description: "Trained professionals",
@@ -48,10 +49,10 @@ const impactStats = [
   },
   {
     icon: Award,
-    value: 37,
+    value: siteConfig.stats.yearsOfService,
     suffix: "+",
     label: "Years of Service",
-    description: "Since 1987",
+    description: `Since ${siteConfig.foundedYear}`,
     color: "from-purple-500 to-purple-600",
   },
 ];
@@ -89,7 +90,7 @@ function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; 
 
 export function ImpactSection() {
   return (
-    <section className="py-20 lg:py-32 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 relative overflow-hidden">
+    <section className="py-10 lg:py-16 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl" />

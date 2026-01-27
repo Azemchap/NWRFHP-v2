@@ -34,7 +34,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 lg:py-32 bg-neutral-50">
+    <section className="py-10 lg:py-16 bg-neutral-50">
       <div className="container">
         {/* Header */}
         <motion.div

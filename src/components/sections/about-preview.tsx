@@ -12,12 +12,12 @@ export function AboutPreviewSection() {
   const highlights = [
     "Public Interest Group since 2012",
     "Government-backed healthcare initiative",
-    "Serving 2.2 million population",
+    `Serving ${siteConfig.stats.populationServed} million population`,
     "WHO quality standards",
   ];
 
   return (
-    <section className="py-20 lg:py-32 bg-white overflow-hidden">
+    <section className="py-10 lg:py-16 bg-white overflow-hidden">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left - Images */}
@@ -98,7 +98,7 @@ export function AboutPreviewSection() {
               variants={staggerItem}
               className="text-neutral-600 mb-8 leading-relaxed"
             >
-              Established in line with the Bamako Initiative, we operate 217 community
+              Established in line with the Bamako Initiative, we operate {siteConfig.stats.communityPharmacies} community
               pharmacies and partner with government and international organizations to
               deliver comprehensive healthcare services.
             </motion.p>
@@ -144,7 +144,7 @@ export function AboutPreviewSection() {
                   <Users className="w-6 h-6 text-accent-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-neutral-900">2.2M+</p>
+                  <p className="text-2xl font-bold text-neutral-900">{siteConfig.stats.populationServed}M+</p>
                   <p className="text-sm text-neutral-500">People Served</p>
                 </div>
               </div>

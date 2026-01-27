@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, CheckCircle, Play } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -22,8 +22,8 @@ export function HeroSection() {
           quality={90}
         />
         {/* Gradient Overlay - Using new primary blue */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/98 via-primary-900/90 to-primary-800/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/40 via-primary-900/40 to-primary-800/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 via-transparent to-transparent" />
       </div>
 
       {/* Animated Background Elements */}
@@ -81,7 +81,7 @@ export function HeroSection() {
             {/* Heading */}
             <motion.h1
               variants={staggerItem}
-              className="mb-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+              className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]"
             >
               Quality Healthcare for{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 via-accent-400 to-accent-300">
@@ -93,10 +93,7 @@ export function HeroSection() {
             <motion.p
               variants={staggerItem}
               className="mb-8 text-lg lg:text-xl text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0"
-            >
-              Promoting sustainable access to essential medicines and quality health
-              services. We partner with communities to build a healthier future for
-              over 2.2 million people in Cameroon.
+            > We partner with organizations and communities to build a healthier future for over 2.2 million people in Cameroon.
             </motion.p>
 
             {/* Feature Pills */}
@@ -105,9 +102,8 @@ export function HeroSection() {
               className="flex flex-wrap gap-3 mb-10 justify-center lg:justify-start"
             >
               {[
-                `${siteConfig.stats.healthFacilities} Pharmacies`,
-                `${siteConfig.stats.medicineAvailability} Availability`,
-                "19 Districts"
+                `${siteConfig.stats.medicineAvailability}% Medicines Availability`,
+                `${siteConfig.stats.healthDistricts}+ Health Districts`
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -171,10 +167,10 @@ export function HeroSection() {
 
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { value: siteConfig.stats.healthFacilities, label: "Health Facilities", color: "primary" },
-                    { value: siteConfig.stats.communitiesServed, label: "Communities Served", color: "accent" },
+                    { value: `${siteConfig.stats.healthFacilities}+`, label: "Health Facilities", color: "primary" },
+                    { value: `${siteConfig.stats.communitiesServed}k+`, label: "Communities Served", color: "accent" },
                     { value: `${siteConfig.stats.yearsOfService}+`, label: "Years of Service", color: "primary" },
-                    { value: siteConfig.stats.healthWorkers, label: "Health Workers", color: "accent" },
+                    { value: `${siteConfig.stats.healthWorkers}+`, label: "Health Workers", color: "accent" },
                   ].map((stat, index) => (
                     <motion.div
                       key={index}

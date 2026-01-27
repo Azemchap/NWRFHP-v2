@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 const programs = [
   {
     title: "Essential Medicines Management",
     description:
-      "Ensuring 95% availability of quality medicines across 217 community pharmacies serving rural and urban populations.",
+      `Ensuring ${siteConfig.stats.medicineAvailability}% availability of quality medicines across ${siteConfig.stats.communityPharmacies} community pharmacies serving rural and urban populations.`,
     imageUrl: "/images/formulary.jpg",
     slug: "essential-medicines",
   },
@@ -32,7 +33,7 @@ const programs = [
 
 export function ProgramsSection() {
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-8 lg:py-12 bg-white">
       <div className="container">
         {/* Section Header */}
         <motion.div

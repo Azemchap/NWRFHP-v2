@@ -15,7 +15,7 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section className="py-16 lg:py-24 bg-white border-y border-neutral-100">
+    <section className="py-8 lg:py-12 bg-white border-y border-neutral-100">
       <div className="container">
         {/* Header */}
         <motion.div

@@ -112,7 +112,7 @@ export default function DetailsPage({
       </section>
 
       {/* Main Content */}
-      <section className="py-12 lg:py-20 -mt-8">
+      <section className="py-6 lg:py-10 -mt-8">
         <div className="container">
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Image Card */}

@@ -81,7 +81,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
+      <section className="relative py-10 lg:py-14 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <motion.div
@@ -242,7 +242,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
       </section>
 
       {/* About Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-8 lg:py-12 bg-white">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -289,7 +289,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
       </section>
 
       {/* Other Team Members */}
-      <section className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -376,7 +376,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

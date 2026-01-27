@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 
 export function CTASection() {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
+    <section className="relative py-10 lg:py-14 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900" />
 

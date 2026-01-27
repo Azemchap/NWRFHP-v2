@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
 import teamData from "@/data/team.json";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { siteConfig } from "@/config/site";
 
 interface TeamMember {
   id: string;
@@ -72,11 +73,11 @@ export default function TeamPage() {
               <p className="text-neutral-600 text-sm mt-1">Departments</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">37+</p>
+              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.yearsOfService}+</p>
               <p className="text-neutral-600 text-sm mt-1">Years Experience</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">217</p>
+              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.communityPharmacies}</p>
               <p className="text-neutral-600 text-sm mt-1">Pharmacies Served</p>
             </div>
           </motion.div>
@@ -84,7 +85,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-8 lg:py-12">
         <div className="container">
           {/* Section Header */}
           <motion.div
@@ -190,7 +191,7 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

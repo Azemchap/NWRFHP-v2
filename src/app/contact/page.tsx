@@ -70,7 +70,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/85 to-primary-800/75" />
         </div>
 
-        <div className="container relative z-10 py-20 lg:py-28">
+        <div className="container relative z-10 py-10 lg:py-14">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-16 lg:py-24 -mt-16 relative z-10">
+      <section className="py-8 lg:py-12 -mt-16 relative z-10">
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
@@ -171,7 +171,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map & Additional Info */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-8 lg:py-12 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Info */}
@@ -250,7 +250,7 @@ export default function ContactPage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

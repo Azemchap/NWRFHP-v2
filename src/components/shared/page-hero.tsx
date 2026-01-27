@@ -81,7 +81,7 @@ export function PageHero({
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900" />
       )}
 
-      <div className="container relative z-10 py-20 lg:py-28">
+      <div className="container relative z-10 py-10 lg:py-14">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
