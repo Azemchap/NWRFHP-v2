@@ -8,7 +8,7 @@ const values = [
     icon: Eye,
     title: "Our Vision",
     description:
-      "To assist the Ministry of Public Health in providing sustainable quality healthcare for the population of the North West Region.",
+      "To provide sustainable quality healthcare for the population of the North West Region.",
     iconBg: "bg-primary-100",
     iconColor: "text-primary-600",
   },
@@ -16,7 +16,7 @@ const values = [
     icon: Target,
     title: "Our Mission",
     description:
-      "Promoting access to quality healthcare by improving the performance of the health system across all levels.",
+      "To assist the Ministry of Public Health in Promoting access to quality healthcare of the population of the North West Region by stimulating the performance of the health system.",
     iconBg: "bg-accent-100",
     iconColor: "text-accent-600",
   },
