@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,12 +21,23 @@ import {
   Stethoscope,
   MapPin,
   PartyPopper,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { PageHero } from "@/components/shared/page-hero";
 import { siteConfig } from "@/config/site";
+import { staggerContainer, staggerItem } from "@/lib/animations";
 
 // Event categories
 const categories = [
@@ -38,6 +49,58 @@ const categories = [
   { value: "partnerships", label: "Partner Events", icon: Handshake },
   { value: "uhc", label: "UHC Activities", icon: Stethoscope },
   { value: "social", label: "Social Events", icon: PartyPopper },
+];
+
+// Featured highlights for carousel
+const featuredHighlights = [
+  {
+    image: "/images/coach.jpg",
+    title: "Staff Coaching Session",
+    description: "LUKONG JULIUS leads an engaging coaching session to enhance team skills and service delivery.",
+    category: "Training",
+  },
+  {
+    image: "/images/puncture.jpg",
+    title: "Field Operations",
+    description: "KUH JOSEPH handles van maintenance during delivery operations, ensuring medicines reach their destinations.",
+    category: "Operations",
+  },
+  {
+    image: "/images/offload.jpg",
+    title: "Medicine Delivery",
+    description: "KUH JOSEPH oversees the offloading of essential medicines at community pharmacies across the region.",
+    category: "Logistics",
+  },
+  {
+    image: "/images/voucher.jpg",
+    title: "Health Voucher Program",
+    description: "Pregnant women receive health vouchers worth FCFA 6,000 for complete maternal care coverage.",
+    category: "Health Voucher",
+  },
+];
+
+// Recent activities
+const recentActivities = [
+  {
+    title: "Community Health Outreach",
+    description: "Our team visited remote communities to provide health education and screenings.",
+    date: "Recent",
+  },
+  {
+    title: "Staff Development Workshop",
+    description: "Quarterly training to enhance service delivery and customer care skills.",
+    date: "Recent",
+  },
+  {
+    title: "Medicine Distribution",
+    description: "Successful delivery of essential medicines to all 430 community pharmacies.",
+    date: "Ongoing",
+  },
+  {
+    title: "Partner Coordination Meeting",
+    description: "Strategic planning with international partners for improved healthcare delivery.",
+    date: "Recent",
+  },
 ];
 
 // Gallery events data
@@ -271,6 +334,18 @@ export default function GalleryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<GalleryEvent | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const interval = setInterval(() => {
+      carouselApi.scrollNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [carouselApi]);
 
   const filteredEvents = useMemo(() => {
     return galleryEvents.filter((event) => {
@@ -314,7 +389,7 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
       <PageHero
-        badge={{ icon: Camera, text: "Photo Gallery" }}
+        badge={{ icon: Camera, text: "Gallery & News" }}
         title="Our Activities"
         titleHighlight="& Events"
         description="Explore moments captured across our healthcare programs, community outreach initiatives, and organizational events that showcase our commitment to quality healthcare."
@@ -343,38 +418,242 @@ export default function GalleryPage() {
         </div>
       </PageHero>
 
-      {/* Stats Bar */}
-      <section className="relative z-10 -mt-12">
+      {/* Featured Highlights Carousel */}
+      <section className="py-12 lg:py-16 bg-white">
         <div className="container">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-2xl shadow-xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center max-w-3xl mx-auto mb-10"
           >
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">{galleryEvents.length}+</p>
-              <p className="text-neutral-600 text-sm mt-1">Events Captured</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">{categories.length - 1}</p>
-              <p className="text-neutral-600 text-sm mt-1">Event Categories</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.yearsOfService}+</p>
-              <p className="text-neutral-600 text-sm mt-1">Years of Impact</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">{siteConfig.stats.healthDistricts}+</p>
-              <p className="text-neutral-600 text-sm mt-1">Health Districts</p>
-            </div>
+            <motion.span
+              variants={staggerItem}
+              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            >
+              Featured Stories
+            </motion.span>
+            <motion.h2
+              variants={staggerItem}
+              className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4"
+            >
+              Highlights from{" "}
+              <span className="text-gradient">The Fund</span>
+            </motion.h2>
+            <motion.p
+              variants={staggerItem}
+              className="text-lg text-neutral-600"
+            >
+              Capturing the moments and efforts that drive our mission forward.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            <Carousel
+              setApi={setCarouselApi}
+              className="w-full rounded-2xl overflow-hidden shadow-xl"
+              opts={{ align: "start", loop: true }}
+            >
+              <CarouselContent>
+                {featuredHighlights.map((item, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[450px]">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+                        <Badge className="bg-primary-600 text-white border-0 mb-3">
+                          {item.category}
+                        </Badge>
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/80 text-sm sm:text-base max-w-2xl line-clamp-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4 bg-white/20 border-white/30 text-white hover:bg-white/30" />
+              <CarouselNext className="right-4 bg-white/20 border-white/30 text-white hover:bg-white/30" />
+            </Carousel>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Recent Activities Section */}
+      <section className="py-12 lg:py-16 bg-neutral-50">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+            >
+              <motion.span
+                variants={staggerItem}
+                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+              >
+                Recent Activities
+              </motion.span>
+              <motion.h2
+                variants={staggerItem}
+                className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6"
+              >
+                What We Have Been{" "}
+                <span className="text-gradient">Up To</span>
+              </motion.h2>
+              <motion.p
+                variants={staggerItem}
+                className="text-lg text-neutral-600 mb-8 leading-relaxed"
+              >
+                Our team is constantly engaged in activities that improve healthcare
+                delivery across the North West Region. Here are some of our recent
+                initiatives.
+              </motion.p>
+
+              <motion.div variants={staggerItem}>
+                <Button size="lg" asChild>
+                  <Link href="/programs">
+                    View Our Programs
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={staggerContainer}
+              className="space-y-4"
+            >
+              {recentActivities.map((activity, index) => (
+                <motion.div
+                  key={index}
+                  variants={staggerItem}
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Card className="hover:shadow-lg transition-all duration-300 border-neutral-200 bg-white">
+                    <CardContent className="p-4 md:p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                          <Calendar className="w-5 h-5 md:w-6 md:h-6 text-primary-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <h3 className="font-semibold text-neutral-900 text-sm md:text-base truncate">
+                              {activity.title}
+                            </h3>
+                            <Badge variant="secondary" className="bg-neutral-100 text-neutral-600 flex-shrink-0 text-xs">
+                              {activity.date}
+                            </Badge>
+                          </div>
+                          <p className="text-neutral-600 text-xs md:text-sm line-clamp-2">
+                            {activity.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 lg:py-16 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
+              <Sparkles className="w-4 h-4" />
+              Our Impact
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Making a Difference Every Day
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Our daily activities contribute to the overall health and well-being
+              of the North West Region.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          >
+            {[
+              { value: `${siteConfig.stats.communityPharmacies}+`, label: "Pharmacies Served" },
+              { value: `${siteConfig.stats.populationServed}M`, label: "Population Reached" },
+              { value: `${siteConfig.stats.healthDistricts}+`, label: "Health Districts" },
+              { value: `${siteConfig.stats.yearsOfService}+`, label: "Years of Service" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/20 text-center"
+              >
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">{stat.value}</p>
+                <p className="text-white/70 text-xs md:text-sm">{stat.label}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Filter Section */}
-      <section className="py-12">
+      <section className="py-10 bg-neutral-50" id="browse">
         <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center max-w-3xl mx-auto mb-8"
+          >
+            <motion.span
+              variants={staggerItem}
+              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            >
+              Photo Gallery
+            </motion.span>
+            <motion.h2
+              variants={staggerItem}
+              className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4"
+            >
+              Browse All{" "}
+              <span className="text-gradient">Events</span>
+            </motion.h2>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -382,7 +661,7 @@ export default function GalleryPage() {
             className="flex flex-col gap-6"
           >
             {/* Search */}
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-md mx-auto">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
               <Input
                 type="text"
@@ -394,7 +673,7 @@ export default function GalleryPage() {
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {categories.map((category) => {
                 const IconComponent = category.icon;
                 return (
@@ -422,7 +701,7 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mt-6 flex items-center gap-2 text-neutral-600"
+            className="mt-6 flex items-center justify-center gap-2 text-neutral-600"
           >
             <Filter className="h-4 w-4" />
             <span className="text-sm">
@@ -441,7 +720,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="pb-20">
+      <section className="pb-16">
         <div className="container">
           <AnimatePresence mode="wait">
             <motion.div
@@ -478,14 +757,14 @@ export default function GalleryPage() {
 
                           {/* Category Badge */}
                           <div className="absolute top-3 left-3">
-                            <Badge className="bg-white/90 text-neutral-800 backdrop-blur-sm">
+                            <Badge className="bg-white/90 text-neutral-800 backdrop-blur-sm text-xs">
                               <CategoryIcon className="w-3 h-3 mr-1" />
-                              {categories.find((c) => c.value === event.category)?.label}
+                              <span className="hidden sm:inline">{categories.find((c) => c.value === event.category)?.label}</span>
                             </Badge>
                           </div>
 
                           {/* Hover overlay content */}
-                          <div className="absolute inset-0 flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="flex items-center gap-2 text-white text-sm font-medium">
                               <Camera className="h-4 w-4" />
                               <span>View Details</span>
@@ -661,23 +940,23 @@ export default function GalleryPage() {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl p-8 lg:p-12 text-center"
+            className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl md:rounded-3xl p-6 sm:p-8 lg:p-12 text-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
+            <span className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
               <Heart className="w-4 h-4" />
               Be Part of Our Story
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
               Join Us in Making Healthcare Accessible
             </h2>
-            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto">
               Whether as a partner, volunteer, or beneficiary - there are many ways to be part
               of our mission to bring quality healthcare to every community in the North West Region.
             </p>

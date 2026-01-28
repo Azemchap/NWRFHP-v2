@@ -70,7 +70,7 @@ export function NewsSection() {
           </div>
           <motion.div variants={staggerItem}>
             <Button variant="outline" asChild>
-              <Link href="/infos">
+              <Link href="/gallery">
                 View All News
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

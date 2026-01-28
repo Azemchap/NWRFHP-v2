@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Menu, Phone, MessageCircle, ChevronRight, Heart, Linkedin, LinkedinIcon } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { siteConfig, navigationLinks } from "@/config/site";
-import { motion, AnimatePresence } from "framer-motion";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { navigationLinks, siteConfig } from "@/config/site";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronRight, Heart, LinkedinIcon, Menu, MessageCircle, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // Animation variants for the mobile menu
 const containerVariants = {
@@ -228,12 +228,12 @@ export function Header() {
                     <div className="grid grid-cols-2 gap-3">
                       <motion.div variants={quickLinkVariants}>
                         <Link
-                          href="/infos"
+                          href="/gallery"
                           onClick={() => setIsOpen(false)}
                           className="flex flex-col items-center gap-2 p-4 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
                         >
                           <Heart className="h-5 w-5" />
-                          <span className="text-xs text-center">Health Info</span>
+                          <span className="text-xs text-center">Gallery & News</span>
                         </Link>
                       </motion.div>
                       <motion.div variants={quickLinkVariants}>
