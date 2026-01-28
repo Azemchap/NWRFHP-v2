@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Users, Calendar, ArrowRight, Mail, Phone } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
@@ -123,67 +123,51 @@ export default function TeamPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
           >
-            {teamData.map((member: TeamMember, index: number) => (
+            {teamData.map((member: TeamMember) => (
               <motion.div
                 key={member.id}
                 variants={staggerItem}
                 whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
+                className="group"
               >
-                <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-neutral-200 bg-white h-full">
-                  <CardHeader className="p-0">
-                    <div className="relative w-full h-72 overflow-hidden bg-neutral-100">
+                <Link href={`/team/${member.slug}`}>
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-neutral-100 h-full">
+                    {/* Image Container */}
+                    <div className="relative h-48 sm:h-64 lg:h-72 overflow-hidden bg-neutral-100">
                       <Image
                         src={member.image}
                         alt={`${member.name} - ${member.role}`}
                         fill
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        className="object-cover object-top group-hover:scale-110 transition-transform duration-700"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                      {/* Quick Actions on Hover */}
-                      <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Button
-                          asChild
-                          size="sm"
-                          className="w-full bg-white text-primary-700 hover:bg-neutral-100"
-                        >
-                          <Link href={`/team/${member.slug}`}>
-                            View Profile
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
+                      {/* Hover overlay content */}
+                      <div className="absolute inset-0 flex items-end p-4 sm:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex items-center gap-2 text-white text-sm font-medium">
+                          <Users className="h-4 w-4" />
+                          <span>View Profile</span>
+                        </div>
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent className="p-5">
-                    <h3 className="text-lg font-bold text-neutral-900 leading-tight group-hover:text-primary-600 transition-colors line-clamp-1 mb-2">
-                      {member.name}
-                    </h3>
-                    <Badge
-                      variant="secondary"
-                      className="bg-primary-50 text-primary-700 hover:bg-primary-100 transition-colors text-xs line-clamp-1"
-                    >
-                      {member.role}
-                    </Badge>
-                  </CardContent>
-                  <CardFooter className="p-5 pt-0">
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="w-full group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300"
-                    >
-                      <Link href={`/team/${member.slug}`}>
-                        View Profile
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
+
+                    {/* Content */}
+                    <div className="p-4 sm:p-5">
+                      <h3 className="font-bold text-neutral-900 text-sm sm:text-base mb-2 line-clamp-1 group-hover:text-primary-600 transition-colors">
+                        {member.name}
+                      </h3>
+                      <Badge
+                        variant="secondary"
+                        className="bg-primary-50 text-primary-700 hover:bg-primary-100 text-xs line-clamp-1"
+                      >
+                        {member.role}
+                      </Badge>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
