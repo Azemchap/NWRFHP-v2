@@ -243,7 +243,7 @@ export function Header() {
                           className="flex flex-col items-center gap-2 p-4 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
                         >
                           <MessageCircle className="h-5 w-5" />
-                          <span className="text-xs text-center">Social Media</span>
+                          <span className="text-xs text-center">Socials Committee</span>
                         </Link>
                       </motion.div>
                     </div>

@@ -83,7 +83,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <Button size="lg" className="bg-white text-primary-700 hover:bg-neutral-100" asChild>
+                <Button size="lg" variant="white" asChild>
                   <Link href="/contact">
                     Get in Touch
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -342,7 +342,7 @@ export default function AboutPage() {
               Partner with us to make quality healthcare accessible to everyone in the North West Region.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-primary-700 hover:bg-neutral-100" asChild>
+              <Button size="lg" variant="white" asChild>
                 <Link href="/contact">
                   Contact Us
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -350,8 +350,8 @@ export default function AboutPage() {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-2 border-white/30 bg-transparent text-white hover:bg-white/10"
+                variant="outline-accent"
+                className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500"
                 asChild
               >
                 <Link href="/programs">View Programs</Link>

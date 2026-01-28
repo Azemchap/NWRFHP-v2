@@ -125,7 +125,8 @@ export function HeroSection() {
             >
               <Button
                 size="lg"
-                className="w-full sm:w-auto h-14 px-8 text-base bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-300 group"
+                variant="default"
+                className="w-full sm:w-auto group"
                 asChild
               >
                 <Link href="/programs">
@@ -135,8 +136,8 @@ export function HeroSection() {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="w-full sm:w-auto h-14 px-8 text-base border-2 border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-300"
+                variant="white"
+                className="w-full sm:w-auto"
                 asChild
               >
                 <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>

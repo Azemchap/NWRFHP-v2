@@ -128,7 +128,7 @@ export default function HealthPage() {
         <div className="flex flex-wrap justify-center gap-4">
           <Button
             size="lg"
-            className="bg-white text-primary-700 hover:bg-neutral-100"
+            variant="white"
             asChild
           >
             <a href="#packages">
@@ -138,8 +138,8 @@ export default function HealthPage() {
           </Button>
           <Button
             size="lg"
-            variant="outline"
-            className="border-2 border-white/30 bg-white/5 text-white hover:bg-white/10"
+            variant="outline-accent"
+            className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500"
             asChild
           >
             <Link href="/contact">
@@ -493,7 +493,7 @@ export default function HealthPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-white text-primary-700 hover:bg-neutral-100"
+                variant="white"
                 asChild
               >
                 <Link href="/contact">
@@ -503,8 +503,8 @@ export default function HealthPage() {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-2 border-white/30 bg-transparent text-white hover:bg-white/10"
+                variant="outline-accent"
+                className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500"
                 asChild
               >
                 <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>

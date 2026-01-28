@@ -33,7 +33,7 @@ export const navigationLinks: NavigationLink[] = [
   { href: '/programs', label: 'Our Programs', icon: Heart },
   { href: '/team', label: 'Our Team', icon: Users },
   { href: '/contact', label: 'Get in Touch', icon: Phone },
-  { href: '/gallery', label: 'Gallery', icon: Camera },
+  { href: '/gallery', label: 'Gallery & News', icon: Camera },
 ];
 
 // ============================================
