@@ -104,7 +104,7 @@ export function ServicesSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerContainer}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {services.map((service, index) => (
             <motion.div
@@ -115,25 +115,25 @@ export function ServicesSection() {
             >
               <Link
                 href={service.href}
-                className="group block h-full bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group block h-full bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
-                <div className={`w-14 h-14 rounded-2xl ${service.bgColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className={`w-7 h-7 ${service.iconColor}`} />
+                <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl md:rounded-2xl ${service.bgColor} flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <service.icon className={`w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 ${service.iconColor}`} />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-base md:text-lg lg:text-xl font-bold text-neutral-900 mb-2 md:mb-3 group-hover:text-primary-600 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-neutral-600 mb-6 leading-relaxed">
+                <p className="text-neutral-600 mb-4 md:mb-6 leading-relaxed text-sm md:text-base line-clamp-3">
                   {service.description}
                 </p>
 
                 {/* Link */}
-                <div className="flex items-center text-primary-600 font-medium text-sm">
+                <div className="flex items-center text-primary-600 font-medium text-xs md:text-sm">
                   Learn More
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                  <ArrowRight className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
               </Link>
             </motion.div>

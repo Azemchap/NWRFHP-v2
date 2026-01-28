@@ -45,18 +45,16 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
     notFound();
   }
 
-  // Get other team members (excluding current)
-  const otherMembers = (teamData as TeamMember[])
-    .filter((m) => m.slug !== slug)
-    .slice(0, 4);
-
   // Generate department from role
   const getDepartment = (role: string): string => {
     if (role.toLowerCase().includes("administrator") || role.toLowerCase().includes("admin")) {
       return "Administration";
     }
-    if (role.toLowerCase().includes("finance") || role.toLowerCase().includes("accountant") || role.toLowerCase().includes("treasurer")) {
+    if (role.toLowerCase().includes("finance") || role.toLowerCase().includes("accountant") || role.toLowerCase().includes("cashier")) {
       return "Finance Department";
+    }
+    if (role.toLowerCase().includes("uhc") || role.toLowerCase().includes("universal health")) {
+      return "UHC";
     }
     if (role.toLowerCase().includes("health") || role.toLowerCase().includes("program")) {
       return "Health Programs";
@@ -73,10 +71,68 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
     if (role.toLowerCase().includes("lab") || role.toLowerCase().includes("laboratory")) {
       return "Laboratory Services";
     }
+    if (role.toLowerCase().includes("store") || role.toLowerCase().includes("medical store")) {
+      return "Regional Medical Store";
+    }
+    if (role.toLowerCase().includes("driver") || role.toLowerCase().includes("janitor")) {
+      return "Operations & Support";
+    }
     return "Operations";
   };
 
+  // Get the level/rank from role
+  const getLevel = (role: string): string => {
+    const roleLower = role.toLowerCase();
+    if (roleLower.includes("administrator")) return "Administrator";
+    if (roleLower.includes("head of section")) return "Head of Section";
+    if (roleLower.includes("head of unit")) return "Head of Unit";
+    if (roleLower.includes("officer") || roleLower.includes("auditor") || roleLower.includes("scientist")) return "Officer";
+    if (roleLower.includes("assistant")) return "Assistant";
+    if (roleLower.includes("storekeeper")) return "Storekeeper";
+    if (roleLower.includes("driver")) return "Driver";
+    if (roleLower.includes("janitor")) return "Support Staff";
+    if (roleLower.includes("secretary")) return "Secretary";
+    if (roleLower.includes("cashier")) return "Finance Staff";
+    return "Staff";
+  };
+
   const department = getDepartment(member.role);
+  const level = getLevel(member.role);
+
+  // Get related team members (same department, level, or section)
+  const getRelatedMembers = (): TeamMember[] => {
+    const allMembers = teamData as TeamMember[];
+    const otherMembers = allMembers.filter((m) => m.slug !== slug);
+
+    // Score members by relevance
+    const scoredMembers = otherMembers.map((m) => {
+      let score = 0;
+      const mDepartment = getDepartment(m.role);
+      const mLevel = getLevel(m.role);
+
+      // Same department = highest priority
+      if (mDepartment === department) score += 3;
+      // Same level = high priority
+      if (mLevel === level) score += 2;
+      // Similar keywords in role
+      const memberKeywords = member.role.toLowerCase().split(/[\s,]+/);
+      const otherKeywords = m.role.toLowerCase().split(/[\s,]+/);
+      const commonKeywords = memberKeywords.filter(k =>
+        k.length > 3 && otherKeywords.includes(k)
+      );
+      score += commonKeywords.length;
+
+      return { member: m, score };
+    });
+
+    // Sort by score (descending) and take top 8
+    return scoredMembers
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 8)
+      .map((s) => s.member);
+  };
+
+  const relatedMembers = getRelatedMembers();
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -288,7 +344,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
         </div>
       </section>
 
-      {/* Other Team Members */}
+      {/* Related Team Members */}
       <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
           <motion.div
@@ -302,14 +358,20 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
               variants={staggerItem}
               className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
             >
-              Our Team
+              Related Colleagues
             </motion.span>
             <motion.h2
               variants={staggerItem}
               className="text-3xl sm:text-4xl font-bold text-neutral-900"
             >
-              Other Team Members
+              Team Members You May Know
             </motion.h2>
+            <motion.p
+              variants={staggerItem}
+              className="mt-4 text-neutral-600"
+            >
+              Colleagues from {department} and similar roles
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -317,23 +379,23 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
-            {otherMembers.map((otherMember) => (
+            {relatedMembers.map((relatedMember) => (
               <motion.div
-                key={otherMember.id}
+                key={relatedMember.id}
                 variants={staggerItem}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
                 <Link
-                  href={`/team/${otherMember.slug}`}
+                  href={`/team/${relatedMember.slug}`}
                   className="group block bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-neutral-100 transition-all duration-300"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                     <Image
-                      src={otherMember.image}
-                      alt={otherMember.name}
+                      src={relatedMember.image}
+                      alt={relatedMember.name}
                       fill
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
@@ -345,12 +407,12 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                       </span>
                     </div>
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-bold text-neutral-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1">
-                      {otherMember.name}
+                  <div className="p-4 md:p-5">
+                    <h3 className="font-bold text-neutral-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1 text-sm md:text-base">
+                      {relatedMember.name}
                     </h3>
-                    <p className="text-neutral-600 text-sm line-clamp-1">
-                      {otherMember.role}
+                    <p className="text-neutral-600 text-xs md:text-sm line-clamp-2">
+                      {relatedMember.role}
                     </p>
                   </div>
                 </Link>

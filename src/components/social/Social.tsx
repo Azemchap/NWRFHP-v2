@@ -254,7 +254,7 @@ export default function SocialPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {committeeMembers.map((member, index) => (
               <motion.div
@@ -264,7 +264,7 @@ export default function SocialPage() {
                 transition={{ duration: 0.3 }}
               >
                 <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-neutral-200 bg-white h-full">
-                  <div className="relative w-full h-72 overflow-hidden bg-neutral-100">
+                  <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-neutral-100">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -273,11 +273,11 @@ export default function SocialPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  <CardContent className="p-4 md:p-6">
+                    <h3 className="text-sm md:text-base lg:text-lg font-bold text-neutral-900 mb-1 md:mb-2 group-hover:text-primary-600 transition-colors line-clamp-1">
                       {member.name}
                     </h3>
-                    <p className="text-sm text-neutral-600">{member.role}</p>
+                    <p className="text-xs md:text-sm text-neutral-600 line-clamp-2">{member.role}</p>
                   </CardContent>
                 </Card>
               </motion.div>

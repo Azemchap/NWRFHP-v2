@@ -145,7 +145,7 @@ export function ImpactSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerContainer}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {impactStats.map((stat, index) => (
             <motion.div
@@ -155,24 +155,24 @@ export function ImpactSection() {
               transition={{ duration: 0.3 }}
               className="relative group"
             >
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300">
                 {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className="w-7 h-7 text-white" />
+                <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg md:rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <stat.icon className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
 
                 {/* Value */}
-                <p className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-1 md:mb-2">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </p>
 
                 {/* Label */}
-                <p className="text-lg font-semibold text-white/90 mb-1">
+                <p className="text-sm md:text-base lg:text-lg font-semibold text-white/90 mb-1">
                   {stat.label}
                 </p>
 
                 {/* Description */}
-                <p className="text-sm text-white/60">
+                <p className="text-xs md:text-sm text-white/60">
                   {stat.description}
                 </p>
               </div>
