@@ -3,7 +3,7 @@
 import { Logo } from "@/components/shared/logo";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 
 const containerVariants = {
@@ -30,7 +30,7 @@ export function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5"
         >
           {/* Brand Column */}
           <motion.div variants={itemVariants} className="lg:col-span-1">
@@ -78,6 +78,24 @@ export function Footer() {
                 <MessageCircle className="h-4 w-4" />
               </a>
             </div>
+          </motion.div>
+
+          {/* Sections */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
+              Our Sections
+            </h3>
+            <nav className="flex flex-col gap-3">
+              {siteConfig.footerLinks.sections.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-neutral-400 hover:text-primary-400 hover:translate-x-1 transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </motion.div>
 
           {/* Programs */}
@@ -146,7 +164,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 text-sm text-neutral-400 hover:text-white transition-colors group"
               >
-                <span className="w-8 h-8 rounded-lg bg-neutral-800 group-hover:bg-primary-600 flex items-center justify-center transition-colors flex-shrink-0">
+                <span className="w-8 h-8 rounded-lg bg-neutral-800 group-hover:bg-primary-600 flex items-center justify-center transition-colors shrink-0">
                   <MapPin className="h-4 w-4" />
                 </span>
                 <span className="pt-1.5">{siteConfig.location.shortAddress}</span>

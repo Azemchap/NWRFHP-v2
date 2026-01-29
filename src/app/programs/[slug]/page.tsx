@@ -14,12 +14,13 @@ import {
   Activity,
   Phone,
   Mail,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageHero } from "@/components/shared/page-hero";
-import { programs, getProgram } from "@/data/programs";
+import { getProgramWithSection, getAllPrograms } from "@/data/sections";
 import { siteConfig } from "@/config/site";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -31,14 +32,21 @@ interface ProgramPageProps {
 
 export default function ProgramPage({ params }: ProgramPageProps) {
   const { slug } = use(params);
-  const program = getProgram(slug);
+  const result = getProgramWithSection(slug);
 
-  if (!program) {
+  if (!result) {
     notFound();
   }
 
-  // Get related programs (excluding current)
-  const relatedPrograms = programs.filter((p) => p.slug !== slug).slice(0, 3);
+  const { program, section } = result;
+  const allPrograms = getAllPrograms();
+
+  // Get related programs from same section first, then others
+  const sameSectionPrograms = section.programs.filter((p) => p.slug !== slug);
+  const otherPrograms = allPrograms.filter(
+    (p) => p.slug !== slug && p.sectionId !== section.id
+  );
+  const relatedPrograms = [...sameSectionPrograms, ...otherPrograms].slice(0, 3);
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -51,11 +59,7 @@ export default function ProgramPage({ params }: ProgramPageProps) {
         overlay="gradient"
       >
         <div className="flex flex-wrap justify-center gap-4">
-          <Button
-            size="lg"
-            variant="white"
-            asChild
-          >
+          <Button size="lg" variant="white" asChild>
             <Link href="/contact">
               <Mail className="mr-2 h-5 w-5" />
               Get Involved
@@ -84,14 +88,16 @@ export default function ProgramPage({ params }: ProgramPageProps) {
             variants={staggerContainer}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {program.stats.map((stat, index) => (
+            {program.stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={staggerItem}
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 text-center"
               >
-                <p className="text-3xl font-bold text-primary-600 mb-1">{stat.value}</p>
+                <p className="text-3xl font-bold text-primary-600 mb-1">
+                  {stat.value}
+                </p>
                 <p className="text-neutral-600 text-sm">{stat.label}</p>
               </motion.div>
             ))}
@@ -99,15 +105,28 @@ export default function ProgramPage({ params }: ProgramPageProps) {
         </div>
       </section>
 
-      {/* Back Navigation */}
+      {/* Back Navigation & Section Breadcrumb */}
       <section className="pt-8">
         <div className="container">
-          <Button variant="ghost" asChild className="group">
-            <Link href="/programs">
-              <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Programs
-            </Link>
-          </Button>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button variant="ghost" asChild className="group">
+              <Link href="/programs">
+                <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                Back to Programs
+              </Link>
+            </Button>
+            <div className="hidden sm:flex items-center gap-2 text-sm text-neutral-500">
+              <span>|</span>
+              <Link
+                href={`/sections/${section.slug}`}
+                className="flex items-center gap-2 hover:text-primary-600 transition-colors"
+              >
+                <section.icon className={`w-4 h-4 ${section.iconColor}`} />
+                <span>Part of {section.acronym}</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -122,12 +141,15 @@ export default function ProgramPage({ params }: ProgramPageProps) {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
-              >
-                About This Program
-              </motion.span>
+              <motion.div variants={staggerItem} className="flex items-center gap-3 mb-4">
+                <Badge className={`${section.bgColor} ${section.iconColor} border-0`}>
+                  <section.icon className="w-3.5 h-3.5 mr-1.5" />
+                  {section.acronym}
+                </Badge>
+                <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                  Program
+                </span>
+              </motion.div>
               <motion.h2
                 variants={staggerItem}
                 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6"
@@ -155,8 +177,10 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <div className={`w-8 h-8 rounded-lg ${program.bgColor} flex items-center justify-center flex-shrink-0`}>
-                      <CheckCircle className="w-4 h-4 text-primary-600" />
+                    <div
+                      className={`w-8 h-8 rounded-lg ${program.bgColor} flex items-center justify-center shrink-0`}
+                    >
+                      <CheckCircle className={`w-4 h-4 ${program.iconColor}`} />
                     </div>
                     <span className="text-neutral-700 text-sm">{feature}</span>
                   </motion.div>
@@ -189,7 +213,9 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center mb-3`}>
+                <div
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center mb-3`}
+                >
                   <program.icon className="w-7 h-7 text-white" />
                 </div>
                 <p className="font-bold text-neutral-900">{program.shortTitle}</p>
@@ -216,12 +242,16 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mb-6">
                     <Target className="w-7 h-7 text-primary-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-4">Objectives</h3>
+                  <h3 className="text-xl font-bold text-neutral-900 mb-4">
+                    Objectives
+                  </h3>
                   <ul className="space-y-3">
                     {program.objectives.map((objective, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-neutral-600 text-sm">{objective}</span>
+                        <CheckCircle className="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+                        <span className="text-neutral-600 text-sm">
+                          {objective}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -236,12 +266,16 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   <div className="w-14 h-14 rounded-2xl bg-accent-100 flex items-center justify-center mb-6">
                     <Users className="w-7 h-7 text-accent-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-4">Beneficiaries</h3>
+                  <h3 className="text-xl font-bold text-neutral-900 mb-4">
+                    Beneficiaries
+                  </h3>
                   <ul className="space-y-3">
                     {program.beneficiaries.map((beneficiary, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-neutral-600 text-sm">{beneficiary}</span>
+                        <CheckCircle className="w-5 h-5 text-primary-500 mt-0.5 shrink-0" />
+                        <span className="text-neutral-600 text-sm">
+                          {beneficiary}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -256,12 +290,16 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center mb-6">
                     <Activity className="w-7 h-7 text-emerald-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-4">Key Activities</h3>
+                  <h3 className="text-xl font-bold text-neutral-900 mb-4">
+                    Key Activities
+                  </h3>
                   <ul className="space-y-3">
                     {program.activities.map((activity, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-neutral-600 text-sm">{activity}</span>
+                        <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                        <span className="text-neutral-600 text-sm">
+                          {activity}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -322,7 +360,9 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
-                    <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${relatedProgram.color} flex items-center justify-center`}>
+                    <div
+                      className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${relatedProgram.color} flex items-center justify-center`}
+                    >
                       <relatedProgram.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
@@ -359,15 +399,11 @@ export default function ProgramPage({ params }: ProgramPageProps) {
               Ready to Access This Program?
             </h2>
             <p className="text-lg text-white/80 mb-8">
-              Contact us today to learn more about how you can benefit from our
-              {" "}{program.shortTitle} program.
+              Contact us today to learn more about how you can benefit from our{" "}
+              {program.shortTitle} program.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button
-                size="lg"
-                variant="white"
-                asChild
-              >
+              <Button size="lg" variant="white" asChild>
                 <Link href="/contact">
                   Contact Us
                   <ArrowRight className="ml-2 h-5 w-5" />

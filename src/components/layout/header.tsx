@@ -3,9 +3,21 @@
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { navigationLinks, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
+import { sections } from "@/data/sections";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, Heart, LinkedinIcon, Menu, MessageCircle, Phone } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Heart,
+  LinkedinIcon,
+  Menu,
+  MessageCircle,
+  Phone,
+  Camera,
+  Users,
+  Info,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -49,9 +61,19 @@ const quickLinkVariants = {
   },
 };
 
+// Simple navigation links (non-dropdown)
+const simpleNavLinks = [
+  { href: "/about", label: "About Us", icon: Info },
+  { href: "/team", label: "Our Team", icon: Users },
+  { href: "/contact", label: "Contact", icon: Phone },
+  { href: "/gallery", label: "Gallery & News", icon: Camera },
+];
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSectionsOpen, setIsSectionsOpen] = useState(false);
+  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,11 +95,11 @@ export function Header() {
       <div className="bg-primary-600">
         <div className="container mx-auto flex gap-6 items-center justify-end h-9 text-xs px-4 sm:px-6 lg:px-8">
           <Link
-            href={`${siteConfig.social.linkedin}`} 
+            href={`${siteConfig.social.linkedin}`}
             className="flex gap-2 items-center text-neutral-300 hover:text-white transition-colors duration-200 font-medium group"
           >
             <LinkedinIcon className="h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
-            <span className="hidden sm:inline">Linked-In</span>
+            <span className="hidden sm:inline">LinkedIn</span>
           </Link>
           <Link
             href={`tel:${siteConfig.contact.phone.primaryRaw}`}
@@ -106,16 +128,123 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navigationLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group"
+            {/* About Link */}
+            <Link
+              href="/about"
+              className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group"
+            >
+              About Us
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
+            </Link>
+
+            {/* Sections Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsSectionsOpen(true)}
+              onMouseLeave={() => setIsSectionsOpen(false)}
+            >
+              <button
+                className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group flex items-center gap-1"
               >
-                {item.label}
+                Our Sections
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isSectionsOpen ? "rotate-180" : ""
+                  }`}
+                />
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
-              </Link>
-            ))}
+              </button>
+
+              {/* Mega Menu Dropdown */}
+              <AnimatePresence>
+                {isSectionsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
+                  >
+                    <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-6 w-[720px]">
+                      <div className="grid grid-cols-3 gap-6">
+                        {sections.map((section) => (
+                          <div key={section.id} className="space-y-3">
+                            {/* Section Header */}
+                            <Link
+                              href={`/sections/${section.slug}`}
+                              className="flex items-center gap-3 p-2 -m-2 rounded-xl hover:bg-neutral-50 transition-colors group"
+                            >
+                              <div
+                                className={`w-10 h-10 rounded-xl ${section.bgColor} flex items-center justify-center group-hover:scale-105 transition-transform`}
+                              >
+                                <section.icon
+                                  className={`w-5 h-5 ${section.iconColor}`}
+                                />
+                              </div>
+                              <div>
+                                <p className="font-semibold text-neutral-900 text-sm group-hover:text-primary-600 transition-colors">
+                                  {section.acronym}
+                                </p>
+                                <p className="text-xs text-neutral-500">
+                                  {section.programs.length} programs
+                                </p>
+                              </div>
+                            </Link>
+
+                            {/* Programs List */}
+                            <div className="space-y-1 pl-2 border-l-2 border-neutral-100">
+                              {section.programs.map((program) => (
+                                <Link
+                                  key={program.id}
+                                  href={`/programs/${program.slug}`}
+                                  className="block px-3 py-1.5 text-sm text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                                >
+                                  {program.shortTitle}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* View All Link */}
+                      <div className="mt-6 pt-4 border-t border-neutral-100">
+                        <Link
+                          href="/sections"
+                          className="flex items-center justify-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                        >
+                          View All Sections & Programs
+                          <ChevronRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Other Links */}
+            <Link
+              href="/team"
+              className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group"
+            >
+              Our Team
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
+            </Link>
+            <Link
+              href="/contact"
+              className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group"
+            >
+              Contact
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
+            </Link>
+            <Link
+              href="/gallery"
+              className="relative px-4 py-2 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-neutral-50 rounded-lg transition-colors group"
+            >
+              Gallery & News
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
+            </Link>
           </nav>
 
           {/* Mobile Menu */}
@@ -187,7 +316,99 @@ export function Header() {
                         animate="visible"
                         className="space-y-2"
                       >
-                        {navigationLinks.map((link) => (
+                        {/* About Link */}
+                        <motion.div variants={itemVariants}>
+                          <Link
+                            href="/about"
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <Info className="h-5 w-5 text-white/90" />
+                              </div>
+                              <span>About Us</span>
+                            </div>
+                            <ChevronRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                          </Link>
+                        </motion.div>
+
+                        {/* Sections with Expandable Programs */}
+                        {sections.map((section) => (
+                          <motion.div key={section.id} variants={itemVariants}>
+                            <button
+                              onClick={() =>
+                                setExpandedMobileSection(
+                                  expandedMobileSection === section.id ? null : section.id
+                                )
+                              }
+                              className="w-full flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div
+                                  className={`w-10 h-10 rounded-lg ${section.bgColor} flex items-center justify-center`}
+                                >
+                                  <section.icon
+                                    className={`h-5 w-5 ${section.iconColor}`}
+                                  />
+                                </div>
+                                <div className="text-left">
+                                  <span className="block">{section.acronym}</span>
+                                  <span className="text-xs text-white/60">
+                                    {section.programs.length} programs
+                                  </span>
+                                </div>
+                              </div>
+                              <ChevronDown
+                                className={`h-5 w-5 text-white/60 transition-transform duration-200 ${
+                                  expandedMobileSection === section.id ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+
+                            {/* Expanded Programs */}
+                            <AnimatePresence>
+                              {expandedMobileSection === section.id && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="pt-2 pl-6 space-y-1">
+                                    {section.programs.map((program) => (
+                                      <Link
+                                        key={program.id}
+                                        href={`/programs/${program.slug}`}
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex items-center gap-3 px-4 py-3 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-lg transition-colors"
+                                      >
+                                        <program.icon className="w-4 h-4" />
+                                        <span>{program.shortTitle}</span>
+                                      </Link>
+                                    ))}
+                                    <Link
+                                      href={`/sections/${section.slug}`}
+                                      onClick={() => setIsOpen(false)}
+                                      className="flex items-center gap-3 px-4 py-3 text-accent-400 text-sm font-medium hover:bg-white/10 rounded-lg transition-colors"
+                                    >
+                                      <span>View {section.acronym} Section</span>
+                                      <ChevronRight className="w-4 h-4" />
+                                    </Link>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </motion.div>
+                        ))}
+
+                        {/* Other Nav Links */}
+                        {[
+                          { href: "/team", label: "Our Team", icon: Users },
+                          { href: "/contact", label: "Contact", icon: Phone },
+                          { href: "/gallery", label: "Gallery & News", icon: Camera },
+                        ].map((link) => (
                           <motion.div key={link.href} variants={itemVariants}>
                             <Link
                               href={link.href}
@@ -223,17 +444,17 @@ export function Header() {
                       variants={quickLinkVariants}
                       className="px-2 text-xs font-semibold text-white/50 uppercase tracking-wider mb-4"
                     >
-                      Our Activities
+                      Quick Access
                     </motion.p>
                     <div className="grid grid-cols-2 gap-3">
                       <motion.div variants={quickLinkVariants}>
                         <Link
-                          href="/gallery"
+                          href="/sections"
                           onClick={() => setIsOpen(false)}
                           className="flex flex-col items-center gap-2 p-4 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
                         >
                           <Heart className="h-5 w-5" />
-                          <span className="text-xs text-center">Gallery & News</span>
+                          <span className="text-xs text-center">All Sections</span>
                         </Link>
                       </motion.div>
                       <motion.div variants={quickLinkVariants}>

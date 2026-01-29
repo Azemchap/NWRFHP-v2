@@ -1,4 +1,4 @@
-import { Heart, Camera, Users, Phone, Info, type LucideIcon } from 'lucide-react';
+import { Heart, Camera, Users, Phone, Info, Layers, type LucideIcon } from 'lucide-react';
 
 /**
  * Central Site Configuration
@@ -30,7 +30,7 @@ export interface NavigationGroup {
  */
 export const navigationLinks: NavigationLink[] = [
   { href: '/about', label: 'About Us', icon: Info },
-  { href: '/programs', label: 'Our Programs', icon: Heart },
+  { href: '/sections', label: 'Our Sections', icon: Layers },
   { href: '/team', label: 'Our Team', icon: Users },
   { href: '/contact', label: 'Get in Touch', icon: Phone },
   { href: '/gallery', label: 'Gallery & News', icon: Camera },
@@ -104,14 +104,20 @@ export const siteConfig = {
     healthDistricts: 21,
   },
 
-  // Footer Links
+  // Footer Links - Updated with Sections structure
   footerLinks: {
+    sections: [
+      { label: "PPM - Pharmaceutical Management", href: "/sections/pharmaceutical-product-management" },
+      { label: "HPPS - Health Promotion", href: "/sections/health-promotion-partnership-support" },
+      { label: "UHC1 - Health Coverage", href: "/sections/universal-health-coverage" },
+      { label: "All Sections", href: "/sections" },
+    ],
     programs: [
       { label: "Essential Medicines", href: "/programs/essential-medicines" },
-      { label: "Community Health", href: "/programs/community-health" },
-      { label: "Health Coverage", href: "/programs/universal-health-coverage" },
+      { label: "Disease Management", href: "/programs/priority-disease-management" },
       { label: "Maternal Health", href: "/programs/maternal-child-health" },
-      { label: "All Programs", href: "/programs" },
+      { label: "Hemodialysis", href: "/programs/hemodialysis-services" },
+      { label: "Training Programs", href: "/programs/training-refresher-courses" },
     ],
     organization: [
       { label: "Gallery", href: "/gallery" },
@@ -122,8 +128,8 @@ export const siteConfig = {
     quickLinks: [
       { label: "Contact Us", href: "/contact" },
       { label: "Health Voucher", href: "/health" },
-      { label: "Hemodialysis", href: "/programs/hemodialysis" },
-      { label: "Disease Management", href: "/programs/disease-management" },
+      { label: "HIV/TB Services", href: "/programs/free-hiv-tb-services" },
+      { label: "Quality Control", href: "/programs/quality-control" },
     ],
   },
 } as const;

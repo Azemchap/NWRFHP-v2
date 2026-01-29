@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle, Building, Users, Heart, Pill, Shield, Phone } 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
-import { programs } from "@/data/programs";
+import { sections, getAllPrograms } from "@/data/sections";
 import { siteConfig } from "@/config/site";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -19,6 +19,8 @@ const stats = [
 ];
 
 export default function ProgramsPage() {
+  const allPrograms = getAllPrograms();
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section with Background Image */}
@@ -36,9 +38,9 @@ export default function ProgramsPage() {
             variant="white"
             asChild
           >
-            <Link href="/health">
+            <Link href="/sections">
               <Shield className="mr-2 h-5 w-5" />
-              Learn About UHC
+              View Sections
             </Link>
           </Button>
           <Button
@@ -61,7 +63,7 @@ export default function ProgramsPage() {
             variants={staggerContainer}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={staggerItem}
@@ -79,7 +81,7 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Programs Grid */}
+      {/* Programs by Section */}
       <section className="py-8 lg:py-12">
         <div className="container">
           {/* Section Header */}
@@ -107,114 +109,128 @@ export default function ProgramsPage() {
               variants={staggerItem}
               className="text-lg text-neutral-600"
             >
-              Explore our comprehensive range of programs designed to serve every
-              member of our community with quality healthcare services.
+              Explore our {allPrograms.length} comprehensive programs organized across {sections.length} strategic sections,
+              designed to serve every member of our community with quality healthcare services.
             </motion.p>
           </motion.div>
 
-          {/* Programs List */}
-          <div className="space-y-16 lg:space-y-24">
-            {programs.map((program, index) => (
+          {/* Programs by Section */}
+          {sections.map((section) => (
+            <div key={section.id} className="mb-16 lg:mb-24">
+              {/* Section Header */}
               <motion.div
-                key={program.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                viewport={{ once: true }}
+                className="flex items-center gap-4 mb-8"
               >
-                {/* Image */}
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}
-                >
-                  <div className="relative h-[400px] lg:h-[450px] rounded-3xl overflow-hidden shadow-2xl">
-                    <Image
-                      src={program.image}
-                      alt={program.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent" />
-
-                    {/* Stats overlay */}
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="flex flex-wrap gap-3">
-                        {program.stats.slice(0, 2).map((stat, statIndex) => (
-                          <div
-                            key={statIndex}
-                            className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-neutral-900"
-                          >
-                            <span className="font-bold text-primary-600">{stat.value}</span> {stat.label}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Floating badge */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className={`absolute -bottom-6 ${index % 2 === 0 ? "-right-6" : "-left-6"} bg-white rounded-2xl p-4 shadow-xl border border-neutral-100`}
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${section.color} flex items-center justify-center`}>
+                  <section.icon className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <Link
+                    href={`/sections/${section.slug}`}
+                    className="text-2xl sm:text-3xl font-bold text-neutral-900 hover:text-primary-600 transition-colors"
                   >
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center`}>
-                      <program.icon className="w-8 h-8 text-white" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className={index % 2 === 1 ? "lg:order-1" : ""}
-                >
-                  <Badge className={`${program.bgColor} text-neutral-700 border-0 mb-4`}>
-                    Program {index + 1}
-                  </Badge>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4 leading-tight">
-                    {program.title}
-                  </h2>
-                  <p className="text-neutral-600 leading-relaxed mb-6">
-                    {program.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                    {program.features.map((feature, featureIndex) => (
-                      <motion.div
-                        key={featureIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.4 + featureIndex * 0.1 }}
-                        className="flex items-center gap-3"
-                      >
-                        <div className={`w-6 h-6 rounded-full ${program.bgColor} flex items-center justify-center flex-shrink-0`}>
-                          <CheckCircle className={`w-4 h-4 ${program.iconColor || "text-primary-600"}`} />
-                        </div>
-                        <span className="text-neutral-700 text-sm">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <Button size="lg" className="group" asChild>
-                    <Link href={`/programs/${program.slug}`}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </motion.div>
+                    {section.acronym}
+                  </Link>
+                  <p className="text-neutral-500">{section.shortTitle}</p>
+                </div>
+                <div className="flex-1" />
+                <Button variant="outline" size="sm" asChild className="hidden sm:flex">
+                  <Link href={`/sections/${section.slug}`}>
+                    View Section
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </motion.div>
-            ))}
-          </div>
+
+              {/* Programs Grid */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={staggerContainer}
+                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {section.programs.map((program) => (
+                  <motion.div
+                    key={program.id}
+                    variants={staggerItem}
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link
+                      href={`/programs/${program.slug}`}
+                      className="group block h-full bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                    >
+                      {/* Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={program.image}
+                          alt={program.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+
+                        {/* Icon Badge */}
+                        <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center`}>
+                          <program.icon className="w-6 h-6 text-white" />
+                        </div>
+
+                        {/* Stats overlay */}
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="flex flex-wrap gap-2">
+                            {program.stats.slice(0, 2).map((stat, statIndex) => (
+                              <div
+                                key={statIndex}
+                                className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-neutral-900"
+                              >
+                                <span className="font-bold text-primary-600">{stat.value}</span> {stat.label}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <Badge className={`${program.bgColor} text-neutral-700 border-0 mb-3`}>
+                          {section.acronym}
+                        </Badge>
+                        <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
+                          {program.title}
+                        </h3>
+                        <p className="text-neutral-600 text-sm mb-4 line-clamp-2">
+                          {program.description}
+                        </p>
+
+                        {/* Features */}
+                        <div className="space-y-2 mb-4">
+                          {program.features.slice(0, 3).map((feature, featureIndex) => (
+                            <div
+                              key={featureIndex}
+                              className="flex items-center gap-2"
+                            >
+                              <CheckCircle className="w-4 h-4 text-accent-500 shrink-0" />
+                              <span className="text-neutral-600 text-xs truncate">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Link */}
+                        <div className="flex items-center text-primary-600 font-medium text-sm">
+                          Learn More
+                          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          ))}
         </div>
       </section>
 
