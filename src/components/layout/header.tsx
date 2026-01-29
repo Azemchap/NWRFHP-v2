@@ -223,7 +223,7 @@ export function Header() {
                       variants={quickLinkVariants}
                       className="px-2 text-xs font-semibold text-white/50 uppercase tracking-wider mb-4"
                     >
-                      Quick Access
+                      Our Activities
                     </motion.p>
                     <div className="grid grid-cols-2 gap-3">
                       <motion.div variants={quickLinkVariants}>
