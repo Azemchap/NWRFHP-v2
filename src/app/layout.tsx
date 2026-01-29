@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { ScrollToTop } from '@/components/shared/scroll-to-top'
 import './globals.css'
 import { Metadata } from 'next'
 import { Toaster } from '@/components/ui/sonner'
@@ -18,10 +19,9 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
+        <ScrollToTop />
         <Header />
-        <div className='pt-10'>
-          <main className="min-h-screen">{children}</main>
-        </div>
+        <main className="min-h-screen pt-25">{children}</main>
         <Footer />
         <Toaster />
       </body>
