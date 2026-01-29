@@ -1,31 +1,8 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Camera,
-  Search,
-  Filter,
-  Calendar,
-  ArrowRight,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  Heart,
-  Truck,
-  Users,
-  GraduationCap,
-  Handshake,
-  Stethoscope,
-  MapPin,
-  PartyPopper,
-  Sparkles,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { PageHero } from "@/components/shared/page-hero";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -35,9 +12,31 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { PageHero } from "@/components/shared/page-hero";
+import { Input } from "@/components/ui/input";
 import { siteConfig } from "@/config/site";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowRight,
+  Calendar,
+  Camera,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  GraduationCap,
+  Handshake,
+  Heart,
+  MapPin,
+  PartyPopper,
+  Search,
+  Sparkles,
+  Stethoscope,
+  Truck,
+  X
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 // Event categories
 const categories = [
@@ -728,7 +727,7 @@ export default function GalleryPage() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
             >
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event, index) => {

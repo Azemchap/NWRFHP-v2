@@ -1,26 +1,26 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  Users,
-  ArrowRight,
-  Mail,
-  Phone,
-  Crown,
-  Building2,
-  Briefcase,
-  Package,
-  UserCheck,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { PageHero } from "@/components/shared/page-hero";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { siteConfig } from "@/config/site";
 import teamData from "@/data/team.json";
 import { staggerContainer, staggerItem } from "@/lib/animations";
-import { siteConfig } from "@/config/site";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Briefcase,
+  Building2,
+  Crown,
+  Mail,
+  Package,
+  Phone,
+  UserCheck,
+  Users,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface TeamMember {
   id: string;
@@ -323,7 +323,7 @@ export default function TeamPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={staggerContainer}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
             >
               {teamCategories.headsOfSection.map((member) => (
                 <TeamCard key={member.id} member={member} />
