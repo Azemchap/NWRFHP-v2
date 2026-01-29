@@ -171,7 +171,7 @@ export function HeroSection() {
                     { value: `${siteConfig.stats.healthFacilities}+`, label: "Health Facilities", color: "primary" },
                     { value: `${siteConfig.stats.communitiesServed}k+`, label: "Communities Served", color: "accent" },
                     { value: `${siteConfig.stats.yearsOfService}+`, label: "Years of Service", color: "primary" },
-                    { value: `${siteConfig.stats.healthWorkers}+`, label: "Health Workers", color: "accent" },
+                    { value: `${siteConfig.stats.healthWorkers}+`, label: "Health Workers Empowered", color: "accent" },
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
