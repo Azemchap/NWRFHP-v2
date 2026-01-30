@@ -20,7 +20,8 @@
       "Bash(pnpm build:*)",
       "Bash(dir:*)",
       "Bash(ls:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(npm run test:ci:*)"
     ]
   }
 }
