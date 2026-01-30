@@ -7,16 +7,16 @@ import { siteConfig } from "@/config/site";
 import { sections } from "@/data/sections";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  Camera,
   ChevronDown,
   ChevronRight,
   Heart,
+  Info,
   LinkedinIcon,
   Menu,
   MessageCircle,
   Phone,
-  Camera,
   Users,
-  Info,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -60,14 +60,6 @@ const quickLinkVariants = {
     },
   },
 };
-
-// Simple navigation links (non-dropdown)
-const simpleNavLinks = [
-  { href: "/about", label: "About Us", icon: Info },
-  { href: "/team", label: "Our Team", icon: Users },
-  { href: "/contact", label: "Contact", icon: Phone },
-  { href: "/gallery", label: "Gallery & News", icon: Camera },
-];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -165,7 +157,7 @@ export function Header() {
                     transition={{ duration: 0.2 }}
                     className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
                   >
-                    <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-6 w-[720px]">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-6 w-180">
                       <div className="grid grid-cols-3 gap-6">
                         {sections.map((section) => (
                           <div key={section.id} className="space-y-3">
@@ -256,10 +248,10 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full sm:w-[360px] border-l-0 p-0 overflow-hidden"
+              className="w-full sm:w-90 border-l-0 p-0 overflow-hidden"
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col h-full bg-gradient-to-b from-primary-600 via-primary-700 to-primary-800">
+              <div className="flex flex-col h-full bg-linear-to-b from-primary-600 via-primary-700 to-primary-800">
                 {/* Mobile Header - Primary Blue Background */}
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
