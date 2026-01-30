@@ -131,8 +131,8 @@ export function PageHero({
         </motion.div>
       </div>
 
-      {/* Decorative bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-50 to-transparent z-10" />
+      {/* Decorative bottom gradient - pointer-events-none allows clicks through */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-50 to-transparent z-10 pointer-events-none" />
     </section>
   );
 }

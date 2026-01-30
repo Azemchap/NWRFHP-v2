@@ -53,126 +53,176 @@ export function ServicesSection() {
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {sections.map((section) => (
-            <motion.div
-              key={section.id}
-              variants={staggerItem}
-              className="relative"
-              onMouseEnter={() => setHoveredSection(section.id)}
-              onMouseLeave={() => setHoveredSection(null)}
-            >
-              {/* Section Card */}
-              <div
-                className={`group relative bg-white rounded-3xl p-6 lg:p-8 border-2 transition-all duration-300 h-full ${
-                  hoveredSection === section.id
-                    ? "border-primary-500 shadow-2xl shadow-primary-500/10"
-                    : "border-neutral-100 shadow-sm hover:shadow-xl"
-                }`}
+          {sections.map((section, index) => {
+            // Determine dropdown position: first card -> right, last card -> left, middle -> right
+            const isLastCard = index === sections.length - 1;
+            const dropdownPosition = isLastCard ? "right" : "left";
+
+            return (
+              <motion.div
+                key={section.id}
+                variants={staggerItem}
+                className="relative"
+                onMouseEnter={() => setHoveredSection(section.id)}
+                onMouseLeave={() => setHoveredSection(null)}
               >
-                {/* Gradient Background on Hover */}
+                {/* Section Card */}
                 <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                />
+                  className={`group relative bg-white rounded-3xl p-6 lg:p-8 border-2 transition-all duration-300 h-full ${
+                    hoveredSection === section.id
+                      ? "border-primary-500 shadow-2xl shadow-primary-500/10"
+                      : "border-neutral-100 shadow-sm hover:shadow-xl"
+                  }`}
+                >
+                  {/* Gradient Background on Hover */}
+                  <div
+                    className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                  />
 
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon and Acronym */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div
-                      className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl ${section.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <section.icon
-                        className={`w-7 h-7 lg:w-8 lg:h-8 ${section.iconColor}`}
-                      />
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon and Acronym */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div
+                        className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl ${section.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <section.icon
+                          className={`w-7 h-7 lg:w-8 lg:h-8 ${section.iconColor}`}
+                        />
+                      </div>
+                      <span
+                        className={`text-sm font-bold ${section.iconColor} bg-gradient-to-r ${section.color} bg-clip-text text-transparent`}
+                      >
+                        {section.acronym}
+                      </span>
                     </div>
-                    <span
-                      className={`text-sm font-bold ${section.iconColor} bg-gradient-to-r ${section.color} bg-clip-text text-transparent`}
-                    >
-                      {section.acronym}
-                    </span>
-                  </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
-                    {section.shortTitle}
-                  </h3>
+                    {/* Title */}
+                    <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                      {section.shortTitle}
+                    </h3>
 
-                  {/* Description */}
-                  <p className="text-neutral-600 mb-6 leading-relaxed text-sm lg:text-base line-clamp-3">
-                    {section.description}
-                  </p>
-
-                  {/* Programs Preview */}
-                  <div className="space-y-2 mb-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                      {section.programs.length} Programs
+                    {/* Description */}
+                    <p className="text-neutral-600 mb-6 leading-relaxed text-sm lg:text-base line-clamp-3">
+                      {section.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {section.programs.slice(0, 3).map((program) => (
-                        <span
-                          key={program.id}
-                          className={`text-xs px-2.5 py-1 rounded-full ${section.bgColor} ${section.iconColor} font-medium`}
-                        >
-                          {program.shortTitle}
-                        </span>
-                      ))}
+
+                    {/* Programs Preview */}
+                    <div className="space-y-2 mb-6">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                        {section.programs.length} Programs
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {section.programs.slice(0, 3).map((program) => (
+                          <span
+                            key={program.id}
+                            className={`text-xs px-2.5 py-1 rounded-full ${section.bgColor} ${section.iconColor} font-medium`}
+                          >
+                            {program.shortTitle}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+
+                    {/* View Section Link */}
+                    <Link
+                      href={`/sections/${section.slug}`}
+                      className={`inline-flex items-center text-sm font-semibold ${section.iconColor} group/link`}
+                    >
+                      Explore Section
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
-                  {/* View Section Link */}
-                  <Link
-                    href={`/sections/${section.slug}`}
-                    className={`inline-flex items-center text-sm font-semibold ${section.iconColor} group/link`}
-                  >
-                    Explore Section
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
+                  {/* Hover Dropdown - Desktop only, appears to the side */}
+                  <AnimatePresence>
+                    {hoveredSection === section.id && (
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          x: dropdownPosition === "left" ? -20 : 20,
+                          scale: 0.95,
+                        }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        exit={{
+                          opacity: 0,
+                          x: dropdownPosition === "left" ? -20 : 20,
+                          scale: 0.95,
+                        }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className={`hidden lg:block absolute top-0 z-[100] w-72 ${
+                          dropdownPosition === "left"
+                            ? "left-full ml-3"
+                            : "right-full mr-3"
+                        }`}
+                      >
+                        <div className="bg-white rounded-2xl shadow-2xl shadow-neutral-900/20 border border-neutral-100 p-4 backdrop-blur-sm">
+                          {/* Arrow pointer */}
+                          <div
+                            className={`absolute top-6 w-3 h-3 bg-white border-neutral-100 rotate-45 ${
+                              dropdownPosition === "left"
+                                ? "-left-1.5 border-l border-b"
+                                : "-right-1.5 border-r border-t"
+                            }`}
+                          />
 
-                {/* Hover Dropdown */}
-                <AnimatePresence>
-                  {hoveredSection === section.id && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-0 right-0 top-full mt-2 z-50"
-                    >
-                      <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-4 mx-2">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3 px-2">
-                          Programs in {section.acronym}
-                        </p>
-                        <div className="space-y-1">
-                          {section.programs.map((program) => (
-                            <Link
-                              key={program.id}
-                              href={`/programs/${program.slug}`}
-                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-50 transition-colors group/item"
-                            >
+                          <div className="relative">
+                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-neutral-100">
                               <div
-                                className={`w-8 h-8 rounded-lg ${program.bgColor} flex items-center justify-center flex-shrink-0`}
+                                className={`w-8 h-8 rounded-lg bg-gradient-to-br ${section.color} flex items-center justify-center`}
                               >
-                                <program.icon
-                                  className={`w-4 h-4 ${program.iconColor}`}
-                                />
+                                <section.icon className="w-4 h-4 text-white" />
                               </div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-neutral-900 group-hover/item:text-primary-600 transition-colors truncate">
-                                  {program.shortTitle}
+                              <div>
+                                <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                                  {section.acronym}
+                                </p>
+                                <p className="text-sm font-bold text-neutral-900">
+                                  {section.programs.length} Programs
                                 </p>
                               </div>
-                              <ChevronRight className="w-4 h-4 text-neutral-400 group-hover/item:text-primary-600 group-hover/item:translate-x-0.5 transition-all" />
+                            </div>
+
+                            <div className="space-y-1">
+                              {section.programs.map((program) => (
+                                <Link
+                                  key={program.id}
+                                  href={`/programs/${program.slug}`}
+                                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-50 transition-colors group/item"
+                                >
+                                  <div
+                                    className={`w-9 h-9 rounded-lg ${program.bgColor} flex items-center justify-center shrink-0 group-hover/item:scale-105 transition-transform`}
+                                  >
+                                    <program.icon
+                                      className={`w-4 h-4 ${program.iconColor}`}
+                                    />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-neutral-900 group-hover/item:text-primary-600 transition-colors">
+                                      {program.shortTitle}
+                                    </p>
+                                  </div>
+                                  <ChevronRight className="w-4 h-4 text-neutral-300 group-hover/item:text-primary-600 group-hover/item:translate-x-0.5 transition-all" />
+                                </Link>
+                              ))}
+                            </div>
+
+                            <Link
+                              href={`/sections/${section.slug}`}
+                              className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-neutral-100 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+                            >
+                              View All in {section.acronym}
+                              <ArrowRight className="w-4 h-4" />
                             </Link>
-                          ))}
+                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* CTA */}
