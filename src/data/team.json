@@ -3,17 +3,17 @@
     "id": "member-01",
     "name": "DR. RICHARD MBARIKA FONDOH",
     "role": "ADMINISTRATOR",
-    "image": "/images/fondoh1.jpg",
+    "image": "/images/staff/Dr. Richard Mbarika Fondoh Administrator.jpg",
     "date": "30/12/2024",
     "slug": "dr-richard-mbarika-fondoh"
   },
   {
     "id": "member-02",
-    "name": "KINYUY MARGARET GHAM",
+    "name": "Akumawah MARGARET GHAM",
     "role": "HEAD OF SECTION, ADMINISTRATION AND FINANCE.",
-    "image": "/images/maggi.jpg",
+    "image": "/images/staff/Akumawah Margerate Head of Section Administration and Finance.jpg",
     "date": "30/12/2024",
-    "slug": "kinyuy-margaret-gham"
+    "slug": "Akumawah-margaret-gham"
   },
   {
     "id": "member-03",

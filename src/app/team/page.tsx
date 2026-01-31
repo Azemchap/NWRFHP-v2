@@ -112,7 +112,7 @@ const TeamCard = ({
                       Administrator
                     </Badge>
                   </div>
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 group-hover:text-accent-300 transition-colors">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 group-hover:text-accent-300 transition-colors">
                     {member.name}
                   </h3>
                   <p className="text-white/80 text-lg mb-6">{member.role}</p>
@@ -155,7 +155,7 @@ const TeamCard = ({
 
           {/* Content */}
           <div className="p-4 sm:p-5">
-            <h3 className="font-bold text-neutral-900 text-sm sm:text-base mb-2 line-clamp-1 group-hover:text-primary-600 transition-colors">
+            <h3 className="font-bold text-neutral-900 text-xs sm:text-base mb-2 line-clamp-1 group-hover:text-primary-600 transition-colors uppercase">
               {member.name}
             </h3>
             <Badge
@@ -223,29 +223,9 @@ export default function TeamPage() {
         backgroundImage="/images/096A0583.jpg"
         overlay="gradient"
       >
-        <div className="flex flex-wrap justify-center gap-4">
-          <Button
-            size="lg"
-            variant="white"
-            asChild
-          >
-            <Link href="/contact">
-              <Mail className="mr-2 h-5 w-5" />
-              Contact Us
-            </Link>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline-accent"
-            className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500"
-            asChild
-          >
-            <Link href="/gallery">View Gallery</Link>
-          </Button>
-        </div>
       </PageHero>
 
-      {/* Stats Bar */}
+      {/* Stats Bar
       <section className="py-8 -mt-20 relative z-20">
         <div className="container">
           <motion.div
@@ -278,7 +258,7 @@ export default function TeamPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Administrator Section - Full Width Featured */}
       {teamCategories.administrator.length > 0 && (
