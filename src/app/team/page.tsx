@@ -85,7 +85,7 @@ const TeamCard = ({
           <div className="overflow-hidden rounded-2xl border-2 border-primary-600 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900 h-full">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Image */}
-              <div className="relative h-64 md:h-96 overflow-hidden">
+              <div className="relative h-96 lg:h-120 overflow-hidden">
                 <Image
                   src={member.image}
                   alt={`${member.name} - ${member.role}`}
@@ -104,13 +104,15 @@ const TeamCard = ({
                     Administrator
                   </Badge>
                 </div>
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 group-hover:text-accent-300 transition-colors">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 group-hover:text-accent-300 transition-colors uppercase">
                   {member.name}
                 </h3>
-                <p className="text-white/80 text-lg mb-6">{member.role}</p>
-                <div className="flex items-center gap-2 text-accent-300 font-medium">
+                <p className="text-xs text-neutral-500 line-clamp-1 uppercase mb-2">
+                  {member.role.split(",")[1] || member.role.split(",")[0]}
+                </p>
+                <div className="text-xs flex items-center gap-2 text-accent-300 font-medium">
                   <span>View Full Profile</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-2 transition-transform" />
                 </div>
               </div>
             </div>
@@ -125,7 +127,7 @@ const TeamCard = ({
       <Link href={`/team/${member.slug}`}>
         <div className="bg-white rounded-xl overflow-hidden border border-neutral-200 hover:border-primary-300 transition-colors duration-300 h-full">
           {/* Image Container */}
-          <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-neutral-100">
+          <div className="relative h-96 overflow-hidden bg-neutral-100">
             <Image
               src={member.image}
               alt={`${member.name} - ${member.role}`}
@@ -147,11 +149,11 @@ const TeamCard = ({
 
           {/* Content */}
           <div className="p-3 sm:p-4">
-            <h3 className="font-semibold text-neutral-900 text-sm sm:text-base mb-1.5 line-clamp-1 group-hover:text-primary-600 transition-colors">
+            <h3 className="font-semibold text-neutral-900 text-sm sm:text-base mb-1.5 line-clamp-1 group-hover:text-primary-600 transition-colors uppercase">
               {member.name}
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-500 line-clamp-1">
-              {member.role.split(",")[0]}
+            <p className="text-xs text-neutral-500 line-clamp-1 uppercase">
+              {member.role.split(",")[1] || member.role.split(",")[0]}
             </p>
           </div>
         </div>
@@ -202,41 +204,6 @@ export default function TeamPage() {
       >
       </PageHero>
 
-      {/* Stats Bar
-      <section className="py-8 -mt-20 relative z-20">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-2xl shadow-xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">
-                {teamData.length - 1}+
-              </p>
-              <p className="text-neutral-600 text-sm mt-1">Team Members</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">9</p>
-              <p className="text-neutral-600 text-sm mt-1">Departments</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">
-                {siteConfig.stats.yearsOfService}+
-              </p>
-              <p className="text-neutral-600 text-sm mt-1">Years Experience</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-primary-600">
-                {siteConfig.stats.communityPharmacies}
-              </p>
-              <p className="text-neutral-600 text-sm mt-1">Pharmacies Served</p>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
-
       {/* Administrator Section - Full Width Featured */}
       {teamCategories.administrator.length > 0 && (
         <section className="py-12 lg:py-16">
@@ -270,7 +237,7 @@ export default function TeamPage() {
               description="Our section heads oversee major operational areas, ensuring efficient coordination and delivery of services across all departments."
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
               {teamCategories.headsOfSection.map((member) => (
                 <TeamCard key={member.id} member={member} />
               ))}
@@ -312,7 +279,7 @@ export default function TeamPage() {
               description="Our sub-store staff ensure medicines and supplies reach communities across the North West Region through our satellite locations."
             />
 
-            <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 auto">
               {teamCategories.subStoreStaff.map((member) => (
                 <TeamCard key={member.id} member={member} />
               ))}
@@ -333,7 +300,7 @@ export default function TeamPage() {
               description="The backbone of our operations - these dedicated professionals keep our organization running smoothly every day."
             />
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
               {teamCategories.otherStaff.map((member) => (
                 <TeamCard key={member.id} member={member} />
               ))}
