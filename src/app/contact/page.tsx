@@ -46,7 +46,7 @@ const contactMethods = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
@@ -167,8 +167,8 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Info */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -219,8 +219,8 @@ export default function ContactPage() {
 
             {/* Map placeholder */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl"

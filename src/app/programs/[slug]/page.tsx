@@ -49,7 +49,7 @@ export default function ProgramPage({ params }: ProgramPageProps) {
   const relatedPrograms = [...sameSectionPrograms, ...otherPrograms].slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
       <PageHero
         badge={{ icon: program.icon, text: program.shortTitle }}

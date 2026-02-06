@@ -385,7 +385,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
       <PageHero
         badge={{ icon: Camera, text: "Gallery & News" }}

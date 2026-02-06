@@ -45,7 +45,7 @@ export function AboutPreviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-8 -right-4 lg:-right-12 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 max-w-xs"
+              className="hidden lg:block absolute -bottom-8 right-4 xl:-right-12 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 max-w-xs"
             >
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">

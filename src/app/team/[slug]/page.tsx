@@ -1,26 +1,25 @@
 "use client";
 
-import { use } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import teamData from "@/data/team.json";
+import { staggerContainer, staggerItem } from "@/lib/animations";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
+  Award,
+  Building,
+  Calendar,
   Mail,
   Phone,
-  Calendar,
-  Building,
   Users,
-  Award,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import teamData from "@/data/team.json";
-import { siteConfig } from "@/config/site";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { use } from "react";
 
 interface TeamMember {
   id: string;
@@ -135,9 +134,9 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
   const relatedMembers = getRelatedMembers();
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-10 lg:py-14 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
+      <section className="relative py-10 lg:py-14 bg-linear-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <motion.div
@@ -173,9 +172,9 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="relative"
             >
               <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
@@ -186,15 +185,15 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                   className="object-cover object-top"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary-950/40 via-transparent to-transparent" />
               </div>
 
               {/* Date Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-xl"
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="hidden lg:block absolute -bottom-6 right-4 xl:-right-6 bg-white rounded-2xl p-5 border border-neutral-200"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
@@ -234,15 +233,26 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                 {member.role}
               </motion.p>
 
-              <motion.p
-                variants={staggerItem}
-                className="text-lg text-white/70 mb-8 leading-relaxed"
-              >
-                {member.name} is a dedicated member of the NWRFHP team, contributing
-                to our mission of promoting health and wellness in the North West
-                Region of Cameroon. Their expertise in {member.role.toLowerCase()} helps
-                ensure the successful delivery of our healthcare programs.
-              </motion.p>
+              <motion.div variants={staggerItem} className="prose prose-lg max-w-none ">
+                <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                  As a valued member of the NWRFHP team, {member.name} plays a crucial role
+                  in our organization&apos;s mission to promote health and wellness across the
+                  North West Region of Cameroon. With expertise in {member.role.toLowerCase()},
+                  they contribute significantly to our efforts in ensuring quality healthcare
+                  delivery to communities throughout the region.
+                </p>
+                <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                  Working within the {department} department, {member.name.split(" ")[0]} collaborates
+                  with fellow team members to support NWRFHP&apos;s various programs including
+                  essential medicines management, community health services, and universal
+                  health coverage initiatives.
+                </p>
+                <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                  Since joining NWRFHP in {member.date}, {member.name.split(" ")[0]} has been
+                  instrumental in advancing our organization&apos;s goals of making healthcare
+                  accessible and affordable for all residents of the North West Region.
+                </p>
+              </motion.div>
 
               {/* Quick Info */}
               <motion.div
@@ -297,156 +307,73 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-8 lg:py-12 bg-white">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
-              >
-                About
-              </motion.span>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6"
-              >
-                About {member.name.split(" ")[0]}
-              </motion.h2>
-              <motion.div variants={staggerItem} className="prose prose-lg max-w-none">
-                <p className="text-neutral-600 leading-relaxed">
-                  As a valued member of the NWRFHP team, {member.name} plays a crucial role
-                  in our organization&apos;s mission to promote health and wellness across the
-                  North West Region of Cameroon. With expertise in {member.role.toLowerCase()},
-                  they contribute significantly to our efforts in ensuring quality healthcare
-                  delivery to communities throughout the region.
-                </p>
-                <p className="text-neutral-600 leading-relaxed">
-                  Working within the {department} department, {member.name.split(" ")[0]} collaborates
-                  with fellow team members to support NWRFHP&apos;s various programs including
-                  essential medicines management, community health services, and universal
-                  health coverage initiatives.
-                </p>
-                <p className="text-neutral-600 leading-relaxed">
-                  Since joining NWRFHP in {member.date}, {member.name.split(" ")[0]} has been
-                  instrumental in advancing our organization&apos;s goals of making healthcare
-                  accessible and affordable for all residents of the North West Region.
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Related Team Members */}
       <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
-            >
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
               Related Colleagues
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl font-bold text-neutral-900"
-            >
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               Team Members You May Know
-            </motion.h2>
-            <motion.p
-              variants={staggerItem}
-              className="mt-4 text-neutral-600"
-            >
+            </h2>
+            <p className="mt-4 text-neutral-600">
               Colleagues from {department} and similar roles
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {relatedMembers.map((relatedMember) => (
-              <motion.div
-                key={relatedMember.id}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div key={relatedMember.id} className="group">
                 <Link
                   href={`/team/${relatedMember.slug}`}
-                  className="group block bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-neutral-100 transition-all duration-300"
+                  className="block bg-white rounded-xl overflow-hidden border border-neutral-200 hover:border-primary-300 transition-colors duration-300"
                 >
-                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+                  <div className="relative h-48 sm:h-52 md:h-56 overflow-hidden">
                     <Image
                       src={relatedMember.image}
                       alt={relatedMember.name}
                       fill
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-linear-to-t from-neutral-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="inline-flex items-center text-white font-medium text-sm">
+                        <ArrowRight className="mr-2 w-4 h-4" />
                         View Profile
-                        <ArrowRight className="ml-2 w-4 h-4" />
                       </span>
                     </div>
                   </div>
-                  <div className="p-4 md:p-5">
-                    <h3 className="font-bold text-neutral-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1 text-sm md:text-base">
+                  <div className="p-3 md:p-4">
+                    <h3 className="font-semibold text-neutral-900 mb-1 group-hover:text-primary-600 transition-colors line-clamp-1 text-sm md:text-base">
                       {relatedMember.name}
                     </h3>
-                    <p className="text-neutral-600 text-xs md:text-sm line-clamp-2">
-                      {relatedMember.role}
+                    <p className="text-neutral-500 text-xs md:text-sm line-clamp-1">
+                      {relatedMember.role.split(",")[0]}
                     </p>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-12"
-          >
+          <div className="text-center mt-10">
             <Button size="lg" variant="outline" asChild>
               <Link href="/team">
                 View All Team Members
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-10 lg:py-14 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
-          >
+          <div className="text-center max-w-3xl mx-auto">
             <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
               <Users className="w-4 h-4" />
               Join Our Mission
@@ -478,7 +405,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                 <Link href="/about">Learn More</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
