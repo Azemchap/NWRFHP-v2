@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { cardReveal } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 interface AnimatedCardProps {
   children: React.ReactNode;
@@ -16,28 +15,15 @@ export function AnimatedCard({
   delay = 0,
   hover = true,
 }: AnimatedCardProps) {
+  const { ref, isInView } = useInView<HTMLDivElement>();
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: {
-            duration: 0.6,
-            delay,
-            ease: [0.22, 1, 0.36, 1],
-          },
-        },
-      }}
-      whileHover={hover ? { y: -8, transition: { duration: 0.3 } } : undefined}
-      className={`bg-white rounded-2xl border border-neutral-100 shadow-md hover:shadow-2xl transition-shadow duration-300 ${className}`}
+    <div
+      ref={ref}
+      className={`bg-white rounded-2xl border border-neutral-100 shadow-md hover:shadow-2xl transition-all duration-300 ${hover ? 'hover:-translate-y-2' : ''} ${className} ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      style={{ transitionDelay: `${delay * 1000}ms` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

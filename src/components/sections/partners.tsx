@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { staggerContainer, staggerItem } from "@/lib/animations";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/use-in-view";
 
 const partners = [
   { src: "/images/logo8.jpg", alt: "Ministry of Health", name: "Ministry of Health" },
@@ -15,16 +14,17 @@ const partners = [
 ];
 
 export function PartnersSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
+  const { ref: gridRef, isInView: gridInView } = useInView<HTMLDivElement>();
+  const { ref: statsRef, isInView: statsInView } = useInView<HTMLDivElement>();
+
   return (
     <section className="py-8 lg:py-12 bg-white border-y border-neutral-100">
       <div className="container">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+        <div
+          ref={headerRef}
+          className={`text-center mb-12 transition-animate ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
         >
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
             Our Partners
@@ -36,23 +36,18 @@ export function PartnersSection() {
             Working together with government agencies and international organizations
             to deliver quality healthcare across the North West Region.
           </p>
-        </motion.div>
+        </div>
 
         {/* Partners Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
+        <div
+          ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12 items-center"
         >
           {partners.map((partner, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={staggerItem}
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col items-center justify-center group"
+              className={`flex flex-col items-center justify-center group transition-animate hover:scale-110 ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative h-16 w-full flex items-center justify-center">
                 <Image
@@ -66,17 +61,14 @@ export function PartnersSection() {
               <p className="mt-3 text-xs text-neutral-500 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {partner.name}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Trust Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 pt-12 border-t border-neutral-100"
+        <div
+          ref={statsRef}
+          className={`mt-12 pt-12 border-t border-neutral-100 transition-animate delay-400 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
         >
           <div className="flex flex-wrap items-center justify-center gap-8 text-center">
             <div>
@@ -94,7 +86,7 @@ export function PartnersSection() {
               <p className="text-sm text-neutral-600">Years of Partnership</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

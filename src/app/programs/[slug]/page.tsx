@@ -4,7 +4,6 @@ import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -22,7 +21,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageHero } from "@/components/shared/page-hero";
 import { getProgramWithSection, getAllPrograms } from "@/data/sections";
 import { siteConfig } from "@/config/site";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 interface ProgramPageProps {
   params: Promise<{
@@ -33,6 +32,15 @@ interface ProgramPageProps {
 export default function ProgramPage({ params }: ProgramPageProps) {
   const { slug } = use(params);
   const result = getProgramWithSection(slug);
+
+  // Scroll-triggered animation hooks
+  const { ref: statsRef, isInView: statsInView } = useInView();
+  const { ref: aboutRef, isInView: aboutInView } = useInView();
+  const { ref: imageRef, isInView: imageInView } = useInView();
+  const { ref: cardsRef, isInView: cardsInView } = useInView();
+  const { ref: relatedHeaderRef, isInView: relatedHeaderInView } = useInView();
+  const { ref: relatedGridRef, isInView: relatedGridInView } = useInView({ rootMargin: "-50px" });
+  const { ref: ctaRef, isInView: ctaInView } = useInView();
 
   if (!result) {
     notFound();
@@ -82,26 +90,23 @@ export default function ProgramPage({ params }: ProgramPageProps) {
       {/* Stats Bar */}
       <section className="hidden lg:flex py-8 -mt-20 relative z-20">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
+          <div
+            ref={statsRef}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {program.stats.map((stat) => (
-              <motion.div
+            {program.stats.map((stat, index) => (
+              <div
                 key={stat.label}
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 text-center"
+                className={`bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 text-center transition-all duration-500 hover:-translate-y-1 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <p className="text-3xl font-bold text-primary-600 mb-1">
                   {stat.value}
                 </p>
                 <p className="text-neutral-600 text-sm">{stat.label}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -135,13 +140,10 @@ export default function ProgramPage({ params }: ProgramPageProps) {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Content */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.div variants={staggerItem} className="flex items-center gap-3 mb-4">
+            <div ref={aboutRef}>
+              <div
+                className={`flex items-center gap-3 mb-4 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              >
                 <Badge className={`${section.bgColor} ${section.iconColor} border-0`}>
                   <section.icon className="w-3.5 h-3.5 mr-1.5" />
                   {section.acronym}
@@ -149,33 +151,30 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                 <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
                   Program
                 </span>
-              </motion.div>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6"
+              </div>
+              <h2
+                className={`text-3xl sm:text-4xl font-bold text-neutral-900 mb-6 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '100ms' }}
               >
                 {program.title}
-              </motion.h2>
-              <motion.p
-                variants={staggerItem}
-                className="text-lg text-neutral-600 leading-relaxed mb-8"
+              </h2>
+              <p
+                className={`text-lg text-neutral-600 leading-relaxed mb-8 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '200ms' }}
               >
                 {program.fullDescription}
-              </motion.p>
+              </p>
 
               {/* Features Grid */}
-              <motion.div
-                variants={staggerItem}
-                className="grid sm:grid-cols-2 gap-4"
+              <div
+                className={`grid sm:grid-cols-2 gap-4 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '300ms' }}
               >
                 {program.features.map((feature, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3"
+                    className={`flex items-center gap-3 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+                    style={{ transitionDelay: `${400 + index * 100}ms` }}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg ${program.bgColor} flex items-center justify-center shrink-0`}
@@ -183,20 +182,16 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                       <CheckCircle className={`w-4 h-4 ${program.iconColor}`} />
                     </div>
                     <span className="text-neutral-700 text-sm">{feature}</span>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+            <div ref={imageRef} className="relative">
+              <div
+                className={`relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ${imageInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
+              >
                 <Image
                   src={program.image}
                   alt={program.title}
@@ -206,21 +201,18 @@ export default function ProgramPage({ params }: ProgramPageProps) {
               </div>
 
               {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100"
+              <div
+                className={`absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100 transition-all duration-500 ${imageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '400ms' }}
               >
                 <div
-                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center mb-3`}
+                  className={`w-14 h-14 rounded-xl bg-linear-to-br ${program.color} flex items-center justify-center mb-3`}
                 >
                   <program.icon className="w-7 h-7 text-white" />
                 </div>
                 <p className="font-bold text-neutral-900">{program.shortTitle}</p>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -228,15 +220,14 @@ export default function ProgramPage({ params }: ProgramPageProps) {
       {/* Objectives, Beneficiaries, Activities */}
       <section className="py-8 lg:py-12 bg-white">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={cardsRef}
             className="grid lg:grid-cols-3 gap-8"
           >
             {/* Objectives */}
-            <motion.div variants={staggerItem}>
+            <div
+              className={`transition-all duration-500 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            >
               <Card className="h-full border-neutral-200 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mb-6">
@@ -257,10 +248,13 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Beneficiaries */}
-            <motion.div variants={staggerItem}>
+            <div
+              className={`transition-all duration-500 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '100ms' }}
+            >
               <Card className="h-full border-neutral-200 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-accent-100 flex items-center justify-center mb-6">
@@ -281,10 +275,13 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Activities */}
-            <motion.div variants={staggerItem}>
+            <div
+              className={`transition-all duration-500 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '200ms' }}
+            >
               <Card className="h-full border-neutral-200 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center mb-6">
@@ -305,48 +302,40 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Related Programs */}
       <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={relatedHeaderRef}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-all duration-500 ${relatedHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Explore More
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl font-bold text-neutral-900"
+            </span>
+            <h2
+              className={`text-3xl sm:text-4xl font-bold text-neutral-900 transition-all duration-500 ${relatedHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '100ms' }}
             >
               Related Programs
-            </motion.h2>
-          </motion.div>
+            </h2>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
+          <div
+            ref={relatedGridRef}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {relatedPrograms.map((relatedProgram) => (
-              <motion.div
+            {relatedPrograms.map((relatedProgram, index) => (
+              <div
                 key={relatedProgram.id}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
+                className={`transition-all duration-500 hover:-translate-y-2 ${relatedGridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <Link
                   href={`/programs/${relatedProgram.slug}`}
@@ -359,9 +348,9 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-neutral-900/60 to-transparent" />
                     <div
-                      className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${relatedProgram.color} flex items-center justify-center`}
+                      className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-linear-to-br ${relatedProgram.color} flex items-center justify-center`}
                     >
                       <relatedProgram.icon className="w-6 h-6 text-white" />
                     </div>
@@ -379,21 +368,18 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                     </span>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-8 lg:py-12 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-3xl mx-auto transition-all duration-500 ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Access This Program?
@@ -421,7 +407,7 @@ export default function ProgramPage({ params }: ProgramPageProps) {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

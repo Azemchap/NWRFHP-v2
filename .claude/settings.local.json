@@ -21,7 +21,8 @@
       "Bash(dir:*)",
       "Bash(ls:*)",
       "Bash(npm run lint)",
-      "Bash(npm run test:ci:*)"
+      "Bash(npm run test:ci:*)",
+      "Bash(npm ls:*)"
     ]
   }
 }

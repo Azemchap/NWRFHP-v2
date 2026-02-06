@@ -2,8 +2,8 @@
 
 import { StatCard } from "@/components/shared/stat-card";
 import { Building2, Users, Package, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/use-in-view";
 
 const stats = [
   {
@@ -39,16 +39,16 @@ const stats = [
 ];
 
 export function StatsSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
+  const { ref: gridRef, isInView: gridInView } = useInView<HTMLDivElement>();
+
   return (
     <section className="py-8 lg:py-12 bg-white">
       <div className="container">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+        <div
+          ref={headerRef}
+          className={`text-center mb-12 transition-animate ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
         >
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
             Our Impact
@@ -59,17 +59,15 @@ export function StatsSection() {
           <p className="max-w-2xl mx-auto text-neutral-600">
             Numbers that reflect our commitment to healthcare excellence
           </p>
-        </motion.div>
+        </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`transition-animate ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <StatCard
                 value={stat.value}
@@ -79,7 +77,7 @@ export function StatsSection() {
                 icon={stat.icon}
                 color={stat.color}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

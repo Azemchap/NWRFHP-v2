@@ -2,38 +2,25 @@
 
 import { Logo } from "@/components/shared/logo";
 import { siteConfig } from "@/config/site";
-import { motion } from "framer-motion";
+import { useInView } from "@/hooks/use-in-view";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export function Footer() {
+  const { ref, isInView } = useInView();
+
   return (
     <footer className="bg-primary-900 text-white">
       <div className="container py-20 lg:py-32">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
+          ref={ref}
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5"
         >
           {/* Brand Column */}
-          <motion.div variants={itemVariants} className="lg:col-span-1">
+          <div
+            className={`lg:col-span-1 transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            style={{ transitionDelay: '0ms' }}
+          >
             {/* Logo */}
             <Logo variant="light" size="md" showTagline={false} className="mb-4" />
             <p className="text-neutral-400 text-sm leading-relaxed mb-6">
@@ -54,7 +41,7 @@ export function Footer() {
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-neutral-800 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300"
+                className="w-9 h-9 rounded-lg bg-neutral-800 hover:bg-linear-to-br hover:from-purple-500 hover:to-pink-500 flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="h-4 w-4" />
@@ -78,10 +65,13 @@ export function Footer() {
                 <MessageCircle className="h-4 w-4" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Sections */}
-          <motion.div variants={itemVariants}>
+          <div
+            className={`transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            style={{ transitionDelay: '100ms' }}
+          >
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               Our Sections
             </h3>
@@ -96,10 +86,13 @@ export function Footer() {
                 </Link>
               ))}
             </nav>
-          </motion.div>
+          </div>
 
           {/* Programs */}
-          <motion.div variants={itemVariants}>
+          <div
+            className={`transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            style={{ transitionDelay: '200ms' }}
+          >
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               Programs
             </h3>
@@ -114,10 +107,13 @@ export function Footer() {
                 </Link>
               ))}
             </nav>
-          </motion.div>
+          </div>
 
           {/* Organization */}
-          <motion.div variants={itemVariants}>
+          <div
+            className={`transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            style={{ transitionDelay: '300ms' }}
+          >
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               Organization
             </h3>
@@ -132,10 +128,13 @@ export function Footer() {
                 </Link>
               ))}
             </nav>
-          </motion.div>
+          </div>
 
           {/* Contact */}
-          <motion.div variants={itemVariants}>
+          <div
+            className={`transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            style={{ transitionDelay: '400ms' }}
+          >
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               Contact Us
             </h3>
@@ -170,8 +169,8 @@ export function Footer() {
                 <span className="pt-1.5">{siteConfig.location.shortAddress}</span>
               </a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Bottom Bar */}

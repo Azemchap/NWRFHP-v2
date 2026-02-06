@@ -531,3 +531,199 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #0014dc, transparent);
 }
+
+/* ============================================
+   CSS ANIMATION SYSTEM (Replaces Framer Motion)
+   ============================================ */
+
+/* Initial state for scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animate-fade-in-up {
+  transform: translateY(30px);
+}
+
+.animate-on-scroll.animate-fade-in-down {
+  transform: translateY(-30px);
+}
+
+.animate-on-scroll.animate-fade-in-left {
+  transform: translateX(-40px);
+}
+
+.animate-on-scroll.animate-fade-in-right {
+  transform: translateX(40px);
+}
+
+.animate-on-scroll.animate-scale {
+  transform: scale(0.95);
+}
+
+/* Visible state - triggered by intersection observer or immediately */
+.animate-on-scroll.is-visible,
+.animate-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stagger animation delays for children */
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 400ms; }
+.stagger-children > *:nth-child(6) { transition-delay: 500ms; }
+.stagger-children > *:nth-child(7) { transition-delay: 600ms; }
+.stagger-children > *:nth-child(8) { transition-delay: 700ms; }
+.stagger-children > *:nth-child(9) { transition-delay: 800ms; }
+.stagger-children > *:nth-child(10) { transition-delay: 900ms; }
+.stagger-children > *:nth-child(11) { transition-delay: 1000ms; }
+.stagger-children > *:nth-child(12) { transition-delay: 1100ms; }
+
+/* Faster stagger */
+.stagger-fast > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-fast > *:nth-child(2) { transition-delay: 50ms; }
+.stagger-fast > *:nth-child(3) { transition-delay: 100ms; }
+.stagger-fast > *:nth-child(4) { transition-delay: 150ms; }
+.stagger-fast > *:nth-child(5) { transition-delay: 200ms; }
+.stagger-fast > *:nth-child(6) { transition-delay: 250ms; }
+.stagger-fast > *:nth-child(7) { transition-delay: 300ms; }
+.stagger-fast > *:nth-child(8) { transition-delay: 350ms; }
+
+/* Transition base for animated elements */
+.transition-animate {
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.transition-animate-fast {
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.transition-animate-slow {
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hero-specific animations - auto-play on load */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroBadge {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroScale {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 0.3; }
+}
+
+.animate-hero-badge {
+  animation: heroBadge 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-hero-title {
+  animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-hero-subtitle {
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-hero-cta {
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-hero-image {
+  animation: heroScale 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-bg-float {
+  animation: backgroundFloat 6s ease-in-out infinite;
+}
+
+.animate-bg-float-delayed {
+  animation: backgroundFloat 6s ease-in-out 2s infinite;
+}
+
+/* Card hover animations */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.05);
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* Drawer/Modal animations */
+@keyframes drawerSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes drawerSlideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-drawer-in {
+  animation: drawerSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-drawer-out {
+  animation: drawerSlideOut 0.2s ease-out forwards;
+}
+
+.animate-modal-in {
+  animation: modalFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-backdrop-in {
+  animation: backdropFadeIn 0.3s ease forwards;
+}

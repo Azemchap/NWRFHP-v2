@@ -4,8 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import teamData from "@/data/team.json";
-import { staggerContainer, staggerItem } from "@/lib/animations";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -139,44 +137,24 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
       <section className="relative py-10 lg:py-14 bg-linear-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5 }}
-            className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/15 rounded-full blur-3xl"
-          />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-bg-float" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/15 rounded-full blur-3xl animate-bg-float-delayed" />
         </div>
 
         <div className="container relative z-10">
           {/* Back Link */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
+          <div className="mb-8 animate-hero-badge">
             <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10" asChild>
               <Link href="/team">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Team
               </Link>
             </Button>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
+            <div className="relative animate-hero-image">
               <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src={member.image}
@@ -189,12 +167,7 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
               </div>
 
               {/* Date Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="hidden lg:block absolute -bottom-6 right-4 xl:-right-6 bg-white rounded-2xl p-5 border border-neutral-200"
-              >
+              <div className="hidden lg:block absolute -bottom-6 right-4 xl:-right-6 bg-white rounded-2xl p-5 border border-neutral-200 animate-slide-up delay-300">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
                     <Calendar className="w-6 h-6 text-primary-600" />
@@ -204,36 +177,26 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                     <p className="font-semibold text-neutral-900">{member.date}</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Content */}
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div variants={staggerItem}>
+            <div className="stagger-children">
+              <div className="animate-slide-up">
                 <Badge className="bg-white/10 border-white/20 text-white/90 mb-4">
                   {department}
                 </Badge>
-              </motion.div>
+              </div>
 
-              <motion.h1
-                variants={staggerItem}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
-              >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-slide-up delay-100">
                 {member.name}
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                variants={staggerItem}
-                className="text-xl text-accent-300 font-medium mb-6"
-              >
+              <p className="text-xl text-accent-300 font-medium mb-6 animate-slide-up delay-200">
                 {member.role}
-              </motion.p>
+              </p>
 
-              <motion.div variants={staggerItem} className="prose prose-lg max-w-none ">
+              <div className="prose prose-lg max-w-none animate-slide-up delay-300">
                 <p className="text-lg text-white/70 mb-8 leading-relaxed">
                   As a valued member of the NWRFHP team, {member.name} plays a crucial role
                   in our organization&apos;s mission to promote health and wellness across the
@@ -252,13 +215,10 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                   instrumental in advancing our organization&apos;s goals of making healthcare
                   accessible and affordable for all residents of the North West Region.
                 </p>
-              </motion.div>
+              </div>
 
               {/* Quick Info */}
-              <motion.div
-                variants={staggerItem}
-                className="grid sm:grid-cols-2 gap-4 mb-8"
-              >
+              <div className="grid sm:grid-cols-2 gap-4 mb-8 animate-slide-up delay-400">
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
                   <Building className="w-5 h-5 text-accent-400" />
                   <div>
@@ -273,13 +233,10 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                     <p className="text-white font-medium text-sm">{member.role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* CTA Buttons */}
-              <motion.div
-                variants={staggerItem}
-                className="flex flex-wrap gap-4"
-              >
+              <div className="flex flex-wrap gap-4 animate-slide-up delay-500">
                 <Button
                   size="lg"
                   className="bg-white text-primary-700 hover:bg-neutral-100"
@@ -301,8 +258,8 @@ export default function TeamMemberPage({ params }: TeamMemberPageProps) {
                     Call Now
                   </a>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

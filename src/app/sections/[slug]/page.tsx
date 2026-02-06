@@ -4,7 +4,6 @@ import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -18,7 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageHero } from "@/components/shared/page-hero";
 import { sections, getSection } from "@/data/sections";
 import { siteConfig } from "@/config/site";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 interface SectionPageProps {
   params: Promise<{
@@ -29,6 +28,16 @@ interface SectionPageProps {
 export default function SectionPage({ params }: SectionPageProps) {
   const { slug } = use(params);
   const section = getSection(slug);
+
+  // useInView hooks for each animated section
+  const { ref: statsRef, isInView: statsInView } = useInView();
+  const { ref: aboutRef, isInView: aboutInView } = useInView();
+  const { ref: aboutImageRef, isInView: aboutImageInView } = useInView();
+  const { ref: programsHeaderRef, isInView: programsHeaderInView } = useInView();
+  const { ref: programsGridRef, isInView: programsGridInView } = useInView();
+  const { ref: otherSectionsHeaderRef, isInView: otherSectionsHeaderInView } = useInView();
+  const { ref: otherSectionsGridRef, isInView: otherSectionsGridInView } = useInView();
+  const { ref: ctaRef, isInView: ctaInView } = useInView();
 
   if (!section) {
     notFound();
@@ -71,43 +80,38 @@ export default function SectionPage({ params }: SectionPageProps) {
       {/* Stats Bar */}
       <section className="py-6 lg:py-8 lg:-mt-20 relative z-20">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
+          <div
+            ref={statsRef}
             className="grid grid-cols-3 gap-3 sm:gap-6"
           >
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center"
+            <div
+              className={`bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center transition-all duration-500 hover:-translate-y-1 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '0ms' }}
             >
               <p className="text-2xl sm:text-4xl font-bold text-primary-600 mb-0.5 sm:mb-1">
                 {section.programs.length}
               </p>
               <p className="text-xs sm:text-base text-neutral-600">Programs</p>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center"
+            </div>
+            <div
+              className={`bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center transition-all duration-500 hover:-translate-y-1 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '100ms' }}
             >
               <p className="text-2xl sm:text-4xl font-bold text-primary-600 mb-0.5 sm:mb-1">
                 {siteConfig.stats.healthDistricts}
               </p>
               <p className="text-xs sm:text-base text-neutral-600">Districts</p>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center"
+            </div>
+            <div
+              className={`bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100 text-center transition-all duration-500 hover:-translate-y-1 ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '200ms' }}
             >
               <p className="text-2xl sm:text-4xl font-bold text-primary-600 mb-0.5 sm:mb-1">
                 {siteConfig.stats.populationServed}M
               </p>
               <p className="text-xs sm:text-base text-neutral-600">Population</p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -128,36 +132,34 @@ export default function SectionPage({ params }: SectionPageProps) {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
             {/* Content */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.div
-                variants={staggerItem}
-                className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full ${section.bgColor} mb-3 sm:mb-4`}
+            <div ref={aboutRef}>
+              <div
+                className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full ${section.bgColor} mb-3 sm:mb-4 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '0ms' }}
               >
                 <section.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${section.iconColor}`} />
                 <span className={`text-xs sm:text-sm font-bold ${section.iconColor}`}>
                   {section.acronym}
                 </span>
-              </motion.div>
-              <motion.h2
-                variants={staggerItem}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6"
+              </div>
+              <h2
+                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '100ms' }}
               >
                 {section.title}
-              </motion.h2>
-              <motion.p
-                variants={staggerItem}
-                className="text-base sm:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8"
+              </h2>
+              <p
+                className={`text-base sm:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '200ms' }}
               >
                 {section.fullDescription}
-              </motion.p>
+              </p>
 
               {/* Quick Program Links */}
-              <motion.div variants={staggerItem} className="space-y-2 sm:space-y-3">
+              <div
+                className={`space-y-2 sm:space-y-3 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '300ms' }}
+              >
                 <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-400">
                   Quick Access to Programs
                 </p>
@@ -173,16 +175,13 @@ export default function SectionPage({ params }: SectionPageProps) {
                     </Link>
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+            <div
+              ref={aboutImageRef}
+              className={`relative transition-all duration-700 ${aboutImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               <div className="relative h-72 sm:h-96 lg:h-125 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
                 <Image
@@ -194,12 +193,9 @@ export default function SectionPage({ params }: SectionPageProps) {
               </div>
 
               {/* Floating Badge - hidden on mobile and tablet */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100"
+              <div
+                className={`hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100 transition-all duration-500 ${aboutImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '400ms' }}
               >
                 <div
                   className={`w-14 h-14 rounded-xl bg-linear-to-br ${section.color} flex items-center justify-center mb-3`}
@@ -207,8 +203,8 @@ export default function SectionPage({ params }: SectionPageProps) {
                   <section.icon className="w-7 h-7 text-white" />
                 </div>
                 <p className="font-bold text-neutral-900">{section.acronym}</p>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -216,44 +212,40 @@ export default function SectionPage({ params }: SectionPageProps) {
       {/* Programs Grid */}
       <section className="py-10 lg:py-16 bg-white">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={programsHeaderRef}
             className="text-center max-w-3xl mx-auto mb-8 sm:mb-12"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-all duration-500 ${programsHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '0ms' }}
             >
               Our Programs
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-3 sm:mb-4"
+            </span>
+            <h2
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-3 sm:mb-4 transition-all duration-500 ${programsHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '100ms' }}
             >
               Programs in <span className="text-gradient">{section.acronym}</span>
-            </motion.h2>
-            <motion.p variants={staggerItem} className="text-base sm:text-lg text-neutral-600">
+            </h2>
+            <p
+              className={`text-base sm:text-lg text-neutral-600 transition-all duration-500 ${programsHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '200ms' }}
+            >
               Explore the specialized programs within our {section.shortTitle}{" "}
               section.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
+          <div
+            ref={programsGridRef}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {section.programs.map((program) => (
-              <motion.div
+            {section.programs.map((program, index) => (
+              <div
                 key={program.id}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
+                className={`transition-all duration-500 hover:-translate-y-2 ${programsGridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <Card className="h-full border-neutral-200 hover:shadow-xl hover:border-primary-200 transition-all duration-300 overflow-hidden group">
                   <div className="relative h-48 overflow-hidden">
@@ -263,9 +255,9 @@ export default function SectionPage({ params }: SectionPageProps) {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-neutral-900/70 to-transparent" />
                     <div
-                      className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center`}
+                      className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-linear-to-br ${program.color} flex items-center justify-center`}
                     >
                       <program.icon className="w-6 h-6 text-white" />
                     </div>
@@ -299,48 +291,42 @@ export default function SectionPage({ params }: SectionPageProps) {
                     </Link>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Other Sections */}
       <section className="py-10 lg:py-16 bg-neutral-50">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={otherSectionsHeaderRef}
             className="text-center max-w-3xl mx-auto mb-8 sm:mb-12"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-all duration-500 ${otherSectionsHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '0ms' }}
             >
               Explore More
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900"
+            </span>
+            <h2
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 transition-all duration-500 ${otherSectionsHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: '100ms' }}
             >
               Other Sections
-            </motion.h2>
-          </motion.div>
+            </h2>
+          </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
+          <div
+            ref={otherSectionsGridRef}
             className="grid sm:grid-cols-2 gap-4 sm:gap-8"
           >
-            {otherSections.map((otherSection) => (
-              <motion.div
+            {otherSections.map((otherSection, index) => (
+              <div
                 key={otherSection.id}
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
+                className={`transition-all duration-500 hover:-translate-y-1 ${otherSectionsGridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <Link
                   href={`/sections/${otherSection.slug}`}
@@ -364,21 +350,18 @@ export default function SectionPage({ params }: SectionPageProps) {
                   </div>
                   <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all shrink-0" />
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-10 sm:py-12 lg:py-16 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto px-2"
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-3xl mx-auto px-2 transition-all duration-500 ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6">
               Want to Learn More About {section.acronym}?
@@ -406,7 +389,7 @@ export default function SectionPage({ params }: SectionPageProps) {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

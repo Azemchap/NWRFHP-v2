@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Users, Heart, ArrowRight, Sparkles, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +16,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { PageHero } from "@/components/shared/page-hero";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 const committeeMembers = [
   { name: "LUKONG JULIUS", role: "Obstetrics Kit Management Unit", image: "/images/lukong.JPG" },
@@ -43,6 +42,15 @@ const socialEvents = [
 
 export default function SocialPage() {
   const [api, setApi] = useState<CarouselApi>();
+  const { ref: aboutRef, isInView: aboutInView } = useInView<HTMLDivElement>();
+  const { ref: aboutImageRef, isInView: aboutImageInView } = useInView<HTMLDivElement>();
+  const { ref: committeeHeaderRef, isInView: committeeHeaderInView } = useInView<HTMLDivElement>();
+  const { ref: committeeHeadRef, isInView: committeeHeadInView } = useInView<HTMLDivElement>();
+  const { ref: committeeMembersRef, isInView: committeeMembersInView } = useInView<HTMLDivElement>();
+  const { ref: ladiesImageRef, isInView: ladiesImageInView } = useInView<HTMLDivElement>();
+  const { ref: ladiesContentRef, isInView: ladiesContentInView } = useInView<HTMLDivElement>();
+  const { ref: eventsRef, isInView: eventsInView } = useInView<HTMLDivElement>();
+  const { ref: ctaRef, isInView: ctaInView } = useInView<HTMLDivElement>();
 
   useEffect(() => {
     if (!api) return;
@@ -91,75 +99,59 @@ export default function SocialPage() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <div ref={aboutRef}>
+              <span
+                className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 About Our Social Activities
-              </motion.span>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6"
+              </span>
+              <h2
+                className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 transition-animate delay-100 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Building Stronger{" "}
                 <span className="text-gradient">Communities Together</span>
-              </motion.h2>
-              <motion.p
-                variants={staggerItem}
-                className="text-lg text-neutral-600 mb-6 leading-relaxed"
+              </h2>
+              <p
+                className={`text-lg text-neutral-600 mb-6 leading-relaxed transition-animate delay-200 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 We work every single day during our working periods to render you with
                 services that will provide you with the satisfaction you deserve.
-              </motion.p>
-              <motion.p
-                variants={staggerItem}
-                className="text-neutral-600 mb-8 leading-relaxed"
+              </p>
+              <p
+                className={`text-neutral-600 mb-8 leading-relaxed transition-animate delay-300 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 That is why we carry out social activities as one of our strategies to
                 enable us complete our health package provision. Our team bonds translate
                 to better service for our communities.
-              </motion.p>
-              <motion.div variants={staggerItem}>
+              </p>
+              <div className={`transition-animate delay-400 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                 <Button size="lg" asChild>
                   <Link href="/contact">
                     Get In Touch
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+            <div
+              ref={aboutImageRef}
+              className={`relative transition-animate-slow ${aboutImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-100 lg:h-125 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/magg1.jpg"
                   alt="Social Mobilizer"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary-900/40 to-transparent" />
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100"
+              <div
+                className={`hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 transition-animate delay-400 ${aboutImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center">
                     <Sparkles className="w-7 h-7 text-white" />
                   </div>
                   <div>
@@ -167,8 +159,8 @@ export default function SocialPage() {
                     <p className="text-neutral-600 text-sm">Community Outreach</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -176,45 +168,36 @@ export default function SocialPage() {
       {/* Social Committee Section */}
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={committeeHeaderRef}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${committeeHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Social Committee
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4"
+            </span>
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 transition-animate delay-100 ${committeeHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Meet Our{" "}
               <span className="text-gradient">Committee Members</span>
-            </motion.h2>
-            <motion.p
-              variants={staggerItem}
-              className="text-lg text-neutral-600"
+            </h2>
+            <p
+              className={`text-lg text-neutral-600 transition-animate delay-200 ${committeeHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               The dedicated individuals who organize and lead our social initiatives.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Committee Head */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto mb-16"
+          <div
+            ref={committeeHeadRef}
+            className={`max-w-4xl mx-auto mb-16 transition-animate ${committeeHeadInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <Card className="overflow-hidden shadow-xl border-0">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-80 md:h-auto md:min-h-[400px]">
+                <div className="relative h-80 md:h-auto md:min-h-100">
                   <Image
                     src="/images/ndum.JPG"
                     alt="NDUM SEPHERINE KENG"
@@ -222,7 +205,7 @@ export default function SocialPage() {
                     className="object-cover"
                   />
                 </div>
-                <CardContent className="p-8 lg:p-10 flex flex-col justify-center bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+                <CardContent className="p-8 lg:p-10 flex flex-col justify-center bg-linear-to-br from-primary-600 to-primary-800 text-white">
                   <Badge className="w-fit bg-white/20 text-white border-0 mb-4">
                     Committee Head
                   </Badge>
@@ -246,24 +229,20 @@ export default function SocialPage() {
                 </CardContent>
               </div>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Committee Members Grid */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
+          <div
+            ref={committeeMembersRef}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {committeeMembers.map((member, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
+                className={`transition-animate ${committeeMembersInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-neutral-200 bg-white h-full">
+                <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-neutral-200 bg-white h-full card-hover">
                   <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-neutral-100">
                     <Image
                       src={member.image}
@@ -271,7 +250,7 @@ export default function SocialPage() {
                       fill
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-linear-to-t from-neutral-900/80 via-neutral-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <CardContent className="p-4 md:p-6">
                     <h3 className="text-sm md:text-base lg:text-lg font-bold text-neutral-900 mb-1 md:mb-2 group-hover:text-primary-600 transition-colors line-clamp-1">
@@ -280,15 +259,12 @@ export default function SocialPage() {
                     <p className="text-xs md:text-sm text-neutral-600 line-clamp-2">{member.role}</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
+          <div
+            className={`text-center mt-12 transition-animate delay-600 ${committeeMembersInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <Button size="lg" asChild>
               <Link href="/team">
@@ -296,7 +272,7 @@ export default function SocialPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -304,31 +280,24 @@ export default function SocialPage() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative order-2 lg:order-1"
+            <div
+              ref={ladiesImageRef}
+              className={`relative order-2 lg:order-1 transition-animate-slow ${ladiesImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-100 lg:h-125 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/njamsi.JPG"
                   alt="MADAM NJAMSI MILDRED"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary-900/40 to-transparent" />
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="hidden lg:block absolute -bottom-6 right-4 xl:-right-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100"
+              <div
+                className={`hidden lg:block absolute -bottom-6 right-4 xl:-right-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 transition-animate delay-400 ${ladiesImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-accent-500 to-accent-600 flex items-center justify-center">
                     <Award className="w-7 h-7 text-white" />
                   </div>
                   <div>
@@ -336,40 +305,34 @@ export default function SocialPage() {
                     <p className="text-neutral-600 text-sm">Female Staff</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
+            <div
+              ref={ladiesContentRef}
               className="order-1 lg:order-2"
             >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-accent-600 bg-accent-50 rounded-full"
+              <span
+                className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-accent-600 bg-accent-50 rounded-full transition-animate ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Ladies of the Fund
-              </motion.span>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6"
+              </span>
+              <h2
+                className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 transition-animate delay-100 ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Our Amazing{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-500 to-accent-600">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-500 to-accent-600">
                   Women Team
                 </span>
-              </motion.h2>
-              <motion.p
-                variants={staggerItem}
-                className="text-lg text-neutral-600 mb-6 leading-relaxed"
+              </h2>
+              <p
+                className={`text-lg text-neutral-600 mb-6 leading-relaxed transition-animate delay-200 ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 The North West Regional Fund For Health Promotion has eighteen female
                 staff who are the backbone of our exceptional customer service.
-              </motion.p>
+              </p>
 
-              <motion.div variants={staggerItem} className="space-y-4 mb-8">
+              <div className={`space-y-4 mb-8 transition-animate delay-300 ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                 {["Energetic", "Intelligent", "Generous", "Charismatic"].map(
                   (trait, index) => (
                     <div key={index} className="flex items-center gap-3">
@@ -382,37 +345,34 @@ export default function SocialPage() {
                     </div>
                   )
                 )}
-              </motion.div>
+              </div>
 
-              <motion.p
-                variants={staggerItem}
-                className="text-neutral-600 mb-8"
+              <p
+                className={`text-neutral-600 mb-8 transition-animate delay-400 ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 All of these qualities explain why our customer services are unique
                 and highly valued by our community.
-              </motion.p>
+              </p>
 
-              <motion.div variants={staggerItem}>
+              <div className={`transition-animate delay-500 ${ladiesContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                 <Button size="lg" asChild>
                   <Link href="/team">
                     Discover Our Ladies
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Events Carousel */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-16 lg:py-24 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+          <div
+            ref={eventsRef}
+            className={`text-center mb-12 transition-animate ${eventsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
               <Sparkles className="w-4 h-4" />
@@ -425,14 +385,10 @@ export default function SocialPage() {
               Capturing the moments that bring our team together and strengthen
               our bonds.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-5xl mx-auto"
+          <div
+            className={`max-w-5xl mx-auto transition-animate delay-200 ${eventsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <Carousel
               setApi={setApi}
@@ -442,14 +398,14 @@ export default function SocialPage() {
               <CarouselContent>
                 {socialEvents.map((src, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative w-full h-[400px] lg:h-[500px]">
+                    <div className="relative w-full h-100 lg:h-125">
                       <Image
                         src={src}
                         alt={`Social event ${index + 1}`}
                         fill
                         className="object-cover object-top"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-neutral-900/60 to-transparent" />
                     </div>
                   </CarouselItem>
                 ))}
@@ -457,19 +413,16 @@ export default function SocialPage() {
               <CarouselPrevious className="left-4 bg-white/20 border-white/30 text-white hover:bg-white/30" />
               <CarouselNext className="right-4 bg-white/20 border-white/30 text-white hover:bg-white/30" />
             </Carousel>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-3xl mx-auto transition-animate ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
               Join Our Community
@@ -492,7 +445,7 @@ export default function SocialPage() {
                 <Link href="/team">Meet the Team</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

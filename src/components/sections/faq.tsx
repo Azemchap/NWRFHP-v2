@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle } from "lucide-react";
-import { staggerContainer, staggerItem } from "@/lib/animations";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/use-in-view";
 
 const faqs = [
   {
@@ -35,44 +34,39 @@ const faqs = [
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
+  const { ref: faqRef, isInView: faqInView } = useInView<HTMLDivElement>();
 
   return (
     <section className="py-10 lg:py-16 bg-white">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left - Header */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={headerRef}
             className="lg:sticky lg:top-32 lg:self-start"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               FAQ
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6"
+            </span>
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 transition-animate delay-100 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Frequently Asked{" "}
               <span className="text-gradient">Questions</span>
-            </motion.h2>
-            <motion.p
-              variants={staggerItem}
-              className="text-lg text-neutral-600 mb-8"
+            </h2>
+            <p
+              className={`text-lg text-neutral-600 mb-8 transition-animate delay-200 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Find answers to common questions about our healthcare programs and services.
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={staggerItem}
-              className="flex items-start gap-4 p-6 rounded-2xl bg-primary-50 border border-primary-100"
+            <div
+              className={`flex items-start gap-4 p-6 rounded-2xl bg-primary-50 border border-primary-100 transition-animate delay-300 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center shrink-0">
                 <HelpCircle className="w-6 h-6 text-primary-600" />
               </div>
               <div>
@@ -87,22 +81,16 @@ export function FAQSection() {
                   Contact us →
                 </a>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right - FAQ Items */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="space-y-4"
-          >
+          <div ref={faqRef} className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={staggerItem}
-                className="rounded-2xl border border-neutral-200 overflow-hidden hover:border-primary-200 transition-colors duration-300"
+                className={`rounded-2xl border border-neutral-200 overflow-hidden hover:border-primary-200 transition-all duration-300 ${faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -111,7 +99,7 @@ export function FAQSection() {
                   <span className="font-semibold text-neutral-900 pr-4">
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                     openIndex === index
                       ? "bg-primary-600 text-white"
                       : "bg-neutral-100 text-neutral-600"
@@ -123,24 +111,22 @@ export function FAQSection() {
                     )}
                   </div>
                 </button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pt-2 text-neutral-600 leading-relaxed border-t border-neutral-100">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    openIndex === index
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 pt-2 text-neutral-600 leading-relaxed border-t border-neutral-100">
+                      {faq.answer}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

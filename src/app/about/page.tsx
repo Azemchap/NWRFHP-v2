@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Target, Eye, Heart, Users, Building, Award, CheckCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/use-in-view";
 
 const milestones = [
   { year: "1987", title: "Foundation", description: "Established as North West Pro Pharmacy to ensure constant supply of quality essential medicines." },
@@ -24,6 +24,17 @@ const stats = [
 ];
 
 export default function AboutPage() {
+  const { ref: heroRef, isInView: heroInView } = useInView();
+  const { ref: statsRef, isInView: statsInView } = useInView();
+  const { ref: historyHeaderRef, isInView: historyHeaderInView } = useInView();
+  const { ref: timelineRef, isInView: timelineInView } = useInView();
+  const { ref: historyCardRef, isInView: historyCardInView } = useInView();
+  const { ref: differenceImageRef, isInView: differenceImageInView } = useInView();
+  const { ref: differenceTextRef, isInView: differenceTextInView } = useInView();
+  const { ref: purposeHeaderRef, isInView: purposeHeaderInView } = useInView();
+  const { ref: purposeCardsRef, isInView: purposeCardsInView } = useInView();
+  const { ref: ctaRef, isInView: ctaInView } = useInView();
+
   return (
     <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
@@ -36,52 +47,44 @@ export default function AboutPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/85 to-primary-800/70" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary-900/95 via-primary-900/85 to-primary-800/70" />
         </div>
 
         <div className="container relative z-10 py-10 lg:py-14">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+            <div
+              ref={heroRef}
+              className={`transition-animate ${heroInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
             >
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium"
+              <span
+                className={`inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium transition-animate ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '100ms' }}
               >
                 <Heart className="w-4 h-4" />
                 About Us
-              </motion.span>
+              </span>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              <h1
+                className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-animate ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '200ms' }}
               >
                 Who{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-accent-400">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-300 to-accent-400">
                   Are We?
                 </span>
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-lg text-white/80 mb-8 leading-relaxed"
+              <p
+                className={`text-lg text-white/80 mb-8 leading-relaxed transition-animate ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '300ms' }}
               >
                 The North West Regional Fund for Health Promotion - PIG is a public corporate dialogue
                 structure serving the healthcare needs of Cameroon&apos;s North West Region since 1987.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+              <div
+                className={`transition-animate ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: '400ms' }}
               >
                 <Button size="lg" variant="white" asChild>
                   <Link href="/contact">
@@ -89,8 +92,8 @@ export default function AboutPage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -98,22 +101,19 @@ export default function AboutPage() {
       {/* Stats Section */}
       <section className="py-12 -mt-16 relative z-10">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div ref={statsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg border border-neutral-100"
+                className={`bg-white rounded-2xl p-6 shadow-lg border border-neutral-100 transition-animate ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
                   <stat.icon className="w-6 h-6 text-primary-600" />
                 </div>
                 <p className="text-3xl font-bold text-neutral-900 mb-1">{stat.value}</p>
                 <p className="text-neutral-600 text-sm">{stat.label}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -122,12 +122,9 @@ export default function AboutPage() {
       {/* History Section */}
       <section className="py-8 lg:py-12 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+          <div
+            ref={historyHeaderRef}
+            className={`text-center mb-12 transition-animate ${historyHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
               Our Journey
@@ -138,19 +135,16 @@ export default function AboutPage() {
             <p className="text-neutral-600 max-w-3xl mx-auto">
               From humble beginnings to becoming a cornerstone of healthcare in the North West Region
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Timeline */}
-            <div className="space-y-6">
+            <div ref={timelineRef} className="space-y-6">
               {milestones.map((milestone, index) => (
-                <motion.div
+                <div
                   key={milestone.year}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex gap-4"
+                  className={`flex gap-4 transition-animate ${timelineInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="flex flex-col items-center">
                     <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold text-sm">
@@ -164,16 +158,14 @@ export default function AboutPage() {
                     <h3 className="text-lg font-semibold text-neutral-900 mb-2">{milestone.title}</h3>
                     <p className="text-neutral-600 text-sm leading-relaxed">{milestone.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Description Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <div
+              ref={historyCardRef}
+              className={`transition-animate ${historyCardInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-5'}`}
             >
               <Card className="shadow-lg border-neutral-200 overflow-hidden">
                 <CardContent className="p-8">
@@ -190,7 +182,7 @@ export default function AboutPage() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -199,12 +191,9 @@ export default function AboutPage() {
       <section className="py-8 lg:py-12 bg-neutral-50">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
+            <div
+              ref={differenceImageRef}
+              className={`relative transition-animate ${differenceImageInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
             >
               <div className="relative h-[450px] lg:h-[550px] rounded-2xl overflow-hidden shadow-xl">
                 <Image
@@ -218,13 +207,11 @@ export default function AboutPage() {
                 <p className="text-4xl font-bold text-primary-600 mb-2">{siteConfig.stats.medicineAvailability}</p>
                 <p className="text-neutral-600 text-sm">Medicine Availability Rate</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <div
+              ref={differenceTextRef}
+              className={`transition-animate ${differenceTextInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
             >
               <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
                 Our Approach
@@ -246,22 +233,19 @@ export default function AboutPage() {
                   `Coverage of ${siteConfig.stats.populationServed} million inhabitants`,
                   "90% geographical coverage",
                 ].map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-center gap-3"
+                    className={`flex items-center gap-3 transition-animate ${differenceTextInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-5'}`}
+                    style={{ transitionDelay: `${(index + 1) * 100}ms` }}
                   >
-                    <div className="w-6 h-6 rounded-full bg-accent-100 flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-accent-100 flex items-center justify-center shrink-0">
                       <CheckCircle className="w-4 h-4 text-accent-600" />
                     </div>
                     <span className="text-neutral-700">{item}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -269,12 +253,9 @@ export default function AboutPage() {
       {/* Vision, Mission, Values */}
       <section className="py-8 lg:py-12 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+          <div
+            ref={purposeHeaderRef}
+            className={`text-center mb-12 transition-animate ${purposeHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full">
               Our Purpose
@@ -282,9 +263,9 @@ export default function AboutPage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">
               Vision, Mission & Values
             </h2>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div ref={purposeCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 icon: Eye,
@@ -305,21 +286,17 @@ export default function AboutPage() {
                 color: "bg-accent-500",
               },
             ].map((item, index) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-neutral-50 rounded-xl md:rounded-2xl p-4 sm:p-6 lg:p-8 border border-neutral-100 hover:shadow-lg transition-all duration-300"
+                className={`bg-neutral-50 rounded-xl md:rounded-2xl p-4 sm:p-6 lg:p-8 border border-neutral-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${purposeCardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg md:rounded-xl ${item.color} flex items-center justify-center mb-4 md:mb-6`}>
                   <item.icon className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
                 <h3 className="text-base md:text-lg lg:text-xl font-semibold text-neutral-900 mb-2 md:mb-4">{item.title}</h3>
                 <p className="text-neutral-600 leading-relaxed text-sm md:text-base">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -328,12 +305,9 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-8 lg:py-12 bg-primary-600">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-3xl mx-auto transition-animate ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Join Us in Our Mission
@@ -357,7 +331,7 @@ export default function AboutPage() {
                 <Link href="/programs">View Programs</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

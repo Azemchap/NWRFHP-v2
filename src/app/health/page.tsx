@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Shield,
   Heart,
@@ -18,10 +17,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { PageHero } from "@/components/shared/page-hero";
 import { siteConfig } from "@/config/site";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 const uhcPackages = [
   {
@@ -114,6 +112,15 @@ const stats = [
 ];
 
 export default function HealthPage() {
+  const { ref: statsRef, isInView: statsInView } = useInView<HTMLDivElement>();
+  const { ref: introContentRef, isInView: introContentInView } = useInView<HTMLDivElement>();
+  const { ref: introImageRef, isInView: introImageInView } = useInView<HTMLDivElement>();
+  const { ref: packagesHeaderRef, isInView: packagesHeaderInView } = useInView<HTMLDivElement>();
+  const { ref: packagesRef, isInView: packagesInView } = useInView<HTMLDivElement>();
+  const { ref: stepsRef, isInView: stepsInView } = useInView<HTMLDivElement>();
+  const { ref: stepsImageRef, isInView: stepsImageInView } = useInView<HTMLDivElement>();
+  const { ref: ctaRef, isInView: ctaInView } = useInView<HTMLDivElement>();
+
   return (
     <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section */}
@@ -153,28 +160,24 @@ export default function HealthPage() {
       {/* Stats Section */}
       <section className="py-8 -mt-20 relative z-20">
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          <div
+            ref={statsRef}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-fast"
           >
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={stat.label}
-                variants={staggerItem}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 shadow-xl border border-neutral-100"
+                className={`bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 card-hover transition-animate ${statsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
                   <stat.icon className="w-6 h-6 text-primary-600" />
                 </div>
                 <p className="text-3xl font-bold text-neutral-900 mb-1">{stat.value}</p>
                 <p className="text-neutral-600 text-sm">{stat.label}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -183,44 +186,35 @@ export default function HealthPage() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Content */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <div ref={introContentRef} className="stagger-children">
+              <span
+                className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${introContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 About UHC
-              </motion.span>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6"
+              </span>
+              <h2
+                className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 transition-animate delay-100 ${introContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Universal Health Coverage:{" "}
                 <span className="text-gradient">The Umbrella of Care</span>
-              </motion.h2>
-              <motion.p
-                variants={staggerItem}
-                className="text-lg text-neutral-600 mb-6 leading-relaxed"
+              </h2>
+              <p
+                className={`text-lg text-neutral-600 mb-6 leading-relaxed transition-animate delay-200 ${introContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Universal Health Coverage (UHC) is a flagship health financing mechanism
                 of the Government of Cameroon aimed at ensuring that all residents have
                 access to quality healthcare services without facing financial hardship.
-              </motion.p>
-              <motion.p
-                variants={staggerItem}
-                className="text-neutral-600 mb-8 leading-relaxed"
+              </p>
+              <p
+                className={`text-neutral-600 mb-8 leading-relaxed transition-animate delay-300 ${introContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Through NWRFHP, the UHC program in the North West Region covers five key
                 service packages subsidized by the state budget, making essential healthcare
                 accessible to the most vulnerable populations including children, pregnant
                 women, and persons living with chronic conditions.
-              </motion.p>
+              </p>
 
-              <motion.div variants={staggerItem} className="flex flex-wrap gap-4">
+              <div className={`flex flex-wrap gap-4 transition-animate delay-400 ${introContentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                 <Button size="lg" asChild>
                   <Link href="/gallery">
                     <Users className="mr-2 h-5 w-5" />
@@ -230,16 +224,13 @@ export default function HealthPage() {
                 <Button size="lg" variant="outline" asChild>
                   <Link href="/contact">Learn More</Link>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+            <div
+              ref={introImageRef}
+              className={`relative transition-animate-slow ${introImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
@@ -248,19 +239,15 @@ export default function HealthPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary-900/30 to-transparent" />
               </div>
 
               {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100"
+              <div
+                className={`hidden lg:block absolute -bottom-6 left-4 xl:-left-6 bg-white rounded-2xl p-6 shadow-xl border border-neutral-100 transition-animate delay-400 ${introImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center">
                     <Sparkles className="w-7 h-7 text-white" />
                   </div>
                   <div>
@@ -268,8 +255,8 @@ export default function HealthPage() {
                     <p className="text-neutral-600 text-sm">Service Packages</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -278,57 +265,47 @@ export default function HealthPage() {
       <section id="packages" className="py-10 lg:py-14 bg-neutral-50">
         <div className="container">
           {/* Header */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
+          <div
+            ref={packagesHeaderRef}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${packagesHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               UHC Packages
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4"
+            </span>
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 transition-animate delay-100 ${packagesHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Five Packages of{" "}
               <span className="text-gradient">Health Coverage</span>
-            </motion.h2>
-            <motion.p
-              variants={staggerItem}
-              className="text-lg text-neutral-600"
+            </h2>
+            <p
+              className={`text-lg text-neutral-600 transition-animate delay-200 ${packagesHeaderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               Comprehensive healthcare services subsidized by the government to ensure
               no one is left behind in accessing quality care.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Packages Grid */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
+          <div
+            ref={packagesRef}
             className="space-y-8"
           >
             {uhcPackages.map((pkg, index) => (
-              <motion.div
+              <div
                 key={pkg.id}
-                variants={staggerItem}
-                whileHover={{ y: -4 }}
-                className={`bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-300 ${
+                className={`bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-300 card-hover ${
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                } ${packagesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ transitionDelay: `${index * 150}ms`, transition: 'opacity 0.6s ease, transform 0.6s ease' }}
               >
                 <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
                   {/* Content */}
                   <div className="p-8 lg:p-12">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pkg.color} flex items-center justify-center flex-shrink-0`}>
+                      <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${pkg.color} flex items-center justify-center shrink-0`}>
                         <pkg.icon className="w-8 h-8 text-white" />
                       </div>
                       <div>
@@ -347,7 +324,7 @@ export default function HealthPage() {
                     <div className="grid sm:grid-cols-2 gap-3">
                       {pkg.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center gap-3">
-                          <div className={`w-6 h-6 rounded-full ${pkg.bgColor} flex items-center justify-center flex-shrink-0`}>
+                          <div className={`w-6 h-6 rounded-full ${pkg.bgColor} flex items-center justify-center shrink-0`}>
                             <CheckCircle className={`w-4 h-4 ${pkg.iconColor}`} />
                           </div>
                           <span className="text-sm text-neutral-700">{feature}</span>
@@ -365,7 +342,7 @@ export default function HealthPage() {
                       }} />
                     </div>
                     <div className="relative text-center p-8">
-                      <div className={`w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br ${pkg.color} flex items-center justify-center mb-4 shadow-lg`}>
+                      <div className={`w-24 h-24 mx-auto rounded-3xl bg-linear-to-br ${pkg.color} flex items-center justify-center mb-4 shadow-lg`}>
                         <pkg.icon className="w-12 h-12 text-white" />
                       </div>
                       <p className="text-4xl font-bold text-neutral-900">{pkg.subtitle}</p>
@@ -373,9 +350,9 @@ export default function HealthPage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -384,25 +361,18 @@ export default function HealthPage() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Steps */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.span
-                variants={staggerItem}
-                className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <div ref={stepsRef}>
+              <span
+                className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${stepsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 Get Started
-              </motion.span>
-              <motion.h2
-                variants={staggerItem}
-                className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-8"
+              </span>
+              <h2
+                className={`text-3xl sm:text-4xl font-bold text-neutral-900 mb-8 transition-animate delay-100 ${stepsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
               >
                 How to Become a{" "}
                 <span className="text-gradient">Beneficiary</span>
-              </motion.h2>
+              </h2>
 
               <div className="space-y-6">
                 {[
@@ -427,30 +397,27 @@ export default function HealthPage() {
                     description: "Continue to benefit from follow-up care and preventive services included in your coverage.",
                   },
                 ].map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    variants={staggerItem}
-                    className="flex gap-4"
+                    className={`flex gap-4 transition-animate ${stepsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                    style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-primary-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                    <div className="w-14 h-14 rounded-2xl bg-primary-600 flex items-center justify-center text-white font-bold shrink-0">
                       {item.step}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-neutral-900 mb-1">{item.title}</h3>
                       <p className="text-neutral-600">{item.description}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Image Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-2 gap-4"
+            <div
+              ref={stepsImageRef}
+              className={`grid grid-cols-2 gap-4 transition-animate-slow ${stepsImageInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
               <div className="space-y-4">
                 <div className="relative h-48 rounded-2xl overflow-hidden">
@@ -468,20 +435,17 @@ export default function HealthPage() {
                   <Image src="/images/formulary.jpg" alt="Medicines" fill className="object-cover" />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-10 lg:py-14 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-10 lg:py-14 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-3xl mx-auto transition-animate ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Access Quality Healthcare?
@@ -513,7 +477,7 @@ export default function HealthPage() {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

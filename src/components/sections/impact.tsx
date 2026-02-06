@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Building, Users, Pill, MapPin, Heart, Award } from "lucide-react";
-import { staggerContainer, staggerItem } from "@/lib/animations";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/use-in-view";
 
 const impactStats = [
   {
@@ -59,26 +58,40 @@ const impactStats = [
 
 function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = value;
-      const increment = end / (duration * 60);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start * 10) / 10);
+    const element = ref.current;
+    if (!element || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const end = value;
+          const increment = end / (duration * 60);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(start * 10) / 10);
+            }
+          }, 1000 / 60);
         }
-      }, 1000 / 60);
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value, duration]);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [value, duration, hasAnimated]);
 
   return (
     <span ref={ref}>
@@ -89,13 +102,16 @@ function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; 
 }
 
 export function ImpactSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
+  const { ref: gridRef, isInView: gridInView } = useInView<HTMLDivElement>();
+
   return (
-    <section className="py-10 lg:py-16 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 relative overflow-hidden">
+    <section className="py-10 lg:py-16 bg-linear-to-br from-primary-900 via-primary-800 to-primary-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-primary-600/10 rounded-full blur-3xl" />
       </div>
 
       {/* Grid Pattern */}
@@ -108,56 +124,45 @@ export function ImpactSection() {
 
       <div className="container relative z-10">
         {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
+        <div
+          ref={headerRef}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <motion.span
-            variants={staggerItem}
-            className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full"
+          <span
+            className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full transition-animate ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             Our Impact
-          </motion.span>
-          <motion.h2
-            variants={staggerItem}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
+          </span>
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 transition-animate delay-100 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             Transforming Healthcare{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-accent-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-300 to-accent-400">
               Across the Region
             </span>
-          </motion.h2>
-          <motion.p
-            variants={staggerItem}
-            className="text-lg text-white/70"
+          </h2>
+          <p
+            className={`text-lg text-white/70 transition-animate delay-200 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             For over three decades, we have been dedicated to improving healthcare
             access and outcomes for millions of people in the North West Region.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Stats Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={staggerContainer}
+        <div
+          ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {impactStats.map((stat, index) => (
-            <motion.div
+            <div
               key={stat.label}
-              variants={staggerItem}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="relative group"
+              className={`relative group transition-animate ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 card-hover">
                 {/* Icon */}
-                <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg md:rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg md:rounded-xl bg-linear-to-br ${stat.color} flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </div>
 
@@ -176,9 +181,9 @@ export function ImpactSection() {
                   {stat.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

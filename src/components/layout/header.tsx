@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { siteConfig } from "@/config/site";
 import { sections } from "@/data/sections";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   Camera,
   ChevronDown,
@@ -21,45 +20,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-// Animation variants for the mobile menu
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-} as const;
-
-const itemVariants = {
-  hidden: { opacity: 0, x: 30, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 300,
-      damping: 24,
-    },
-  },
-};
-
-const quickLinkVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring" as const,
-      stiffness: 400,
-      damping: 25,
-    },
-  },
-};
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -148,71 +108,65 @@ export function Header() {
               </button>
 
               {/* Mega Menu Dropdown */}
-              <AnimatePresence>
-                {isSectionsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
-                  >
-                    <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-6 w-180">
-                      <div className="grid grid-cols-3 gap-6">
-                        {sections.map((section) => (
-                          <div key={section.id} className="space-y-3">
-                            {/* Section Header */}
-                            <Link
-                              href={`/sections/${section.slug}`}
-                              className="flex items-center gap-3 p-2 -m-2 rounded-xl hover:bg-neutral-50 transition-colors group"
+              {isSectionsOpen && (
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 animate-fade-in"
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl border border-neutral-100 p-6 w-180">
+                    <div className="grid grid-cols-3 gap-6">
+                      {sections.map((section) => (
+                        <div key={section.id} className="space-y-3">
+                          {/* Section Header */}
+                          <Link
+                            href={`/sections/${section.slug}`}
+                            className="flex items-center gap-3 p-2 -m-2 rounded-xl hover:bg-neutral-50 transition-colors group"
+                          >
+                            <div
+                              className={`w-10 h-10 rounded-xl ${section.bgColor} flex items-center justify-center group-hover:scale-105 transition-transform`}
                             >
-                              <div
-                                className={`w-10 h-10 rounded-xl ${section.bgColor} flex items-center justify-center group-hover:scale-105 transition-transform`}
-                              >
-                                <section.icon
-                                  className={`w-5 h-5 ${section.iconColor}`}
-                                />
-                              </div>
-                              <div>
-                                <p className="font-semibold text-neutral-900 text-sm group-hover:text-primary-600 transition-colors">
-                                  {section.acronym}
-                                </p>
-                                <p className="text-xs text-neutral-500">
-                                  {section.programs.length} programs
-                                </p>
-                              </div>
-                            </Link>
-
-                            {/* Programs List */}
-                            <div className="space-y-1 pl-2 border-l-2 border-neutral-100">
-                              {section.programs.map((program) => (
-                                <Link
-                                  key={program.id}
-                                  href={`/programs/${program.slug}`}
-                                  className="block px-3 py-1.5 text-sm text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
-                                >
-                                  {program.shortTitle}
-                                </Link>
-                              ))}
+                              <section.icon
+                                className={`w-5 h-5 ${section.iconColor}`}
+                              />
                             </div>
-                          </div>
-                        ))}
-                      </div>
+                            <div>
+                              <p className="font-semibold text-neutral-900 text-sm group-hover:text-primary-600 transition-colors">
+                                {section.acronym}
+                              </p>
+                              <p className="text-xs text-neutral-500">
+                                {section.programs.length} programs
+                              </p>
+                            </div>
+                          </Link>
 
-                      {/* View All Link */}
-                      <div className="mt-6 pt-4 border-t border-neutral-100">
-                        <Link
-                          href="/sections"
-                          className="flex items-center justify-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
-                        >
-                          View All Sections & Programs
-                          <ChevronRight className="w-4 h-4" />
-                        </Link>
-                      </div>
+                          {/* Programs List */}
+                          <div className="space-y-1 pl-2 border-l-2 border-neutral-100">
+                            {section.programs.map((program) => (
+                              <Link
+                                key={program.id}
+                                href={`/programs/${program.slug}`}
+                                className="block px-3 py-1.5 text-sm text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                              >
+                                {program.shortTitle}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+                    {/* View All Link */}
+                    <div className="mt-6 pt-4 border-t border-neutral-100">
+                      <Link
+                        href="/sections"
+                        className="flex items-center justify-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                      >
+                        View All Sections & Programs
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Other Links */}
@@ -253,11 +207,8 @@ export function Header() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full bg-linear-to-b from-primary-600 via-primary-700 to-primary-800">
                 {/* Mobile Header - Primary Blue Background */}
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative px-6 pt-6 pb-8"
+                <div
+                  className={`relative px-6 pt-6 pb-8 ${isOpen ? "animate-slide-down" : ""}`}
                 >
                   {/* Decorative blur circles */}
                   <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
@@ -268,11 +219,8 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                     className="relative flex items-center gap-4 group"
                   >
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
-                      className="w-14 h-14 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm p-1 ring-2 ring-white/30 group-hover:ring-white/50 transition-all"
+                    <div
+                      className={`w-14 h-14 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm p-1 ring-2 ring-white/30 group-hover:ring-white/50 transition-all ${isOpen ? "animate-scale-in delay-100" : ""}`}
                     >
                       <Image
                         src="/images/logo.jpg"
@@ -281,12 +229,9 @@ export function Header() {
                         height={56}
                         className="w-full h-full object-contain rounded-lg"
                       />
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="flex flex-col"
+                    </div>
+                    <div
+                      className={`flex flex-col ${isOpen ? "animate-slide-left delay-200" : ""}`}
                     >
                       <span className="text-xl font-bold text-white tracking-tight">
                         NWRFHP
@@ -294,152 +239,133 @@ export function Header() {
                       <span className="text-xs text-white/70 font-medium tracking-wide">
                         Health Promotion
                       </span>
-                    </motion.div>
+                    </div>
                   </Link>
-                </motion.div>
+                </div>
 
                 {/* Mobile Navigation Links */}
                 <nav className="flex-1 overflow-y-auto px-4 py-4">
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="space-y-2"
-                      >
-                        {/* About Link */}
-                        <motion.div variants={itemVariants}>
+                  {isOpen && (
+                    <div className="space-y-2 stagger-fast">
+                      {/* About Link */}
+                      <div className={`transition-animate ${isOpen ? "animate-slide-left" : "opacity-0"}`}>
+                        <Link
+                          href="/about"
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                              <Info className="h-5 w-5 text-white/90" />
+                            </div>
+                            <span>About Us</span>
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                        </Link>
+                      </div>
+
+                      {/* Sections with Expandable Programs */}
+                      {sections.map((section, index) => (
+                        <div key={section.id} className={`transition-animate ${isOpen ? "animate-slide-left" : "opacity-0"}`} style={{ transitionDelay: `${(index + 1) * 80}ms` }}>
+                          <button
+                            onClick={() =>
+                              setExpandedMobileSection(
+                                expandedMobileSection === section.id ? null : section.id
+                              )
+                            }
+                            className="w-full flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`w-10 h-10 rounded-lg ${section.bgColor} flex items-center justify-center`}
+                              >
+                                <section.icon
+                                  className={`h-5 w-5 ${section.iconColor}`}
+                                />
+                              </div>
+                              <div className="text-left">
+                                <span className="block">{section.acronym}</span>
+                                <span className="text-xs text-white/60">
+                                  {section.programs.length} programs
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronDown
+                              className={`h-5 w-5 text-white/60 transition-transform duration-200 ${
+                                expandedMobileSection === section.id ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+
+                          {/* Expanded Programs */}
+                          <div
+                            className={`overflow-hidden transition-all duration-300 ${
+                              expandedMobileSection === section.id
+                                ? "max-h-96 opacity-100"
+                                : "max-h-0 opacity-0"
+                            }`}
+                          >
+                            <div className="pt-2 pl-6 space-y-1">
+                              {section.programs.map((program) => (
+                                <Link
+                                  key={program.id}
+                                  href={`/programs/${program.slug}`}
+                                  onClick={() => setIsOpen(false)}
+                                  className="flex items-center gap-3 px-4 py-3 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-lg transition-colors"
+                                >
+                                  <program.icon className="w-4 h-4" />
+                                  <span>{program.shortTitle}</span>
+                                </Link>
+                              ))}
+                              <Link
+                                href={`/sections/${section.slug}`}
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 px-4 py-3 text-accent-400 text-sm font-medium hover:bg-white/10 rounded-lg transition-colors"
+                              >
+                                <span>View {section.acronym} Section</span>
+                                <ChevronRight className="w-4 h-4" />
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* Other Nav Links */}
+                      {[
+                        { href: "/team", label: "Our Team", icon: Users },
+                        { href: "/contact", label: "Contact", icon: Phone },
+                        { href: "/gallery", label: "Gallery & News", icon: Camera },
+                      ].map((link, index) => (
+                        <div key={link.href} className={`transition-animate ${isOpen ? "animate-slide-left" : "opacity-0"}`} style={{ transitionDelay: `${(sections.length + index + 2) * 80}ms` }}>
                           <Link
-                            href="/about"
+                            href={link.href}
                             onClick={() => setIsOpen(false)}
                             className="flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
                           >
                             <div className="flex items-center gap-3">
                               <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                                <Info className="h-5 w-5 text-white/90" />
+                                <link.icon className="h-5 w-5 text-white/90" />
                               </div>
-                              <span>About Us</span>
+                              <span>{link.label}</span>
                             </div>
                             <ChevronRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
                           </Link>
-                        </motion.div>
-
-                        {/* Sections with Expandable Programs */}
-                        {sections.map((section) => (
-                          <motion.div key={section.id} variants={itemVariants}>
-                            <button
-                              onClick={() =>
-                                setExpandedMobileSection(
-                                  expandedMobileSection === section.id ? null : section.id
-                                )
-                              }
-                              className="w-full flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div
-                                  className={`w-10 h-10 rounded-lg ${section.bgColor} flex items-center justify-center`}
-                                >
-                                  <section.icon
-                                    className={`h-5 w-5 ${section.iconColor}`}
-                                  />
-                                </div>
-                                <div className="text-left">
-                                  <span className="block">{section.acronym}</span>
-                                  <span className="text-xs text-white/60">
-                                    {section.programs.length} programs
-                                  </span>
-                                </div>
-                              </div>
-                              <ChevronDown
-                                className={`h-5 w-5 text-white/60 transition-transform duration-200 ${
-                                  expandedMobileSection === section.id ? "rotate-180" : ""
-                                }`}
-                              />
-                            </button>
-
-                            {/* Expanded Programs */}
-                            <AnimatePresence>
-                              {expandedMobileSection === section.id && (
-                                <motion.div
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: "auto", opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="overflow-hidden"
-                                >
-                                  <div className="pt-2 pl-6 space-y-1">
-                                    {section.programs.map((program) => (
-                                      <Link
-                                        key={program.id}
-                                        href={`/programs/${program.slug}`}
-                                        onClick={() => setIsOpen(false)}
-                                        className="flex items-center gap-3 px-4 py-3 text-white/80 text-sm bg-white/5 hover:bg-white/15 rounded-lg transition-colors"
-                                      >
-                                        <program.icon className="w-4 h-4" />
-                                        <span>{program.shortTitle}</span>
-                                      </Link>
-                                    ))}
-                                    <Link
-                                      href={`/sections/${section.slug}`}
-                                      onClick={() => setIsOpen(false)}
-                                      className="flex items-center gap-3 px-4 py-3 text-accent-400 text-sm font-medium hover:bg-white/10 rounded-lg transition-colors"
-                                    >
-                                      <span>View {section.acronym} Section</span>
-                                      <ChevronRight className="w-4 h-4" />
-                                    </Link>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </motion.div>
-                        ))}
-
-                        {/* Other Nav Links */}
-                        {[
-                          { href: "/team", label: "Our Team", icon: Users },
-                          { href: "/contact", label: "Contact", icon: Phone },
-                          { href: "/gallery", label: "Gallery & News", icon: Camera },
-                        ].map((link) => (
-                          <motion.div key={link.href} variants={itemVariants}>
-                            <Link
-                              href={link.href}
-                              onClick={() => setIsOpen(false)}
-                              className="flex items-center justify-between px-5 py-4 text-white font-medium text-base bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-300 group border border-white/10 hover:border-white/20"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                                  <link.icon className="h-5 w-5 text-white/90" />
-                                </div>
-                                <span>{link.label}</span>
-                              </div>
-                              <ChevronRight className="h-5 w-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
-                            </Link>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Quick Links Section */}
-                  <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      visible: {
-                        transition: { staggerChildren: 0.1, delayChildren: 0.5 },
-                      },
-                    }}
-                    className="mt-8 pt-6 border-t border-white/10"
+                  <div
+                    className={`mt-8 pt-6 border-t border-white/10 ${isOpen ? "animate-slide-up delay-500" : "opacity-0"}`}
                   >
-                    <motion.p
-                      variants={quickLinkVariants}
+                    <p
                       className="px-2 text-xs font-semibold text-white/50 uppercase tracking-wider mb-4"
                     >
                       Quick Access
-                    </motion.p>
+                    </p>
                     <div className="grid grid-cols-2 gap-3">
-                      <motion.div variants={quickLinkVariants}>
+                      <div>
                         <Link
                           href="/sections"
                           onClick={() => setIsOpen(false)}
@@ -448,8 +374,8 @@ export function Header() {
                           <Heart className="h-5 w-5" />
                           <span className="text-xs text-center">All Sections</span>
                         </Link>
-                      </motion.div>
-                      <motion.div variants={quickLinkVariants}>
+                      </div>
+                      <div>
                         <Link
                           href="/socials"
                           onClick={() => setIsOpen(false)}
@@ -458,17 +384,14 @@ export function Header() {
                           <MessageCircle className="h-5 w-5" />
                           <span className="text-xs text-center">Socials Committee</span>
                         </Link>
-                      </motion.div>
+                      </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </nav>
 
                 {/* Mobile Footer Actions */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.4 }}
-                  className="p-5 bg-primary-900/50 backdrop-blur-sm space-y-3 border-t border-white/10"
+                <div
+                  className={`p-5 bg-primary-900/50 backdrop-blur-sm space-y-3 border-t border-white/10 ${isOpen ? "animate-slide-up delay-600" : "opacity-0"}`}
                 >
                   <Button
                     className="w-full bg-white text-primary-700 hover:bg-white/90 font-semibold shadow-lg"
@@ -495,7 +418,7 @@ export function Header() {
                       WhatsApp Us
                     </a>
                   </Button>
-                </motion.div>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

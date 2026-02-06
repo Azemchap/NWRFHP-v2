@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 const news = [
   {
@@ -42,60 +41,68 @@ const news = [
 ];
 
 export function NewsSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView();
+  const { ref: gridRef, isInView: gridInView } = useInView({ rootMargin: "-50px" });
+
   return (
     <section className="py-10 lg:py-16 bg-neutral-50">
       <div className="container">
         {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12"
+        <div
+          ref={headerRef}
+          className={`flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 stagger-children ${
+            headerInView ? "is-visible" : ""
+          }`}
         >
           <div>
-            <motion.span
-              variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+            <span
+              className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full animate-on-scroll animate-fade-in-up transition-animate ${
+                headerInView ? "is-visible" : ""
+              }`}
             >
               Latest Updates
-            </motion.span>
-            <motion.h2
-              variants={staggerItem}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900"
+            </span>
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 animate-on-scroll animate-fade-in-up transition-animate delay-100 ${
+                headerInView ? "is-visible" : ""
+              }`}
             >
               News &{" "}
               <span className="text-gradient">Announcements</span>
-            </motion.h2>
+            </h2>
           </div>
-          <motion.div variants={staggerItem}>
+          <div
+            className={`animate-on-scroll animate-fade-in-up transition-animate delay-200 ${
+              headerInView ? "is-visible" : ""
+            }`}
+          >
             <Button variant="outline" asChild>
               <Link href="/gallery">
                 View All News
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* News Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+        <div
+          ref={gridRef}
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 stagger-children ${
+            gridInView ? "is-visible" : ""
+          }`}
         >
           {news.map((item, index) => (
-            <motion.article
+            <article
               key={item.id}
-              variants={staggerItem}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
+              className={`animate-on-scroll animate-fade-in-up transition-animate ${
+                gridInView ? "is-visible" : ""
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <Link
                 href={item.href}
-                className="group block bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-neutral-100 transition-all duration-300"
+                className="group block bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-neutral-100 hover:-translate-y-2 transition-all duration-300"
               >
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
@@ -105,7 +112,7 @@ export function NewsSection() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-neutral-900/50 to-transparent" />
                   <Badge className="absolute top-4 left-4 bg-white/90 text-primary-700 hover:bg-white">
                     {item.category}
                   </Badge>
@@ -142,9 +149,9 @@ export function NewsSection() {
                   </span>
                 </div>
               </Link>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

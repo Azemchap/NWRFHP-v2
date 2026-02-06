@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
 const testimonials = [
   {
@@ -33,58 +32,47 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView<HTMLDivElement>();
+  const { ref: gridRef, isInView: gridInView } = useInView<HTMLDivElement>();
+
   return (
     <section className="py-10 lg:py-16 bg-neutral-50">
       <div className="container">
         {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
+        <div
+          ref={headerRef}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <motion.span
-            variants={staggerItem}
-            className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+          <span
+            className={`inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full transition-animate ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             Testimonials
-          </motion.span>
-          <motion.h2
-            variants={staggerItem}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4"
+          </span>
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 transition-animate delay-100 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             Stories of{" "}
             <span className="text-gradient">Impact</span>
-          </motion.h2>
-          <motion.p
-            variants={staggerItem}
-            className="text-lg text-neutral-600"
+          </h2>
+          <p
+            className={`text-lg text-neutral-600 transition-animate delay-200 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
           >
             Hear from the communities and individuals whose lives have been
             transformed by our healthcare programs.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Testimonials Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={staggerContainer}
-          className="grid lg:grid-cols-3 gap-8"
-        >
+        <div ref={gridRef} className="grid lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={staggerItem}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="relative bg-white rounded-2xl p-8 shadow-lg border border-neutral-100 hover:shadow-xl transition-all duration-300"
+              className={`relative bg-white rounded-2xl p-8 shadow-lg border border-neutral-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ${gridInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Quote Icon */}
               <div className="absolute -top-4 left-8">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center">
                   <Quote className="w-5 h-5 text-white" />
                 </div>
               </div>
@@ -117,9 +105,9 @@ export function TestimonialsSection() {
                   <p className="text-xs text-primary-600">{testimonial.location}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
