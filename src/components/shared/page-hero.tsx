@@ -81,7 +81,7 @@ export function PageHero({
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900" />
       )}
 
-      <div className="container relative z-10 py-10 lg:py-14">
+      <div className="container relative z-10 py-8 sm:py-10 lg:py-14">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -92,9 +92,9 @@ export function PageHero({
           {badge && (
             <motion.span
               variants={staggerItem}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium"
             >
-              {badge.icon && <badge.icon className="w-4 h-4" />}
+              {badge.icon && <badge.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
               {badge.text}
             </motion.span>
           )}
@@ -102,11 +102,11 @@ export function PageHero({
           {/* Title */}
           <motion.h1
             variants={staggerItem}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
           >
             {title}{" "}
             {titleHighlight && (
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-accent-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-300 to-accent-400">
                 {titleHighlight}
               </span>
             )}
@@ -116,7 +116,7 @@ export function PageHero({
           {description && (
             <motion.p
               variants={staggerItem}
-              className="text-lg lg:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto"
+              className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto"
             >
               {description}
             </motion.p>

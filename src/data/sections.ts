@@ -444,7 +444,7 @@ export const sections: Section[] = [
     gradientFrom: "emerald-500",
     gradientTo: "emerald-600",
     image: "/images/UHC1.jpg",
-    heroImage: "/images/logu1.jpg",
+    heroImage: "/images/UHC4.jpg",
     programs: [
       {
         id: "health-insurance-schemes",

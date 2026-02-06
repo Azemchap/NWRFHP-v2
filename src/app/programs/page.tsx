@@ -22,7 +22,7 @@ export default function ProgramsPage() {
   const allPrograms = getAllPrograms();
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       {/* Hero Section with Background Image */}
       <PageHero
         badge={{ icon: Heart, text: "Our Programs" }}
@@ -32,10 +32,11 @@ export default function ProgramsPage() {
         backgroundImage="/images/096A0599.jpg"
         overlay="gradient"
       >
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2 sm:px-0">
           <Button
             size="lg"
             variant="white"
+            className="w-full sm:w-auto"
             asChild
           >
             <Link href="/sections">
@@ -46,7 +47,7 @@ export default function ProgramsPage() {
           <Button
             size="lg"
             variant="outline-accent"
-            className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500"
+            className="border-white/30 bg-white/5 text-white hover:bg-accent-500 hover:text-white hover:border-accent-500 w-full sm:w-auto"
             asChild
           >
             <Link href="/contact">Contact Us</Link>
@@ -55,26 +56,26 @@ export default function ProgramsPage() {
       </PageHero>
 
       {/* Stats */}
-      <section className="py-8 -mt-20 relative z-20">
+      <section className="py-6 lg:py-8 lg:-mt-20 relative z-20">
         <div className="container">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
           >
             {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={staggerItem}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 shadow-xl border border-neutral-100"
+                className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-lg lg:shadow-xl border border-neutral-100"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
-                  <stat.icon className="w-6 h-6 text-primary-600" />
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-100 flex items-center justify-center mb-2 sm:mb-4">
+                  <stat.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary-600" />
                 </div>
-                <p className="text-3xl font-bold text-neutral-900 mb-1">{stat.value}</p>
-                <p className="text-neutral-600 text-sm">{stat.label}</p>
+                <p className="text-xl sm:text-3xl font-bold text-neutral-900 mb-0.5 sm:mb-1">{stat.value}</p>
+                <p className="text-neutral-600 text-xs sm:text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -90,24 +91,24 @@ export default function ProgramsPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
           >
             <motion.span
               variants={staggerItem}
-              className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
+              className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wider text-primary-600 bg-primary-50 rounded-full"
             >
               What We Do
             </motion.span>
             <motion.h2
               variants={staggerItem}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-3 sm:mb-4"
             >
               Our Healthcare{" "}
               <span className="text-gradient">Programs</span>
             </motion.h2>
             <motion.p
               variants={staggerItem}
-              className="text-lg text-neutral-600"
+              className="text-base sm:text-lg text-neutral-600"
             >
               Explore our {allPrograms.length} comprehensive programs organized across {sections.length} strategic sections,
               designed to serve every member of our community with quality healthcare services.
@@ -116,25 +117,25 @@ export default function ProgramsPage() {
 
           {/* Programs by Section */}
           {sections.map((section) => (
-            <div key={section.id} className="mb-16 lg:mb-24">
+            <div key={section.id} className="mb-12 sm:mb-16 lg:mb-24">
               {/* Section Header */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-4 mb-8"
+                className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${section.color} flex items-center justify-center`}>
-                  <section.icon className="w-7 h-7 text-white" />
+                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-linear-to-br ${section.color} flex items-center justify-center shrink-0`}>
+                  <section.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <Link
                     href={`/sections/${section.slug}`}
-                    className="text-2xl sm:text-3xl font-bold text-neutral-900 hover:text-primary-600 transition-colors"
+                    className="text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 hover:text-primary-600 transition-colors"
                   >
                     {section.acronym}
                   </Link>
-                  <p className="text-neutral-500">{section.shortTitle}</p>
+                  <p className="text-sm sm:text-base text-neutral-500 truncate">{section.shortTitle}</p>
                 </div>
                 <div className="flex-1" />
                 <Button variant="outline" size="sm" asChild className="hidden sm:flex">
@@ -172,10 +173,10 @@ export default function ProgramsPage() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-neutral-900/60 to-transparent" />
 
                         {/* Icon Badge */}
-                        <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center`}>
+                        <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-linear-to-br ${program.color} flex items-center justify-center`}>
                           <program.icon className="w-6 h-6 text-white" />
                         </div>
 
@@ -235,30 +236,30 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 lg:py-12 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
+      <section className="py-10 sm:py-12 lg:py-16 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto px-2"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium">
-              <Heart className="w-4 h-4" />
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium">
+              <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Partner With Us
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6">
               Want to Support Our Mission?
             </h2>
-            <p className="text-lg text-white/80 mb-8">
+            <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8">
               Join us in our mission to make quality healthcare accessible to everyone
               in the North West Region. Together, we can make a difference.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Button
                 size="lg"
-                className="bg-white text-primary-700 hover:bg-neutral-100"
+                className="bg-white text-primary-700 hover:bg-neutral-100 w-full sm:w-auto"
                 asChild
               >
                 <Link href="/contact">
@@ -269,7 +270,7 @@ export default function ProgramsPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white/30 bg-transparent text-white hover:bg-white/10"
+                className="border-2 border-white/30 bg-transparent text-white hover:bg-white/10 w-full sm:w-auto"
                 asChild
               >
                 <a href={`tel:${siteConfig.contact.phone.primaryRaw}`}>

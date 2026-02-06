@@ -80,7 +80,7 @@ export default function ProgramPage({ params }: ProgramPageProps) {
       </PageHero>
 
       {/* Stats Bar */}
-      <section className="py-8 -mt-20 relative z-20">
+      <section className="hidden lg:flex py-8 -mt-20 relative z-20">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -111,8 +111,8 @@ export default function ProgramPage({ params }: ProgramPageProps) {
           <div className="flex flex-wrap items-center gap-4">
             <Button variant="ghost" asChild className="group">
               <Link href="/programs">
-                <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                Back to Programs
+                <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform uppercase" />
+                Back to all Programs
               </Link>
             </Button>
             <div className="hidden sm:flex items-center gap-2 text-sm text-neutral-500">
