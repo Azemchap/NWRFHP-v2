@@ -9,7 +9,7 @@ North West Regional Fund for Health Promotion (NWRFHP) website - a Next.js 15 ap
 - React 18.3
 - TypeScript (strict mode)
 - Tailwind CSS 4
-- Framer Motion 12
+- CSS animations & transitions (no Framer Motion)
 - shadcn/ui components
 - Radix UI primitives
 
@@ -48,7 +48,7 @@ A vibrant, international blue used throughout the application for primary action
 ### Design Principles
 
 1. **World-Class Standards:** Modern, clean, professional design inspired by SLB and international healthcare organizations
-2. **Animations:** Subtle, purposeful animations using Framer Motion
+2. **Animations:** Subtle, purposeful CSS animations & transitions (IntersectionObserver-based)
 3. **Accessibility:** WCAG 2.1 compliant color contrast and keyboard navigation
 4. **Mobile-First:** Responsive design starting from mobile breakpoints
 5. **Performance:** Optimized images, lazy loading, efficient bundle sizes
@@ -81,42 +81,73 @@ A vibrant, international blue used throughout the application for primary action
 
 ### Animation Guidelines
 
-**Use Framer Motion for:**
-- Scroll-triggered animations (useInView)
-- Page transitions
-- Hover effects on cards and buttons
-- Staggered list animations
+All animations use native CSS transitions with a custom `useInView` hook (`src/hooks/use-in-view.ts`) powered by IntersectionObserver. Framer Motion has been fully removed.
 
-**Animation Presets (src/lib/animations.ts):**
-- `fadeInUp`, `fadeInDown`, `fadeInLeft`, `fadeInRight`
-- `slideInUp`, `slideInDown`
-- `scaleIn`, `popIn`
-- `staggerContainer`, `staggerItem`
-- `cardHover`, `hoverScale`
+**Core Hook - `useInView`:**
+```tsx
+const { ref, isInView } = useInView({ threshold: 0.1, rootMargin: "-100px", once: true });
+```
+Returns a `ref` to attach to an element and an `isInView` boolean that triggers CSS transitions.
+
+**CSS Animation Pattern:**
+```tsx
+<div
+  ref={ref}
+  className={`transition-animate ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+  style={{ transitionDelay: '100ms' }}
+>
+```
+
+**Utility Classes (defined in globals.css):**
+- `transition-animate` - Base transition class (duration, easing, properties)
+- `animate-fade-in` - Keyframe fade-in animation
+- `animate-slide-up` - Keyframe slide-up animation
+- `animate-hero-badge`, `animate-hero-image` - Hero-specific animations
+- `stagger-children` + `is-visible` - Staggered child animations
+
+**Animation Components (src/components/ui/animations.tsx):**
+- `FadeIn`, `FadeInUp`, `FadeInDown`, `FadeInLeft`, `FadeInRight`
+- `ScaleIn`, `StaggerContainer`, `StaggerItem`
+- `PageTransition`, `Counter`, `HoverScale`, `Parallax`
+
+**Additional Components (src/components/animations/):**
+- `Counter` - Animated number counting
+- `FadeIn` - Simple fade-in wrapper
+- `SlideInUp` - Slide-up animation wrapper
+- `StaggerContainer` - Container for staggered children
 
 **Settings:**
-- `viewport={{ once: true }}` for scroll animations
-- Ease curve: `[0.22, 1, 0.36, 1]` (smooth ease-out)
-- Duration: 0.5-0.8s for most animations
+- Transitions trigger once by default (IntersectionObserver `once: true`)
+- Default rootMargin: `-100px` (triggers slightly before element enters viewport)
+- Stagger delays via inline `transitionDelay` styles
 
 ## Project Structure
 
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── page.tsx           # Homepage with 10 sections
+│   ├── page.tsx           # Homepage with 10+ sections
 │   ├── health/            # UHC page (modernized)
-│   ├── programs/          # Programs list & slug pages
-│   ├── team/              # Team list & slug pages
+│   ├── programs/          # Programs list & [slug] pages
+│   ├── sections/          # Sections list & [slug] pages
+│   ├── team/              # Team list & [slug] pages
 │   ├── about/             # About page
 │   ├── contact/           # Contact page
-│   └── gallery/           # Gallery page
+│   ├── gallery/           # Gallery page
+│   └── socials/           # Social media page
 ├── components/
+│   ├── animations/        # CSS animation wrapper components
+│   │   ├── counter.tsx
+│   │   ├── fade-in.tsx
+│   │   ├── slide-in-up.tsx
+│   │   └── stagger-container.tsx
 │   ├── sections/          # Homepage sections
 │   │   ├── hero.tsx
 │   │   ├── about-preview.tsx
 │   │   ├── services.tsx
 │   │   ├── impact.tsx
+│   │   ├── stats.tsx
+│   │   ├── programs.tsx
 │   │   ├── mission.tsx
 │   │   ├── testimonials.tsx
 │   │   ├── partners.tsx
@@ -126,18 +157,26 @@ src/
 │   ├── shared/            # Reusable components
 │   │   ├── page-hero.tsx
 │   │   ├── section-wrapper.tsx
-│   │   └── animated-card.tsx
+│   │   ├── animated-card.tsx
+│   │   ├── program-card.tsx
+│   │   ├── stat-card.tsx
+│   │   ├── logo.tsx
+│   │   └── scroll-to-top.tsx
 │   ├── layout/            # Header & Footer
-│   └── ui/                # shadcn UI components
+│   └── ui/                # shadcn UI components + animations.tsx
+├── hooks/
+│   ├── use-in-view.ts     # IntersectionObserver hook for scroll animations
+│   ├── use-mobile.ts      # Mobile detection hook
+│   └── use-reveal.ts      # Reveal animation hook
 ├── config/
 │   └── site.ts            # Centralized site configuration
 ├── data/
 │   ├── team.json          # Team members data
-│   └── programs.ts        # Programs data with types
+│   ├── programs.ts        # Programs data with types
+│   └── sections.ts        # Sections data with programs
 ├── lib/
-│   ├── animations.ts      # Framer Motion animation presets
 │   └── utils.ts           # Utility functions
-└── app/globals.css        # Global styles & Tailwind theme
+└── app/globals.css        # Global styles, CSS animations & Tailwind theme
 ```
 
 ## Key Configuration
@@ -148,10 +187,10 @@ src/
 - Statistics (217 pharmacies, 850+ health workers, etc.)
 - Navigation and footer links
 
-**Programs Data (src/data/programs.ts):**
-- 6 healthcare programs with full details
-- Slug-based routing for individual pages
-- Icons, colors, stats, features, objectives
+**Programs & Sections Data (src/data/sections.ts):**
+- 3 sections (SMSS, SHPS, SUHC) with nested programs
+- Slug-based routing for sections and individual programs
+- Icons, colors, stats, features, objectives, beneficiaries, activities
 
 **Team Data (src/data/team.json):**
 - 40+ team members
@@ -169,11 +208,12 @@ npm run lint     # ESLint
 
 ## Key Files to Know
 
-- `/src/app/globals.css` - Theme colors, animations, utilities
-- `/src/lib/animations.ts` - Animation presets
+- `/src/app/globals.css` - Theme colors, CSS animations, utility classes
+- `/src/hooks/use-in-view.ts` - IntersectionObserver hook for scroll animations
+- `/src/components/ui/animations.tsx` - Reusable CSS animation wrapper components
 - `/src/config/site.ts` - Site-wide configuration
 - `/src/components/shared/page-hero.tsx` - Reusable hero component
-- `/src/data/programs.ts` - Programs data and types
+- `/src/data/sections.ts` - Sections & programs data and types
 
 ## Common Patterns
 
@@ -201,23 +241,37 @@ export default function NewPage() {
 }
 ```
 
-**Adding animations to a section:**
+**Adding scroll animations to a section:**
 ```tsx
-import { motion } from "framer-motion";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useInView } from "@/hooks/use-in-view";
 
-<motion.div
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: "-100px" }}
-  variants={staggerContainer}
->
-  {items.map((item) => (
-    <motion.div key={item.id} variants={staggerItem}>
-      {/* Content */}
-    </motion.div>
-  ))}
-</motion.div>
+function MySection() {
+  const { ref, isInView } = useInView();
+
+  return (
+    <div ref={ref}>
+      {items.map((item, index) => (
+        <div
+          key={item.id}
+          className={`transition-animate ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+          style={{ transitionDelay: `${index * 100}ms` }}
+        >
+          {/* Content */}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**Using animation wrapper components:**
+```tsx
+import { FadeInUp, StaggerContainer } from "@/components/ui/animations";
+
+<StaggerContainer>
+  <FadeInUp delay={0.1}>Content 1</FadeInUp>
+  <FadeInUp delay={0.2}>Content 2</FadeInUp>
+</StaggerContainer>
 ```
 
 ## Deployment
@@ -231,7 +285,9 @@ The site is configured for Vercel deployment:
 ## Notes
 
 - All pages use the vibrant primary blue (#0014DC) consistently
+- Animations use pure CSS transitions + IntersectionObserver (no Framer Motion)
 - Animations should be subtle and enhance UX, not distract
 - Mobile navigation has slide animations
 - Dark mode is supported via CSS variables
 - Use the PageHero component for consistent page headers
+- Mobile UX: cards that have hover dropdowns on desktop should be tappable links on mobile
