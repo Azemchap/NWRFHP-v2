@@ -26,10 +26,6 @@ const faqs = [
     question: "How do I find a community pharmacy near me?",
     answer: `NWRFHP operates ${siteConfig.stats.communityPharmacies} community pharmacies across all ${siteConfig.stats.healthDistricts} health districts in the North West Region. Contact us at ${siteConfig.contact.phone.primary} or visit our office in ${siteConfig.location.city} for information about the nearest community pharmacy to your location.`,
   },
-  {
-    question: "Can I become a community health worker?",
-    answer: "Yes! We regularly recruit and train community health workers to support our programs. If you're interested in contributing to healthcare in your community, please contact us through our website or visit our office to learn about current opportunities.",
-  },
 ];
 
 export function FAQSection() {
