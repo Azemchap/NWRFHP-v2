@@ -486,7 +486,7 @@ export const sections: Section[] = [
           "All children aged 0-5 years",
           "Families with young children",
           "Low-income households",
-          "Rural and underserved communities",
+          "Rural and undeserved communities",
           "Health facilities providing pediatric care",
         ],
         activities: [
